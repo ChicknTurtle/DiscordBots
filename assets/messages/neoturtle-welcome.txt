@@ -1,0 +1,17 @@
+Thank you for adding NeoTurtle!
+
+You can use **/help** to learn about all the features of the bot, but here's what's most important:
+
+The bot uses a global currency (<:neotoken2:1309191147733651536>NeoTokens), meaning even server admins can't modify them.
+
+Members can use **/play** to start games, and anyone with **Manage Channels** permission can start a permenent game in a channel.
+-# e.g. **/play unscramble permanent=True**
+If you have permission to start a game, you also have permission to use **/play cancel** to cancel it.
+-# e.g. normal members can cancel normal games but not permanent ones.
+
+It is recommended to set the bot's role color to <:00ff00:1311191813536743504>**#00ff00** (it looks cool!).
+-# [Why can't this be done automatically?](<https://support.discord.com/hc/en-us/community/posts/360041534551-Allow-bots-to-edit-their-integration-role-s-display-data>)
+
+If you have any suggestions for the bot, make sure to use **/feedback**.
+
+-# :warning: Note: NeoTurtle is still a work-in-progress!

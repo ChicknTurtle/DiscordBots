@@ -78,6 +78,14 @@ def setup(bot:discord.Bot):
             guildname = guild.name
         Log.log(f"{bot.name} joined: {guild.name} ({guild.member_count} members)")
         await bot.get_channel(Data['ids']['log']).send(f"**Joined**: {guildname} ({guild.member_count} members)", allowed_mentions=discord.AllowedMentions.none())
+        # Welcome message
+        if guild.system_channel:
+            try:
+                with open(f"assets/messages/{bot.name.lower()}-welcome.txt", 'r') as file:
+                    welcome_msg = file.read()
+                await guild.system_channel.send(welcome_msg)
+            except FileNotFoundError:
+                pass
 
     # on leave
     @bot.event
