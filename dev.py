@@ -18,8 +18,8 @@ async def handle_dev(bot:discord.Bot, msg:discord.Message):
     
     args = msg.content.split(' ')
     # split second arg by newline
-    parts = args[1].split('\n', 1)
     try:
+        parts = args[1].split('\n', 1)
         args[1] = parts[0]
         if len(parts) > 1:
             args.insert(2, parts[1])
