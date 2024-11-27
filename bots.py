@@ -18,12 +18,12 @@ class Bots:
         self.tuttlebot = discord.AutoShardedBot(intents=discord.Intents.all(), help_command=None)
         self.tuttlebot.name = "TuttleBot"
         self.tuttlebot.token = os.getenv('tuttlebot')
-        self.tuttlebot.embedcolor = 0x309c58
+        self.tuttlebot.color = 0x309c58
 
         self.neoturtle = discord.AutoShardedBot(intents=discord.Intents.all(), help_command=None)
         self.neoturtle.name = "NeoTurtle"
         self.neoturtle.token = os.getenv('neoturtle')
-        self.neoturtle.embedcolor = 0x00ff00
+        self.neoturtle.color = 0x00ff00
         self.neoturtle.customemojis = {'neotoken':'<:neotoken:1289435632720154655>','neotoken2':'<:neotoken2:1309191147733651536>'}
 
         for bot in self:
@@ -32,7 +32,7 @@ class Bots:
     def newembed_wrapper(self, bot):
         def newembed(title:str='', description:str='', footer:str=None, color:discord.Color=None, fields:list[tuple]=[], **kwargs):
             if color is None:
-                color = bot.embedcolor
+                color = bot.color
             embed = discord.Embed(title=title, description=description, color=color, **kwargs)
             embed.set_footer(text=footer)
             for field in fields:
