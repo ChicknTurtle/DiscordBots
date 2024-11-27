@@ -17,6 +17,11 @@ async def handle_dev(bot:discord.Bot, msg:discord.Message):
         return
     
     args = msg.content.split(' ')
+    # split second arg by newline
+    parts = args[1].split('\n', 1)
+    args[1] = parts[0]
+    if len(parts) > 1:
+        args.insert(2, parts[1])
 
     if len(args) == 1:
         return
@@ -43,8 +48,7 @@ async def handle_dev(bot:discord.Bot, msg:discord.Message):
     # exec
     elif args[1] == 'exec':
         code = ' '.join(args[2:])
-        code = code.lstrip("```py")
-        code = code.strip("`")
+        code = code.lstrip("```py").strip('`')
         Log.log(f"{bot.name} | exec: {code}")
         response = await msg.reply("Executing...")
         try:
