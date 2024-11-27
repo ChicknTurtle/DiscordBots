@@ -1,5 +1,9 @@
 
 import discord
+from dotenv import load_dotenv
+import os
+
+load_dotenv(dotenv_path='tokens.env')
 
 class Bots:
     _instance = None
@@ -13,12 +17,12 @@ class Bots:
     def _initialize(self):
         self.tuttlebot = discord.AutoShardedBot(intents=discord.Intents.all(), help_command=None)
         self.tuttlebot.name = "TuttleBot"
-        self.tuttlebot.token = "OTgxNzM3NDQ3NDg4NjUxMjc0.GnnN5n.00Yurvf6La81Lm18mUwzNXuGW-pIS84r8x9mZ8"
+        self.tuttlebot.token = os.getenv('tuttlebot')
         self.tuttlebot.embedcolor = 0x309c58
 
         self.neoturtle = discord.AutoShardedBot(intents=discord.Intents.all(), help_command=None)
         self.neoturtle.name = "NeoTurtle"
-        self.neoturtle.token = "MTIyNzA2MDQwMzA1NDU3NTczOQ.GyHds3.XB5ETejtS-cgR0BN6zbfBJN_W33VxqsFrkvDfg"
+        self.neoturtle.token = os.getenv('neoturtle')
         self.neoturtle.embedcolor = 0x00ff00
         self.neoturtle.customemojis = {'neotoken':'<:neotoken:1289435632720154655>','neotoken2':'<:neotoken2:1309191147733651536>'}
 
