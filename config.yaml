@@ -1,0 +1,26 @@
+
+# Terminal title
+terminal_title: "ChicknTurtle's Bots"
+
+# Should debug messages be shown in log?
+log_debug: false
+
+# Time between each autosave (seconds)
+autosave_time: 30
+
+
+# Modules for each bot
+
+ext_tuttlebot:
+  - events
+  - help
+  - bot
+  - tuttlebot.user
+  - tuttlebot.ai
+
+ext_neoturtle:
+  - events
+  - help
+  - bot
+  - neoturtle.play
+  - neoturtle.account
