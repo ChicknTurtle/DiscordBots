@@ -201,5 +201,5 @@ def setup(bot:discord.Bot):
                 channel_data['playing']['start'] = invoked_at
                 channel = await bot.fetch_channel(channel_id)
                 if channel_data['playing']['game'] == 'unscramble':
-                    await listen_unscramble(channel, invoked_at)
+                    bot.loop.create_task(listen_unscramble(channel, invoked_at))
     bot.loop.create_task(start_games())
