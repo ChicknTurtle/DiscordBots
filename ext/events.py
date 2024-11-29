@@ -60,6 +60,11 @@ def setup(bot:discord.Bot):
     async def on_message(msg:discord.Message):
         await handle_dev(bot, msg)
 
+    # on message edit
+    @bot.event
+    async def on_message_edit(before:discord.Message, after:discord.Message):
+        await handle_dev(bot, after)
+
     # on command
     @bot.event
     async def on_application_command(ctx:discord.ApplicationContext):

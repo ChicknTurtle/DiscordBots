@@ -16,30 +16,27 @@ async def handle_dev(bot:discord.Bot, msg:discord.Message):
     if not msg.author.id in [957464464507166750,1026346464554782740]:
         return
     
+    # build args
     args = msg.content.split(' ')
-    # split second arg by newline
-    try:
-        parts = args[1].split('\n', 1)
-        args[1] = parts[0]
-        if len(parts) > 1:
-            args.insert(2, parts[1])
+    args = [arg.strip() for arg in args]
 
-        if len(args) == 1:
-            return
-    except IndexError:
-        pass
+    # console channel
+    if msg.channel.id == 1312089859095138354:
+        if bot.name == "TuttleBot":
+            args.insert(0, bot.user.mention)
     
-    managed = None
-    try:
-        for role in bot.get_guild(msg.guild.id).get_member(bot.user.id).roles:
-            if role.is_bot_managed():
-                managed = role
-    except:
-        pass
+    # split second arg by newline (for codeblocks)
+    if len(args) > 1:
+        parts = args[1].split('\n', 1)
+        args = args[:1] + parts + args[2:]
+    
+    # not enough args
+    if len(args) == 1:
+        return
 
-    # Starts with mention (or bot role mention)
-    if args[0] != f"<@{bot.user.id}>":
-        if args[0] != f"<@&{managed.id}>":
+    # starts with mention (or bot role mention)
+    if args[0] != bot.user.mention:
+        if args[0] != msg.guild.self_role.mention:
             return
     
     # error
@@ -77,6 +74,3 @@ async def handle_dev(bot:discord.Bot, msg:discord.Message):
             await response.edit(f"```py\n{output}\n```")
         except Exception as e:
             await response.edit(f"```py\n{traceback.format_exc()}\n```")
-    
-    else:
-        await msg.reply(f"Invalid command: `{args[1]}`")
