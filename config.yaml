@@ -26,12 +26,8 @@ ext_tuttlebot:
   - events
   - help
   - bot
-  - tuttlebot.user
-  - tuttlebot.ai
 
 ext_neoturtle:
   - events
   - help
   - bot
-  - neoturtle.play
-  - neoturtle.account
