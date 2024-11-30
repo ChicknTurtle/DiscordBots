@@ -6,6 +6,8 @@ from bots import Bots
 from data import Data
 from utils import *
 
+config = config()
+
 Log = Log()
 Bots = Bots()
 Data = Data()
@@ -22,7 +24,7 @@ async def handle_dev(bot:discord.Bot, msg:discord.Message):
 
     # console channel
     if msg.channel.id == 1312089859095138354:
-        if bot.name == "TuttleBot":
+        if bot.name == Bots[0].name and config['dev_mode'] == True:
             args.insert(0, bot.user.mention)
     
     # split second arg by newline (for codeblocks)

@@ -18,28 +18,31 @@ class Data:
     
     def _initialize(self):
         self._data = {}
-        self._data['ids'] = {
-            'owner': 957464464507166750,
-            'devguild': 985362099490390096,
-            'system': 991049580634308688,
-            'log': 991110356908908704,
-            'feedback': 1243661131961077861,
-        }
         self._files = ['global','neoturtle/channel','neoturtle/user']
         for filename in self._files:
-            with open(f'data/{filename}.db', 'rb') as file:
+            filepath = f'data/{filename}.db'
+            # Create file if it doesn't exist
+            if not os.path.exists(filepath):
+                os.makedirs(os.path.dirname(filepath), exist_ok=True)
+                with open(filepath, 'wb') as file:
+                    pickle.dump({}, file)
+                Log.warn(f"Data file didn't exist! ({filename})")
+            # Load file
+            with open(filepath, 'rb') as file:
                 try:
                     self._data[filename] = pickle.load(file)
                 except EOFError:
                     self._data[filename] = {}
-                    Log.warn(f"No data to load! ({filename})")
+                    Log.warn(f"Loaded empty data file! ({filename})")
         Log.log("Loaded data.")
-        async def autosave():
-            while True:
-                await asyncio.sleep(config['autosave_time'])
-                self.save(autosave=True)
-        loop = asyncio.get_event_loop()
-        loop.create_task(autosave())
+        # Start autosaving
+        if config['autosave_time'] != 0:
+            async def autosave():
+                while True:
+                    await asyncio.sleep(config['autosave_time'])
+                    self.save(autosave=True)
+            loop = asyncio.get_event_loop()
+            loop.create_task(autosave())
         
     
     def __getitem__(self, key):
@@ -53,7 +56,8 @@ class Data:
     
     def save(self, autosave=False):
         for filename in self._files:
-            with open(f'data/{filename}.db', 'wb') as file:
+            filepath = f'data/{filename}.db'
+            with open(filepath, 'wb') as file:
                 pickle.dump(self._data[filename], file)
         if autosave:
             Log.debug("Autosaved data.")

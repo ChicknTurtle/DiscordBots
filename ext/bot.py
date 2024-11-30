@@ -5,6 +5,8 @@ import discord
 from data import Data
 from utils import *
 
+config = config()
+
 Log = Log()
 Data = Data()
 
@@ -53,6 +55,6 @@ def setup(bot:discord.Bot):
     # suggest
     @bot_group.command(name="suggest", description="Suggest a feature for the bot")
     async def bot_suggest_command(ctx:discord.ApplicationContext, suggestion:str=discord.Option(str, "Your suggestion", max_length=1000)):
-        await bot.get_channel(Data['ids']['feedback']).send(f"<@{ctx.author.id}> sent a suggestion:\n> {suggestion}")
+        await bot.get_channel(config['channels']['feedback']).send(f"<@{ctx.author.id}> sent a suggestion:\n> {suggestion}")
         await ctx.respond(f"Suggestion sent successfully! :rocket:", ephemeral=True)
     bot_suggest_command.helpdesc = "Max limit of 1000 characters"
