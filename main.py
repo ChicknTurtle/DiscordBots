@@ -23,9 +23,14 @@ Data = Data()
 Bots = Bots()
 
 # Load extensions
-from extensionloader import load_exts
+from extensionloader import loadext
 for bot in Bots:
-    load_exts(bot)
+    ext_key = f"ext_{bot.name.lower()}"
+    exts = config.get(ext_key)
+    if exts:
+        loadext(bot, exts)
+    else:
+        Log.warn(f"No extensions found for bot '{bot.name}'")
 
 loop = asyncio.get_event_loop()
 

@@ -14,7 +14,6 @@ def setup_user(user:discord.User):
     Data['neoturtle/user'][user.id].setdefault('achievements', {})
 
 def change_tokens(user:discord.User, amount:int):
-    setup_user(user)
     Data['neoturtle/user'][user.id]['tokens'] += amount
 
 def earn_tokens(user:discord.User, amount:int):
