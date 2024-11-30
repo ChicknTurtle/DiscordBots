@@ -4,6 +4,8 @@ import discord
 
 from utils import *
 
+config = config()
+
 Log = Log()
 
 def load_exts(bot:discord.Bot):
