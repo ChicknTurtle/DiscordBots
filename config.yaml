@@ -1,4 +1,7 @@
 
+# Dev mode enabled?
+dev_mode: false
+
 # Terminal title
 terminal_title: "ChicknTurtle's Bots"
 
@@ -8,6 +11,14 @@ log_debug: false
 # Time between each autosave (seconds)
 autosave_time: 30
 
+# Channels
+channels:
+  system: 991049580634308688
+  log: 991110356908908704
+  feedback: 1243661131961077861
+
+# Other ids
+dev_guild: 985362099490390096
 
 # Modules for each bot
 

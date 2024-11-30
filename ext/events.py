@@ -3,10 +3,14 @@ import traceback
 from datetime import datetime
 import discord
 
+from bots import Bots
 from data import Data
 from dev import handle_dev
 from utils import *
 
+config = config()
+
+Bots = Bots()
 Log = Log()
 Data = Data()
 
@@ -33,18 +37,18 @@ def setup(bot:discord.Bot):
     @bot.listen(once=True)
     async def on_ready():
         Log.log(f"{bot.name} started!")
-        if bot.name == "TuttleBot":
+        if bot.name == Bots[0].name:
             now = datetime.now()
             Data['global']['startTime'] = now
             try:
                 downtime = format_time(now - Data['global']['stopTime'])
             except KeyError:
                 downtime = 'unknown'
-            await bot.get_channel(Data['ids']['system']).send(f"Started! **Downtime**: {downtime}")
+            await bot.get_channel(config['channels']['system']).send(f"Started! **Downtime**: {downtime}")
     
     async def on_quit():
         """Should be called before the bot is stopped."""
-        if bot.name == "TuttleBot":
+        if bot.name == Bots[0].name:
             now = datetime.now()
             Data['global']['stopTime'] = now
             Data.save()
@@ -52,7 +56,7 @@ def setup(bot:discord.Bot):
                 uptime = format_time(now - Data['global']['startTime'])
             except KeyError:
                 uptime = 'unknown'
-            await bot.get_channel(Data['ids']['system']).send(f"Stopping. **Uptime**: {uptime}")
+            await bot.get_channel(config['channels']['system']).send(f"Stopping. **Uptime**: {uptime}")
     bot.on_quit = on_quit
     
     # on message
@@ -69,7 +73,7 @@ def setup(bot:discord.Bot):
     @bot.event
     async def on_application_command(ctx:discord.ApplicationContext):
         Log.log(f"{bot.name} | {ctx.author.display_name} used /{ctx.command}")
-        await bot.get_channel(Data['ids']['log']).send(f"<@{ctx.author.id}> used /{ctx.command}", allowed_mentions=discord.AllowedMentions.none())
+        await bot.get_channel(config['channels']['log']).send(f"<@{ctx.author.id}> used /{ctx.command}", allowed_mentions=discord.AllowedMentions.none())
     
     # on join
     @bot.event
@@ -82,7 +86,7 @@ def setup(bot:discord.Bot):
         else:
             guildname = guild.name
         Log.log(f"{bot.name} joined: {guild.name} ({guild.member_count} members)")
-        await bot.get_channel(Data['ids']['log']).send(f"**Joined**: {guildname} ({guild.member_count} members)", allowed_mentions=discord.AllowedMentions.none())
+        await bot.get_channel(config['channels']['log']).send(f"**Joined**: {guildname} ({guild.member_count} members)", allowed_mentions=discord.AllowedMentions.none())
         # Welcome message
         if guild.system_channel:
             try:
@@ -96,4 +100,4 @@ def setup(bot:discord.Bot):
     @bot.event
     async def on_guild_remove(guild:discord.Guild):
         Log.log(f"{bot.name} left: {guild.name} ({guild.member_count} members)")
-        await bot.get_channel(Data['ids']['log']).send(f"**Left**: {guild.name} ({guild.member_count} members)", allowed_mentions=discord.AllowedMentions.none())
+        await bot.get_channel(config['channels']['log']).send(f"**Left**: {guild.name} ({guild.member_count} members)", allowed_mentions=discord.AllowedMentions.none())

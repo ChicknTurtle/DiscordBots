@@ -35,7 +35,10 @@ for bot in Bots:
 loop = asyncio.get_event_loop()
 
 # Set terminal title
-sys.stdout.write(f"\033]0;{config['terminal_title']}\007")
+terminal_title = config['terminal_title']
+if config['dev_mode']:
+    terminal_title += ' DEV'
+sys.stdout.write(f"\033]0;{terminal_title}\007")
 sys.stdout.flush()
 
 # Run the bots
