@@ -22,19 +22,19 @@ Log.set_debug(config['log_debug'])
 Data = Data()
 Bots = Bots()
 
-# Load extensions
-from extensionloader import load_exts
-for bot in Bots:
-    load_exts(bot)
-
-loop = asyncio.get_event_loop()
-
 # Set terminal title
 terminal_title = config['terminal_title']
 if config['dev_mode']:
     terminal_title += ' DEV'
 sys.stdout.write(f"\033]0;{terminal_title}\007")
 sys.stdout.flush()
+
+# Load extensions
+from extensionloader import load_exts
+for bot in Bots:
+    load_exts(bot)
+
+loop = asyncio.get_event_loop()
 
 # Run the bots
 for bot in Bots:

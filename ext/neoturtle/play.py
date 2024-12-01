@@ -30,11 +30,11 @@ class GamesManager():
         self.play_group = bot.create_group("play", "Play some games!")
         self.play_group.helpdesc = "Creating a permanent game in a channel requires Manage Channels permission."
         self.games = {} 
-        for file_name in os.listdir('ext/neoturtle/games'):
+        for file_name in os.listdir('neoturtle/games'):
             if file_name.endswith('.py'):
                 game_name = os.path.splitext(file_name)[0]
                 
-                module_path = f"ext.neoturtle.games.{game_name}"
+                module_path = f"neoturtle.games.{game_name}"
                 
                 try:
                     module = importlib.import_module(module_path)
