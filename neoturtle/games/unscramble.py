@@ -58,7 +58,7 @@ def scramble_hint(word:str, hint_amount:float=0.5) -> str:
             start = i
             while i + 1 < word_length and i + 1 in fixed_positions:
                 i += 1
-            result.append(f"__{''.join(word[start:i + 1])}__")
+            result.append(f"**__{''.join(word[start:i + 1])}__**")
         else:
             result.append(scrambled[i])
         i += 1
@@ -101,9 +101,9 @@ async def start_game(bot:discord.Bot, channel:discord.TextChannel, permanent:boo
         reward = random.choice([25,50])
         bonus = True
     if reward < 25:
-        msg = f"Unscramble: **{scrambled}**"
+        msg = f"Unscramble: {scrambled}"
     else:
-        msg = f"Unscramble: **{scrambled}** :sparkles: {bot.customemojis['neotoken2']}{reward}"
+        msg = f"Unscramble: {scrambled} :sparkles: {bot.customemojis['neotoken2']}{reward}"
     if config['dev_mode']:
         msg += f" ||{'/'.join(words)}||"
     if ctx:
@@ -134,9 +134,9 @@ async def use_hint(bot:discord.Bot, ctx:discord.ApplicationContext=None):
     reward = Data['neoturtle/channel'][ctx.channel_id]['playing']['reward']
     bonus = Data['neoturtle/channel'][ctx.channel_id]['playing']['bonus']
     if bonus == False:
-        msg = f"Unscramble: **{hint}** {bot.customemojis['neotoken2']}{reward}"
+        msg = f"Unscramble: {hint} {bot.customemojis['neotoken2']}{reward}"
     else:
-        msg = f"Unscramble: **{hint}** :sparkles: {bot.customemojis['neotoken2']}{reward}"
+        msg = f"Unscramble: {hint} :sparkles: {bot.customemojis['neotoken2']}{reward}"
     await ctx.respond(msg)
 
 def setup_game(play_group:discord.SlashCommandGroup, bot:discord.Bot):
@@ -157,9 +157,9 @@ def setup_game(play_group:discord.SlashCommandGroup, bot:discord.Bot):
                 bonus = Data['neoturtle/channel'][ctx.channel_id]['playing']['bonus']
                 scrambled = Data['neoturtle/channel'][ctx.channel_id]['playing']['scrambled']
                 if bonus == False:
-                    msg = f"Unscramble: **{scrambled}**"
+                    msg = f"Unscramble: {scrambled}"
                 else:
-                    msg = f"Unscramble: **{scrambled}** :sparkles: {bot.customemojis['neotoken2']}{reward}"
+                    msg = f"Unscramble: {scrambled} :sparkles: {bot.customemojis['neotoken2']}{reward}"
                 await ctx.respond(msg)
             else:
                 await GamesManager.cancel_prompt(ctx, Data['neoturtle/channel'][ctx.channel_id]['playing']['game'])
