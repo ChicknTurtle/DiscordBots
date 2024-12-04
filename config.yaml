@@ -9,7 +9,7 @@ terminal_title: "ChicknTurtle's Bots"
 log_debug: false
 
 # Time between each autosave (seconds)
-autosave_time: 30
+autosave_time: 60
 
 # Channels
 channels:

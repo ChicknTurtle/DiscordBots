@@ -36,7 +36,7 @@ def setup(bot:discord.Bot):
     # on ready
     @bot.listen(once=True)
     async def on_ready():
-        Log.log(f"{bot.name} started!")
+        Log.log(f"{bot.name} ready!")
         if bot.name == Bots[0].name:
             now = datetime.now()
             Data['global']['startTime'] = now
@@ -72,7 +72,7 @@ def setup(bot:discord.Bot):
     # on command
     @bot.event
     async def on_application_command(ctx:discord.ApplicationContext):
-        Log.log(f"{bot.name} | {ctx.author.display_name} used /{ctx.command}")
+        Log.log(f"{bot.name} | @{ctx.author.name} used /{ctx.command}")
         await bot.get_channel(config['channels']['log']).send(f"<@{ctx.author.id}> used /{ctx.command}", allowed_mentions=discord.AllowedMentions.none())
     
     # on join

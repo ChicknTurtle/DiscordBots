@@ -28,7 +28,10 @@ class Bots:
         self.neoturtle.name = "NeoTurtle"
         self.neoturtle.token = os.getenv('neoturtle')
         self.neoturtle.color = 0x00ff00
-        self.neoturtle.customemojis = {'neotoken':'<:neotoken:1289435632720154655>','neotoken2':'<:neotoken2:1309191147733651536>'}
+        self.neoturtle.customemojis = {
+            'neotoken':'<:neotoken:1289435632720154655>',
+            'neotoken2':'<:neotoken2:1309191147733651536>'
+            }
         if self.neoturtle.token:
             self._bots.append(self.neoturtle)
 

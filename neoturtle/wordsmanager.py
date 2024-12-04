@@ -29,51 +29,26 @@ def load_wordlists():
                 Log.error(f"Error loading wordlist '{file_path}':\n{traceback.format_exc()}")
     return wordlists
 
-def load_anagrams2(dictionary:list, words:list[str]):
-
-    # Make sure all words are also in dictionary
-    for word in words:
-        if word not in dictionary:
-            dictionary.append(word)
-    
-    # Remove duplicate anagrams from words
-    words2 = {}
-    for word in words:
-        key = ''.join(sorted(word))
-        if key not in words2:
-            words2[key] = word
-    words = list(words2.values())
-
-    # Create a dictionary where the key is the sorted word and the value is a list of anagrams
-    anagrams_dict = {}
-    for dict_word in dictionary:
-        sorted_word = ''.join(sorted(dict_word))
-        if sorted_word not in anagrams_dict:
-            anagrams_dict[sorted_word] = []
-        anagrams_dict[sorted_word].append(dict_word)
-
-    # Find anagrams for each word in 'words'
-    result = {}
-    for word in words:
-        sorted_key = ''.join(sorted(word))
-        result[sorted_key] = anagrams_dict.get(sorted_key, [])
-
-    return result
-
 def load_anagrams(dictionary: list, words: list[str]):
-    # Ensure all words are in the dictionary
-    dictionary_set = set(dictionary)  # Set for O(1) lookup
-    dictionary_set.update(words)  # Add words to dictionary
+    dictionary_set = set(dictionary)
+    dictionary_set.update(words)
 
-    # Create a dictionary where the key is the sorted word and the value is a list of anagrams
     anagrams_dict = {}
     for word in dictionary_set:
-        sorted_word = ''.join(sorted(word))  # Sort the word to form a key
+        sorted_word = ''.join(sorted(word))
         anagrams_dict.setdefault(sorted_word, []).append(word)
 
-    # Create the result based on the words
-    result = {''.join(sorted(word)): anagrams_dict.get(''.join(sorted(word)), []) for word in words}
-
+    result = {}
+    for word in words:
+        sorted_word = ''.join(sorted(word))
+        anagram_list = anagrams_dict.get(sorted_word, [])
+        
+        # Move original word to beginning
+        if anagram_list and anagram_list[0] != word:
+            anagram_list.remove(word)
+            anagram_list.insert(0, word)
+        
+        result[sorted_word] = anagram_list
     return result
 
 class WordsManager:
