@@ -20,7 +20,6 @@ async def handle_dev(bot:discord.Bot, msg:discord.Message):
     
     # build args
     args = msg.content.split(' ')
-    args = [arg.strip() for arg in args]
 
     # console channel
     if msg.channel.id == 1312089859095138354:
@@ -50,15 +49,18 @@ async def handle_dev(bot:discord.Bot, msg:discord.Message):
     # exec
     elif args[1] == 'exec':
         code = ' '.join(args[2:])
-        code = code.lstrip("```py").strip('`')
-        Log.log(f"{bot.name} | exec: {code}")
+        code = code.lstrip("```py").strip('`').strip()
+        logcode = code
+        if len(code) > 100:
+            logcode = code[:100] + "..."
+        Log.log(f"{bot.name} | exec: {logcode.replace('\n', '\\n')}")
         response = await msg.reply("Executing...")
         try:
             result = None
             locals2 = locals()
             exec(code, globals(), locals2)
             result = locals2.get("result", None)
-            if result != None:
+            if result is not None:
                 await response.edit(f"```py\n{result}\n```")
             else:
                 await response.edit("Done.")
@@ -69,7 +71,10 @@ async def handle_dev(bot:discord.Bot, msg:discord.Message):
     elif args[1] == 'eval':
         code = ' '.join(args[2:])
         code = code.strip("`")
-        Log.log(f"{bot.name} | eval: {code}")
+        logcode = code
+        if len(code) > 100:
+            logcode = code[:100] + "..."
+        Log.log(f"{bot.name} | eval: {logcode.replace('\n', '\\n')}")
         response = await msg.reply("Evaluating...")
         try:
             output = str(eval(code))
