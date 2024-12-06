@@ -2,7 +2,7 @@
 import time
 from datetime import datetime
 import discord
-from discord.ext.commands import cooldown, BucketType, CommandOnCooldown
+from discord.ext import commands
 
 from data import Data
 from utils import *
@@ -36,15 +36,15 @@ def setup(bot:discord.Bot):
     
     # suggest
     @bot_group.command(name="suggest", description="Suggest a feature for the bot")
-    @cooldown(1, 300, BucketType.user)
+    @commands.cooldown(1, 300, commands.BucketType.user)
     async def bot_suggest_command(ctx:discord.ApplicationContext, suggestion:str=discord.Option(str, "Your suggestion", max_length=1000)):
-        await bot.get_channel(config['channels']['feedback']).send(f"<@{ctx.author.id}> sent a suggestion:\n> {suggestion}")
+        await bot.get_channel(config['channels']['feedback']).send(f"<@{ctx.author.id}> sent a suggestion:\n> {suggestion}", allowed_mentions=discord.AllowedMentions.none())
         await ctx.respond(f"Suggestion sent successfully! :rocket:", ephemeral=True)
     bot_suggest_command.helpdesc = "Max limit of 1000 characters"
     # suggest error
     @bot_suggest_command.error
     async def bot_suggest_command_error(ctx, error):
-        if isinstance(error, CommandOnCooldown):
+        if isinstance(error, commands.CommandOnCooldown):
             cooldowntime = math.ceil(time.time()+error.retry_after)
             await ctx.respond(f"You're on cooldown! Try again <t:{cooldowntime}:R>.", ephemeral=True)
         else:
