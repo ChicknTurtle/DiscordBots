@@ -18,7 +18,7 @@ class Data:
     
     def _initialize(self):
         self._data = {}
-        self._files = ['global','neoturtle/channel','neoturtle/user']
+        self._files = ['global','tuttlebot/global','neoturtle/global','neoturtle/channel','neoturtle/user']
         for filename in self._files:
             filepath = f'data/{filename}.db'
             # Create file if it doesn't exist

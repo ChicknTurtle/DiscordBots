@@ -45,6 +45,7 @@ def setup(bot:discord.Bot):
             except KeyError:
                 downtime = 'unknown'
             await bot.get_channel(config['channels']['system']).send(f"Started! **Downtime**: {downtime}")
+            Data[f"{bot.name.lower()}/global"].setdefault('commandsUsed', 0)
     
     async def on_quit():
         """Should be called before the bot is stopped."""
@@ -74,6 +75,7 @@ def setup(bot:discord.Bot):
     async def on_application_command(ctx:discord.ApplicationContext):
         Log.log(f"{bot.name} | @{ctx.author.name} used /{ctx.command}")
         await bot.get_channel(config['channels']['log']).send(f"<@{ctx.author.id}> used /{ctx.command}", allowed_mentions=discord.AllowedMentions.none())
+        Data[f"{bot.name.lower()}/global"]['commandsUsed'] += 1
     
     # on join
     @bot.event
