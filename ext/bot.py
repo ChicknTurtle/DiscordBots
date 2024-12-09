@@ -16,16 +16,16 @@ def setup(bot:discord.Bot):
     
     bot_group = bot.create_group("bot", "Bot information.")
 
-    # info
-    @bot_group.command(name="info", description="View general bot info")
-    async def bot_info_command(ctx:discord.ApplicationContext):
+    # stats
+    @bot_group.command(name="stats", description="View interesting bot statistics")
+    async def bot_stats_command(ctx:discord.ApplicationContext):
         ping = round(bot.latency*1000)
         uptime = round(Data['global']['startTime'].timestamp())
         servers = format_number(len(bot.guilds))
         users = format_number(len(bot.users))
         commands_used = format_number(Data[f"{bot.name.lower()}/global"]['commandsUsed'])
         invite_url = f"https://discord.com/oauth2/authorize?client_id={bot.user.id}&permissions=8&scope=applications.commands%20bot"
-        (msg := []).append(f"## {bot.name} Info")
+        (msg := []).append(f"## {bot.name} Statistics")
         msg.append(f":ping_pong: Ping: `{ping}ms`")
         msg.append(f":stopwatch: Bot started <t:{uptime}:R>")
         msg.append(f":homes: {servers} servers")
