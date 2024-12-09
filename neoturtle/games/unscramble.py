@@ -14,7 +14,7 @@ WordsManager = WordsManager()
 GamesManager = GamesManager()
 config = config()
 
-from ext.neoturtle.account import earn_tokens
+from ext.neoturtle.account import earn_tokens, change_xp
 
 def scramble(word:str) -> str:
     scrambled = list(word)
@@ -79,7 +79,9 @@ async def listen_game(bot:discord.Bot, channel:discord.TextChannel, invoked_at:f
         if guess in Data['neoturtle/channel'][channel.id]['playing']['words']:
             reward = Data['neoturtle/channel'][channel.id]['playing']['reward']
             earn_tokens(guess_msg.author, reward)
-            await channel.send(f"Correct! The word was **{guess}** +{bot.customemojis['neotoken2']}{reward}")
+            xp = 10
+            change_xp(guess_msg.author, xp)
+            await channel.send(f"Correct! The word was **{guess}** +{bot.customemojis['neotoken2']}{reward}, {xp}xᴘ")
             permanent = Data['neoturtle/channel'][channel.id]['playing']['permanent']
             Data['neoturtle/channel'][channel.id].pop('playing', None)
             if permanent:

@@ -24,9 +24,10 @@ def setup(bot:discord.Bot):
         await GamesManager.cancel_game(ctx)
     
     # Hint
-    @play_group.command(name="hint", description="Get a hint")
+    @play_group.command(name="hint", description="Get a hint for the current game.")
     async def play_hint_command(ctx:discord.ApplicationContext):
         await GamesManager.use_hint(bot, ctx)
+    play_hint_command.help_desc = "Also lowers the reward."
     
     # Continue games when bot restarts
     async def start_games():
