@@ -3,7 +3,7 @@ import time
 import discord
 
 from data import Data
-from utils import *
+from utils import Log
 from neoturtle.gamesmanager import GamesManager
 
 Data = Data()

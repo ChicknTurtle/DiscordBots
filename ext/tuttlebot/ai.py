@@ -1,12 +1,13 @@
 
-import time
-import datetime
-import aiohttp
-import io
+from time import time
+from math import ceil
+from datetime import datetime
+from aiohttp import ClientSession
+from io import BytesIO
 import discord
 from discord.ext import commands
 
-from utils import *
+from utils import Log, format_time
 
 Log = Log()
 
@@ -18,7 +19,7 @@ def setup(bot):
     headers = {"Authorization": "Bearer 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"}
 
     async def query(payload):
-        async with aiohttp.ClientSession() as session:
+        async with ClientSession() as session:
             async with session.post(API_URL, headers=headers, json=payload) as response:
                 return await response.read()
 
@@ -31,7 +32,7 @@ def setup(bot):
         image_bytes = await query({"inputs": prompt})
         end_time = datetime.now()
         total_time = end_time - start_time
-        image_io = io.BytesIO(image_bytes)
+        image_io = BytesIO(image_bytes)
         try:
             await original.edit_original_response(content=f"{prompt}\n**Generated in {format_time(total_time)}**", file=discord.File(fp=image_io, filename="generated_image.png"), allowed_mentions=discord.AllowedMentions.none())
         except discord.NotFound:
@@ -42,7 +43,7 @@ def setup(bot):
     @ai_image_command.error
     async def ai_image_command_error(ctx, error):
         if isinstance(error, commands.CommandOnCooldown):
-            cooldowntime = math.ceil(time.time()+error.retry_after)
+            cooldowntime = ceil(time()+error.retry_after)
             await ctx.respond(f"You're on cooldown! Try again <t:{cooldowntime}:R>.", ephemeral=True)
         else:
             raise error

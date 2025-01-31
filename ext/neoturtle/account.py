@@ -2,7 +2,7 @@
 import discord
 
 from data import Data
-from utils import *
+from utils import Log, format_number
 
 Data = Data()
 Log = Log()
