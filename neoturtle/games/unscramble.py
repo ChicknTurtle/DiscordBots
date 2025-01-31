@@ -1,6 +1,7 @@
 
 import random
 import time
+import math
 import discord
 
 from data import Data
