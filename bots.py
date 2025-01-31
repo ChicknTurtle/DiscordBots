@@ -17,14 +17,17 @@ class Bots:
     def _initialize(self):
         self._bots = []
 
-        self.tuttlebot = discord.AutoShardedBot(intents=discord.Intents.all(), help_command=None)
+        intents = discord.Intents.all()
+        intents.presences = False
+
+        self.tuttlebot = discord.AutoShardedBot(intents=intents, help_command=None)
         self.tuttlebot.name = "TuttleBot"
         self.tuttlebot.token = os.getenv('tuttlebot')
         self.tuttlebot.color = 0x309c58
         if self.tuttlebot.token:
             self._bots.append(self.tuttlebot)
 
-        self.neoturtle = discord.AutoShardedBot(intents=discord.Intents.all(), help_command=None)
+        self.neoturtle = discord.AutoShardedBot(intents=intents, help_command=None)
         self.neoturtle.name = "NeoTurtle"
         self.neoturtle.token = os.getenv('neoturtle')
         self.neoturtle.color = 0x00ff00

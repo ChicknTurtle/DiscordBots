@@ -1,8 +1,9 @@
 
+import os
 import pickle
 import asyncio
 
-from utils import *
+from utils import Log, config
 
 Log = Log()
 config = config()

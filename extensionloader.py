@@ -2,7 +2,7 @@
 import traceback
 import discord
 
-from utils import *
+from utils import Log, config
 
 config = config()
 

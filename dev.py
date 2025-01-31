@@ -4,7 +4,7 @@ import discord
 
 from bots import Bots
 from data import Data
-from utils import *
+from utils import Log, config
 
 config = config()
 
