@@ -37,6 +37,13 @@ class Bots:
             }
         if self.neoturtle.token:
             self._bots.append(self.neoturtle)
+        
+        self.splatdrone = discord.AutoShardedBot(intents=intents, help_command=None)
+        self.splatdrone.name = "Splatdrone"
+        self.splatdrone.token = os.getenv('splatdrone')
+        self.splatdrone.color = 0x76f5f3
+        if self.splatdrone.token:
+            self._bots.append(self.splatdrone)
 
         for bot in self:
             bot.newembed = self.newembed_wrapper(bot)

@@ -1,0 +1,1995 @@
+{
+    "subs": {
+        "Splat Bomb": {
+            "bomb": true,
+            "emote": 0
+        },
+        "Suction Bomb": {
+            "bomb": true,
+            "emote": 0
+        },
+        "Burst Bomb": {
+            "bomb": true,
+            "emote": 0
+        },
+        "Curling Bomb": {
+            "bomb": true,
+            "emote": 0
+        },
+        "Autobomb": {
+            "bomb": true,
+            "emote": 0
+        },
+        "Ink Mine": {
+            "bomb": false,
+            "emote": 0
+        },
+        "Toxic Mist": {
+            "bomb": false,
+            "emote": 0
+        },
+        "Point Sensor": {
+            "bomb": false,
+            "emote": 0
+        },
+        "Splash Wall": {
+            "bomb": false,
+            "emote": 1339360931934900255
+        },
+        "Sprinkler": {
+            "bomb": false,
+            "emote": 0
+        },
+        "Squid Beakon": {
+            "bomb": false,
+            "emote": 0
+        },
+        "Fizzy Bomb": {
+            "bomb": true,
+            "emote": 0
+        },
+        "Torpedo": {
+            "bomb": true,
+            "emote": 0
+        },
+        "Angle Shooter": {
+            "bomb": false,
+            "emote": 0
+        }
+    },
+    "specials": {
+        "Big Bubbler": {
+            "emote": 0
+        },
+        "Booyah Bomb": {
+            "emote": 0
+        },
+        "Crab Tank": {
+            "emote": 0
+        },
+        "Ink Storm": {
+            "emote": 0
+        },
+        "Ink Vac": {
+            "emote": 0
+        },
+        "Inkjet": {
+            "emote": 1339361697109901472
+        },
+        "Killer Wail 5.1": {
+            "emote": 0
+        },
+        "Kraken Royale": {
+            "emote": 0
+        },
+        "Reefslider": {
+            "emote": 0
+        },
+        "Splattercolor Screen": {
+            "emote": 0
+        },
+        "Super Chump": {
+            "emote": 0
+        },
+        "Tacticooler": {
+            "emote": 0
+        },
+        "Tenta Missiles": {
+            "emote": 0
+        },
+        "Triple Inkstrike": {
+            "emote": 0
+        },
+        "Triple Splashdown": {
+            "emote": 0
+        },
+        "Trizooka": {
+            "emote": 0
+        },
+        "Ultra Stamp": {
+            "emote": 0
+        },
+        "Wave Breaker": {
+            "emote": 0
+        },
+        "Zipcaster": {
+            "emote": 0
+        }
+    },
+    "classes": [
+        {
+            "name": "Shooters",
+            "name2": "Shooter",
+            "aliases": [
+                "guns",
+                "gun"
+            ],
+            "description": "Shooters are guns that fire small blobs of ink in quick succession. Most shooters continuously fire when the player holds the trigger, but some shooters offer semi-automatic or burst-fire functionality.",
+            "weapons": [
+                {
+                    "name": "Sploosh-o-matic",
+                    "description": "A mid-damage, close-range shooter with a high fire rate. It features the highest damage output per second in its class, at the cost of having the shortest range.",
+                    "variants": [
+                        {
+                            "name": "Sploosh-o-matic",
+                            "aliases": [
+                                "sploosh",
+                                "vsploosh"
+                            ],
+                            "sub": "Curling Bomb",
+                            "special": "Ultra Stamp",
+                            "special-points": 180
+                        },
+                        {
+                            "name": "Neo Sploosh-o-matic",
+                            "aliases": [
+                                "neo sploosh"
+                            ],
+                            "sub": "Squid Beakon",
+                            "special": "Killer Wail 5.1",
+                            "special-points": 170
+                        }
+                    ]
+                },
+                {
+                    "name": "Splattershot Jr.",
+                    "description": "The first weapon given to the player upon starting the game. It is a low-damage, close-range shooter with a high fire rate. Its fire rate and ink efficiency ensure that new players will be able to accomplish something.",
+                    "variants": [
+                        {
+                            "name": "Splattershot Jr.",
+                            "aliases": [
+                                "splattershot jr",
+                                "jr",
+                                "vjr",
+                                "junior",
+                                "vjunior"
+                            ],
+                            "sub": "Splat Bomb",
+                            "special": "Big Bubbler",
+                            "special-points": 180
+                        },
+                        {
+                            "name": "Custom Splattershot Jr.",
+                            "aliases": [
+                                "custom splattershot jr",
+                                "cjr",
+                                "cjunior"
+                            ],
+                            "sub": "Torpedo",
+                            "special": "Wave Breaker",
+                            "special-points": 190
+                        }
+                    ]
+                },
+                {
+                    "name": "Splash-o-matic",
+                    "description": "A low-damage, mid-range shooter with a high fire rate. It features perfect accuracy, the best among all automatic shooters.",
+                    "variants": [
+                        {
+                            "name": "Splash-o-matic",
+                            "aliases": [
+                                "splash",
+                                "vsplash"
+                            ],
+                            "sub": "Burst Bomb",
+                            "special": "Crab Tank",
+                            "special-points": 200
+                        },
+                        {
+                            "name": "Neo Splash-o-matic",
+                            "aliases": [
+                                "neo splash"
+                            ],
+                            "sub": "Suction Bomb",
+                            "special": "Triple Inkstrike",
+                            "special-points": 200
+                        }
+                    ]
+                },
+                {
+                    "name": "Aerospray",
+                    "description": "A low-damage, close-range shooter with a high fire rate. It has the widest shot spread and the fastest firing rate in its class, allowing it to excel at covering turf.",
+                    "variants": [
+                        {
+                            "name": "Aerospray MG",
+                            "aliases": [
+                                "aerospray",
+                                "aero",
+                                "silver aerospray",
+                                "silver aero",
+                                "aero mg"
+                            ],
+                            "sub": "Fizzy Bomb",
+                            "special": "Reefslider",
+                            "special-points": 180
+                        },
+                        {
+                            "name": "Aerospray RG",
+                            "aliases": [
+                                "gold aerospray",
+                                "gold aero",
+                                "aero rg"
+                            ],
+                            "sub": "Sprinkler",
+                            "special": "Booyah Bomb",
+                            "special-points": 190
+                        }
+                    ]
+                },
+                {
+                    "name": "Splattershot",
+                    "description": "A mid-damage, mid-range shooter with an average fire rate. It has no real weaknesses and can adapt to any situation.",
+                    "variants": [
+                        {
+                            "name": "Splattershot",
+                            "aliases": [
+                                "shot",
+                                "vshot"
+                            ],
+                            "sub": "Suction Bomb",
+                            "special": "Trizooka",
+                            "special-points": 210
+                        },
+                        {
+                            "name": "Tentatek Splattershot",
+                            "aliases": [
+                                "tentatek",
+                                "ttek",
+                                "ttek splattershot",
+                                "ttek shot"
+                            ],
+                            "sub": "Splat Bomb",
+                            "special": "Triple Inkstrike",
+                            "special-points": 190
+                        }
+                    ]
+                },
+                {
+                    "name": ".52 Gal",
+                    "description": "A high-damage, mid-range shooter with a slow fire rate. This weapon suffers from low accuracy.",
+                    "variants": [
+                        {
+                            "name": ".52 Gal",
+                            "aliases": [
+                                "52",
+                                "gal"
+                            ],
+                            "sub": "Splash Wall",
+                            "special": "Killer Wail 5.1",
+                            "special-points": 200
+                        },
+                        {
+                            "name": ".52 Gal Deco",
+                            "aliases": [
+                                "52 deco",
+                                "gal deco"
+                            ],
+                            "sub": "Curling Bomb",
+                            "special": "Splattercolor Screen",
+                            "special-points": 190
+                        }
+                    ]
+                },
+                {
+                    "name": "N-ZAP",
+                    "description": "A low-damage, mid-range shooter with a fast fire rate. It has the fastest strafe speed in its class.",
+                    "variants": [
+                        {
+                            "name": "N-ZAP '85",
+                            "aliases": [
+                                "nzap",
+                                "zap",
+                                "85",
+                                "gray zap",
+                                "grey zap"
+                            ],
+                            "sub": "Suction Bomb",
+                            "special": "Tacticooler",
+                            "special-points": 200
+                        },
+                        {
+                            "name": "N-ZAP '89",
+                            "aliases": [
+                                "89",
+                                "orange zap"
+                            ],
+                            "sub": "Autobomb",
+                            "special": "Super Chump",
+                            "special-points": 170
+                        }
+                    ]
+                },
+                {
+                    "name": "Splattershot Pro",
+                    "description": "A mid-damage, long-range shooter with a slow fire rate. Notably, this weapon has very high ink consumption.",
+                    "variants": [
+                        {
+                            "name": "Splattershot Pro",
+                            "aliases": [
+                                "vpro",
+                                "shot pro",
+                                "pro shot",
+                                "pro"
+                            ],
+                            "sub": "Angle Shooter",
+                            "special": "Crab Tank",
+                            "special-points": 180
+                        },
+                        {
+                            "name": "Forge Splattershot Pro",
+                            "aliases": [
+                                "forge",
+                                "forge pro",
+                                "forge shot",
+                                "forge shot pro"
+                            ],
+                            "sub": "Suction Bomb",
+                            "special": "Booyah Bomb",
+                            "special-points": 200
+                        }
+                    ]
+                },
+                {
+                    "name": ".96 Gal",
+                    "description": "A high-damage, long-range shooter with a very slow fire rate. As a trade-off for its power and range, this weapon suffers from low accuracy, and it consumes more ink per shot than any other weapon in its class.",
+                    "variants": [
+                        {
+                            "name": ".96 Gal",
+                            "aliases": [
+                                "96"
+                            ],
+                            "sub": "Sprinkler",
+                            "special": "Ink Vac",
+                            "special-points": 190
+                        },
+                        {
+                            "name": ".96 Gal Deco",
+                            "aliases": [
+                                "96 deco"
+                            ],
+                            "sub": "Splash Wall",
+                            "special": "Kraken Royale",
+                            "special-points": 210
+                        }
+                    ]
+                },
+                {
+                    "name": "Jet Squelcher",
+                    "description": "A low-damage, long-range shooter with a slow fire rate. It has the longest range in its class.",
+                    "variants": [
+                        {
+                            "name": "Jet Squelcher",
+                            "aliases": [
+                                "jet",
+                                "vjet",
+                                "squelcher",
+                                "js"
+                            ],
+                            "sub": "Angle Shooter",
+                            "special": "Ink Vac",
+                            "special-points": 180
+                        },
+                        {
+                            "name": "Custom Jet Squelcher",
+                            "aliases": [
+                                "cjet",
+                                "custom squelcher",
+                                "custom jet",
+                                "cjs"
+                            ],
+                            "sub": "Toxic Mist",
+                            "special": "Ink Storm",
+                            "special-points": 180
+                        }
+                    ]
+                },
+                {
+                    "name": "Splattershot Nova",
+                    "description": "A low-damage, mid-range shooter with an average fire rate. It has good ink efficiency, but is in turn less accurate.",
+                    "variants": [
+                        {
+                            "name": "Splattershot Nova",
+                            "aliases": [
+                                "nova shot",
+                                "shot nova",
+                                "nova"
+                            ],
+                            "sub": "Point Sensor",
+                            "special": "Killer Wail 5.1",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Annaki Splattershot Nova",
+                            "aliases": [
+                                "annaki",
+                                "annaki shot"
+                            ],
+                            "sub": "Ink Mine",
+                            "special": "Inkjet",
+                            "special-points": 210
+                        }
+                    ]
+                },
+                {
+                    "name": "L-3 Nozzlenose",
+                    "description": "A low-damage, mid-range shooter. It is a burst fire weapon, firing three bullets after a pull of the trigger. Well-timed button presses are required to maintain an optimal fire rate.",
+                    "variants": [
+                        {
+                            "name": "L-3 Nozzlenose",
+                            "aliases": [
+                                "l3",
+                                "nozzlenose"
+                            ],
+                            "sub": "Curling Bomb",
+                            "special": "Crab Tank",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "L-3 Nozzlenose D",
+                            "aliases": [
+                                "l3d",
+                                "nozzlenose d"
+                            ],
+                            "sub": "Burst Bomb",
+                            "special": "Ultra Stamp",
+                            "special-points": 200
+                        }
+                    ]
+                },
+                {
+                    "name": "H-3 Nozzlenose",
+                    "description": "A mid-damage, long-range shooter. It is burst-fire, firing three bullets after a pull of the trigger.",
+                    "variants": [
+                        {
+                            "name": "H-3 Nozzlenose",
+                            "aliases": [
+                                "h3"
+                            ],
+                            "sub": "Point Sensor",
+                            "special": "Tacticooler",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "H-3 Nozzlenose D",
+                            "aliases": [
+                                "h3d"
+                            ],
+                            "sub": "Splash Wall",
+                            "special": "Big Bubbler",
+                            "special-points": 200
+                        }
+                    ]
+                },
+                {
+                    "name": "Squeezer",
+                    "description": "A shooter with two firing modes: semi-automatic and fully automatic. Pulling the trigger once will squirt out a single long range, mid-power shot with perfect accuracy. Holding the button leads to successive low range, high spread, lower-powered shots. The trigger can be tapped repeatedly to maintain the high-power mode.",
+                    "variants": [
+                        {
+                            "name": "Squeezer",
+                            "aliases": [
+                                "vsqueezer"
+                            ],
+                            "sub": "Splash Wall",
+                            "special": "Trizooka",
+                            "special-points": 220
+                        },
+                        {
+                            "name": "Foil Squeezer",
+                            "aliases": [
+                                "fsqueezer"
+                            ],
+                            "sub": "Autobomb",
+                            "special": "Splattercolor Screen",
+                            "special-points": 190
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Rollers",
+            "name2": "Roller",
+            "aliases": [],
+            "description": "Rollers can be pushed along the ground, leaving a trail of ink. When performing an attack, a large amount of ink is flung from the roller. Damage is dealt if opponents come into contact with the weapon while it is being pushed, with most rollers being capable of crushing opponents in one hit. Rollers are capable of executing a thinner long-range vertical swing by swinging while in midair.",
+            "weapons": [
+                {
+                    "name": "Carbon Roller",
+                    "description": "A light, mobile roller that has a fast rolling speed. It has extremely fast flicks in exchange for a short range. It is unable to crush opponents in one hit.",
+                    "variants": [
+                        {
+                            "name": "Carbon Roller",
+                            "aliases": [
+                                "carbon",
+                                "vcarbon"
+                            ],
+                            "sub": "Autobomb",
+                            "special": "Zipcaster",
+                            "special-points": 160
+                        },
+                        {
+                            "name": "Carbon Roller Deco",
+                            "aliases": [
+                                "carbon deco"
+                            ],
+                            "sub": "Burst Bomb",
+                            "special": "Trizooka",
+                            "special-points": 190
+                        }
+                    ]
+                },
+                {
+                    "name": "Splat Roller",
+                    "description": "The standard roller. It has decent range and mobility.",
+                    "variants": [
+                        {
+                            "name": "Splat Roller",
+                            "aliases": [
+                                "roller",
+                                "vroller"
+                            ],
+                            "sub": "Curling Bomb",
+                            "special": "Big Bubbler",
+                            "special-points": 180
+                        },
+                        {
+                            "name": "Krak-On Splat Roller",
+                            "aliases": [
+                                "kraken roller",
+                                "kraken splat roller",
+                                "kroller"
+                            ],
+                            "sub": "Squid Beakon",
+                            "special": "Kraken Royale",
+                            "special-points": 170
+                        }
+                    ]
+                },
+                {
+                    "name": "Dynamo Roller",
+                    "description": "A heavy roller. It deals high damage and can throw ink farther than all other rollers. However, it is very slow and consumes the most ink of any roller.",
+                    "variants": [
+                        {
+                            "name": "Dynamo Roller",
+                            "aliases": [
+                                "dynamo",
+                                "silver dynamo",
+                                "vdynamo"
+                            ],
+                            "sub": "Sprinkler",
+                            "special": "Tacticooler",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Gold Dynamo Roller",
+                            "aliases": [
+                                "gold dynamo",
+                                "gdynamo"
+                            ],
+                            "sub": "Splat Bomb",
+                            "special": "Super Chump",
+                            "special-points": 180
+                        }
+                    ]
+                },
+                {
+                    "name": "Flingza Roller",
+                    "description": "A roller that changes shape when performing a vertical swing. Its horizontal swing and rolling capabilities are similar to that of the Splat Roller, while its vertical swing is slow but has better range, inking, and damage.",
+                    "variants": [
+                        {
+                            "name": "Flingza Roller",
+                            "aliases": [
+                                "flingza",
+                                "vflingza"
+                            ],
+                            "sub": "Ink Mine",
+                            "special": "Tenta Missiles",
+                            "special-points": 210
+                        },
+                        {
+                            "name": "Foil Flingza Roller",
+                            "aliases": [
+                                "foil flingza"
+                            ],
+                            "sub": "Suction Bomb",
+                            "special": "Splattercolor Screen",
+                            "special-points": 200
+                        }
+                    ]
+                },
+                {
+                    "name": "Big Swig Roller",
+                    "description": "A roller with exceptional inking capabilities and wider range. It is extremely ink efficient and fast while rolling. Its swings are somewhat quick but tend to be weaker compared to other rollers. It cannot splat opponents with a single horizontal swing, and it cannot crush opponents in one hit.",
+                    "variants": [
+                        {
+                            "name": "Big Swig Roller",
+                            "aliases": [
+                                "big swig",
+                                "swig",
+                                "vswig"
+                            ],
+                            "sub": "Splash Wall",
+                            "special": "Ink Vac",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Big Swig Roller Express",
+                            "aliases": [
+                                "big swig express",
+                                "express swig",
+                                "express big swig",
+                                "swig express"
+                            ],
+                            "sub": "Angle Shooter",
+                            "special": "Ink Storm",
+                            "special-points": 190
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Chargers",
+            "name2": "Charger",
+            "aliases": [
+                "snipers",
+                "sniper"
+            ],
+            "description": "Chargers are sniper rifle-like mid- to long-range weapons that shoot extremely fast ink shots in a straight line. Chargers can instantly splat opponents once they are fully charged up (with some exceptions). While charging, a laser shows all players the direction in which the charger is being aimed. Some chargers allow the player to store their charge while swimming around in ink.",
+            "weapons": [
+                {
+                    "name": "Squiffer",
+                    "description": "A short-range charger with a fast charge time that is unaffected while in mid-air.",
+                    "variants": [
+                        {
+                            "name": "Classic Squiffer",
+                            "aliases": [
+                                "squiffer",
+                                "vsquiffer"
+                            ],
+                            "sub": "Point Sensor",
+                            "special": "Big Bubbler",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "New Squiffer",
+                            "aliases": [
+                                "nsquiffer",
+                                "zip squiffer",
+                                "spiderman"
+                            ],
+                            "sub": "Autobomb",
+                            "special": "Zipcaster",
+                            "special-points": 200
+                        }
+                    ]
+                },
+                {
+                    "name": "Splat Charger",
+                    "description": "The standard charger, featuring a long range and a decent charge time.",
+                    "variants": [
+                        {
+                            "name": "Splat Charger",
+                            "aliases": [
+                                "charger",
+                                "vcharger"
+                            ],
+                            "sub": "Splat Bomb",
+                            "special": "Ink Vac",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Z+F Splat Charger",
+                            "aliases": [
+                                "zf charger",
+                                "zf"
+                            ],
+                            "sub": "Splash Wall",
+                            "special": "Triple Inkstrike",
+                            "special-points": 210
+                        }
+                    ]
+                },
+                {
+                    "name": "Splatterscope",
+                    "description": "A Splat Charger with a scope, for extra range and precision at the cost of the inability to store charges.",
+                    "variants": [
+                        {
+                            "name": "Splatterscope",
+                            "aliases": [
+                                "scope",
+                                "vscope",
+                                "charger scope"
+                            ],
+                            "sub": "Splat Bomb",
+                            "special": "Ink Vac",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Z+F Splatterscope",
+                            "aliases": [
+                                "zf charger scope",
+                                "zf scope"
+                            ],
+                            "sub": "Splash Wall",
+                            "special": "Triple Inkstrike",
+                            "special-points": 210
+                        }
+                    ]
+                },
+                {
+                    "name": "E-liter",
+                    "description": "A charger with extreme range and damage in exchange for a slow charge time and heavy ink consumption.",
+                    "variants": [
+                        {
+                            "name": "E-liter 4K",
+                            "aliases": [
+                                "eliter",
+                                "liter",
+                                "4k",
+                                "vliter"
+                            ],
+                            "sub": "Ink Mine",
+                            "special": "Wave Breaker",
+                            "special-points": 210
+                        },
+                        {
+                            "name": "Custom E-liter 4K",
+                            "aliases": [
+                                "custom eliter",
+                                "custom liter",
+                                "c4k",
+                                "cliter"
+                            ],
+                            "sub": "Squid Beakon",
+                            "special": "Kraken Royale",
+                            "special-points": 210
+                        }
+                    ]
+                },
+                {
+                    "name": "E-liter Scope",
+                    "description": "An E-liter with a stronger scope than the Splatterscope, allowing for more range and extra precision. However, it cannot store its charge.",
+                    "variants": [
+                        {
+                            "name": "E-liter 4K Scope",
+                            "aliases": [
+                                "eliter scope",
+                                "liter scope",
+                                "4k scope",
+                                "vliter scope"
+                            ],
+                            "sub": "Ink Mine",
+                            "special": "Wave Breaker",
+                            "special-points": 210
+                        },
+                        {
+                            "name": "Custom E-liter 4K Scope",
+                            "aliases": [
+                                "custom eliter scope",
+                                "custom liter scope",
+                                "c4k scope",
+                                "cliter scope"
+                            ],
+                            "sub": "Squid Beakon",
+                            "special": "Kraken Royale",
+                            "special-points": 210
+                        }
+                    ]
+                },
+                {
+                    "name": "Bamboozler 14",
+                    "description": "A mid-range charger with an extremely fast charge time. However, its fully charged shots cannot splat opponents in a single hit. It also lacks the ability to store its charge and pierce targets.",
+                    "variants": [
+                        {
+                            "name": "Bamboozler 14 Mk I",
+                            "aliases": [
+                                "bamboozler",
+                                "bamboozler mki",
+                                "bamboo",
+                                "bamboo i",
+                                "vbamboo"
+                            ],
+                            "sub": "Autobomb",
+                            "special": "Killer Wail 5.1",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Bamboozler 14 Mk II",
+                            "aliases": [
+                                "bamboozler mkii",
+                                "bamboo mkii",
+                                "bamboo ii"
+                            ],
+                            "sub": "Fizzy Bomb",
+                            "special": "Super Chump",
+                            "special-points": 200
+                        }
+                    ]
+                },
+                {
+                    "name": "Goo Tuber",
+                    "description": "A mid-range charger that can hold both full and partial charges for an exceptionally long time at the cost of a slow charge time. A single partially charged shot from this weapon can deal enough damage to splat an undamaged target on its own.",
+                    "variants": [
+                        {
+                            "name": "Goo Tuber",
+                            "aliases": [
+                                "goo",
+                                "tuber",
+                                "vgoo",
+                                "vtuber"
+                            ],
+                            "sub": "Torpedo",
+                            "special": "Tenta Missiles",
+                            "special-points": 200
+                        },
+                        {
+                            "name": "Custom Goo Tuber",
+                            "aliases": [
+                                "custom goo",
+                                "custom tuber",
+                                "cgoo",
+                                "ctuber"
+                            ],
+                            "sub": "Fizzy Bomb",
+                            "special": "Ultra Stamp",
+                            "special-points": 200
+                        }
+                    ]
+                },
+                {
+                    "name": "Snipewriter",
+                    "description": "A long-range charger that holds five, medium-damage shots per full charge, requiring two hits to splat an opponent. It lacks the ability to store its charge and pierce targets.",
+                    "variants": [
+                        {
+                            "name": "Snipewriter 5H",
+                            "aliases": [
+                                "snipewriter",
+                                "5h",
+                                "pencil",
+                                "pen"
+                            ],
+                            "sub": "Sprinkler",
+                            "special": "Tacticooler",
+                            "special-points": 210
+                        },
+                        {
+                            "name": "Snipewriter 5B",
+                            "aliases": [
+                                "pencil 5b",
+                                "pen 5b",
+                                "5b"
+                            ],
+                            "sub": "Splash Wall",
+                            "special": "Ink Storm",
+                            "special-points": 210
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Sloshers",
+            "name2": "Slosher",
+            "aliases": [
+                "buckets",
+                "bucket"
+            ],
+            "description": "Sloshers are bucket-like weapons that hurl ink in an arc. The ink can be hurled over walls or obstacles. Some sloshers have unique projectiles, such as bubbles that bounce around or long-range projectiles which explode on impact.",
+            "weapons": [
+                {
+                    "name": "Slosher",
+                    "description": "The standard slosher, with balanced performance. It can curve its sloshes to cover a wider area.",
+                    "variants": [
+                        {
+                            "name": "Slosher",
+                            "aliases": [
+                                "vslosher",
+                                "vslosh"
+                            ],
+                            "sub": "Splat Bomb",
+                            "special": "Triple Inkstrike",
+                            "special-points": 210
+                        },
+                        {
+                            "name": "Slosher Deco",
+                            "aliases": [
+                                "dslosher",
+                                "dslosh",
+                                "slosh deco"
+                            ],
+                            "sub": "Angle Shooter",
+                            "special": "Zipcaster",
+                            "special-points": 180
+                        }
+                    ]
+                },
+                {
+                    "name": "Tri-Slosher",
+                    "description": "A slosher that throws ink in three directions simultaneously. It has a high fire rate, but lower damage output and range.",
+                    "variants": [
+                        {
+                            "name": "Tri-Slosher",
+                            "aliases": [
+                                "trislosh",
+                                "tri",
+                                "vtri"
+                            ],
+                            "sub": "Toxic Mist",
+                            "special": "Inkjet",
+                            "special-points": 180
+                        },
+                        {
+                            "name": "Tri-Slosher Nouveau",
+                            "aliases": [
+                                "trislosh nouveau",
+                                "ntri"
+                            ],
+                            "sub": "Fizzy Bomb",
+                            "special": "Tacticooler",
+                            "special-points": 210
+                        }
+                    ]
+                },
+                {
+                    "name": "Sloshing Machine",
+                    "description": "A slosher that launches a small mortar-like glob that is trailed by a vortex of ink. The vortex does splash damage in a small radius, while the glob itself does higher damage, with a smaller hitbox.",
+                    "variants": [
+                        {
+                            "name": "Sloshing Machine",
+                            "aliases": [
+                                "machine",
+                                "slosh machine",
+                                "vmachine"
+                            ],
+                            "sub": "Fizzy Bomb",
+                            "special": "Booyah Bomb",
+                            "special-points": 220
+                        },
+                        {
+                            "name": "Sloshing Machine Neo",
+                            "aliases": [
+                                "neo machine",
+                                "machine neo",
+                                "slosh machine neo",
+                                "neo slosh machine",
+                                "nmachine"
+                            ],
+                            "sub": "Point Sensor",
+                            "special": "Trizooka",
+                            "special-points": 190
+                        }
+                    ]
+                },
+                {
+                    "name": "Bloblobber",
+                    "description": "A mid- to long-ranged slosher. Each swing lobs a volley of four, slow-moving \"blobs\" which bounce along the ground and reflect off of walls. It's the only slosher that can splat in one swing.",
+                    "variants": [
+                        {
+                            "name": "Bloblobber",
+                            "aliases": [
+                                "blob",
+                                "vblob",
+                                "vbloblobber"
+                            ],
+                            "sub": "Sprinkler",
+                            "special": "Ink Storm",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Bloblobber Deco",
+                            "aliases": [
+                                "blob deco",
+                                "dblob",
+                                "dbloblobber"
+                            ],
+                            "sub": "Angle Shooter",
+                            "special": "Kraken Royale",
+                            "special-points": 190
+                        }
+                    ]
+                },
+                {
+                    "name": "Explosher",
+                    "description": "A slosher that launches a slow, long-range projectile that explodes on impact with solid surfaces. It has high ink consumption and poor mobility, but in return has strong inking capabilities. Uniquely, the projectile and the explosion deal damage separately.",
+                    "variants": [
+                        {
+                            "name": "Explosher",
+                            "aliases": [
+                                "explo",
+                                "vexplo",
+                                "vexplosher"
+                            ],
+                            "sub": "Point Sensor",
+                            "special": "Ink Storm",
+                            "special-points": 200
+                        },
+                        {
+                            "name": "Custom Explosher",
+                            "aliases": [
+                                "custom explo",
+                                "cexplo",
+                                "cexplosher"
+                            ],
+                            "sub": "Splash Wall",
+                            "special": "Triple Splashdown",
+                            "special-points": 200
+                        }
+                    ]
+                },
+                {
+                    "name": "Dread Wringer",
+                    "description": "A slosher that sloshes two times in succession, allowing it to cover a wider area with a single swing, or focus one area for maximum damage. It has better range and inking capabilities than the standard Slosher, but at the cost of a lower fire rate.",
+                    "variants": [
+                        {
+                            "name": "Dread Wringer",
+                            "aliases": [
+                                "dread",
+                                "vdread"
+                            ],
+                            "sub": "Suction Bomb",
+                            "special": "Reefslider",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Dread Wringer D",
+                            "aliases": [
+                                "dread d"
+                            ],
+                            "sub": "Squid Beakon",
+                            "special": "Wave Breaker",
+                            "special-points": 190
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Splatlings",
+            "name2": "Splatling",
+            "aliases": [],
+            "description": "Splatlings are rotary cannon- or minigun-like weapons that generally have a high rate of fire and considerable range. They operate similar to chargers but release a stream of small ink bullets instead of a single powerful shot. Like chargers, a full charge is necessary to achieve maximum potential range and firing duration.",
+            "weapons": [
+                {
+                    "name": "Mini Splatling",
+                    "description": "A light splatling with a short charge time but shorter range. It allows users to strafe quickly while charging and firing.",
+                    "variants": [
+                        {
+                            "name": "Mini Splatling",
+                            "aliases": [
+                                "mini",
+                                "vmini"
+                            ],
+                            "sub": "Burst Bomb",
+                            "special": "Ultra Stamp",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Zink Mini Splatling",
+                            "aliases": [
+                                "zink mini",
+                                "zmini"
+                            ],
+                            "sub": "Toxic Mist",
+                            "special": "Big Bubbler",
+                            "special-points": 200
+                        }
+                    ]
+                },
+                {
+                    "name": "Heavy Splatling",
+                    "description": "The standard splatling. Its stats are well-rounded, having no glaring strengths or weaknesses.",
+                    "variants": [
+                        {
+                            "name": "Heavy Splatling",
+                            "aliases": [
+                                "heavy",
+                                "vheavy"
+                            ],
+                            "sub": "Sprinkler",
+                            "special": "Wave Breaker",
+                            "special-points": 200
+                        },
+                        {
+                            "name": "Heavy Splatling Deco",
+                            "aliases": [
+                                "heavy deco",
+                                "deco heavy",
+                                "dheavy"
+                            ],
+                            "sub": "Point Sensor",
+                            "special": "Kraken Royale",
+                            "special-points": 200
+                        }
+                    ]
+                },
+                {
+                    "name": "Hydra Splatling",
+                    "description": "The Splatling with the longest range in its class. It can fire continuously for a lengthy period of time, with the drawback being its ink hunger and high charge time. When fully charged, a high-damage feature activates, allowing users to splat opponents with three hits.",
+                    "variants": [
+                        {
+                            "name": "Hydra Splatling",
+                            "aliases": [
+                                "hydra",
+                                "vhydra"
+                            ],
+                            "sub": "Autobomb",
+                            "special": "Booyah Bomb",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Custom Hydra Splatling",
+                            "aliases": [
+                                "custom hydra",
+                                "chydra"
+                            ],
+                            "sub": "Ink Mine",
+                            "special": "Splattercolor Screen",
+                            "special-points": 200
+                        }
+                    ]
+                },
+                {
+                    "name": "Ballpoint Splatling",
+                    "description": "A Splatling with two different firing modes, an initial short ranged firing mode with a high fire rate and a secondary firing mode that has a slower fire rate but longer range and perfect accuracy. Unlike most other splatlings, it can interrupt its fire to recharge. Upon completing a full charge, subsequent charges will retain the secondary mode attributes until the charge is entirely expended.",
+                    "variants": [
+                        {
+                            "name": "Ballpoint Splatling",
+                            "aliases": [
+                                "ballpoint",
+                                "vballpoint"
+                            ],
+                            "sub": "Fizzy Bomb",
+                            "special": "Inkjet",
+                            "special-points": 210
+                        },
+                        {
+                            "name": "Ballpoint Splatling Nouveau",
+                            "aliases": [
+                                "ballpoint nouveau",
+                                "nballpoint"
+                            ],
+                            "sub": "Ink Mine",
+                            "special": "Ink Vac",
+                            "special-points": 200
+                        }
+                    ]
+                },
+                {
+                    "name": "Nautilus",
+                    "description": "A shorter ranged Splatling with a medium charge rate. The weapon boasts the ability to store its charge much like some chargers and can interrupt its fire to recharge. Its accuracy in the air is comparable to its accuracy when grounded.",
+                    "variants": [
+                        {
+                            "name": "Nautilus 47",
+                            "aliases": [
+                                "nautilus",
+                                "naut 47",
+                                "naut",
+                                "vnaut",
+                                "vnautilus"
+                            ],
+                            "sub": "Point Sensor",
+                            "special": "Ink Storm",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Nautilus 79",
+                            "aliases": [
+                                "naut 79"
+                            ],
+                            "sub": "Suction Bomb",
+                            "special": "Triple Splashdown",
+                            "special-points": 210
+                        }
+                    ]
+                },
+                {
+                    "name": "Heavy Edit Splatling",
+                    "description": "A Splatling with a slow charge time, but a very high fire rate when fully charged.",
+                    "variants": [
+                        {
+                            "name": "Heavy Edit Splatling",
+                            "aliases": [
+                                "heavy edit",
+                                "edit",
+                                "vedit"
+                            ],
+                            "sub": "Curling Bomb",
+                            "special": "Tacticooler",
+                            "special-points": 200
+                        },
+                        {
+                            "name": "Heavy Edit Splatling Nouveau",
+                            "aliases": [
+                                "heavy edit nouveau",
+                                "edit nouveau",
+                                "nedit"
+                            ],
+                            "sub": "Splat Bomb",
+                            "special": "Crab Tank",
+                            "special-points": 210
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Dualies",
+            "name2": "Dualies",
+            "aliases": [],
+            "description": "Dualies are paired sets of guns that give their user the ability to dodge roll. After a dodge roll, the two dualies are held together, enhancing their performance in various ways depending on the dualies.",
+            "weapons": [
+                {
+                    "name": "Dapple Dualies",
+                    "description": "Lightweight dualies that have quick dodge rolls, a high fire rate, and middling damage. However, they have poor range, and their dodge rolls only cover a short distance.",
+                    "variants": [
+                        {
+                            "name": "Dapple Dualies",
+                            "aliases": [
+                                "dapple",
+                                "vdapple"
+                            ],
+                            "sub": "Squid Beakon",
+                            "special": "Tacticooler",
+                            "special-points": 170
+                        },
+                        {
+                            "name": "Dapple Dualies Nouveau",
+                            "aliases": [
+                                "dapple nouveau",
+                                "dapples nouveau",
+                                "ndapple"
+                            ],
+                            "sub": "Torpedo",
+                            "special": "Reefslider",
+                            "special-points": 190
+                        }
+                    ]
+                },
+                {
+                    "name": "Splat Dualies",
+                    "description": "The first available pair of dualies in the Splatoon weapons. They feature balanced performance, having a high fire rate to compensate for the low damage typical of the class.",
+                    "variants": [
+                        {
+                            "name": "Splat Dualies",
+                            "aliases": [
+                                "dualie",
+                                "vdualie"
+                            ],
+                            "sub": "Suction Bomb",
+                            "special": "Crab Tank",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Enperry Splat Dualies",
+                            "aliases": [
+                                "enperry dualie",
+                                "enperry",
+                                "enperrie"
+                            ],
+                            "sub": "Curling Bomb",
+                            "special": "Triple Splashdown",
+                            "special-points": 200
+                        }
+                    ]
+                },
+                {
+                    "name": "Glooga Dualies",
+                    "description": "A mid-range, mid-damage pair of dualies with a low fire rate. Their dodge rolls are slow, but shot damage and range increase after a dodge roll instead of fire rate, allowing it to splat opponents with one fewer shot at greater distances.",
+                    "variants": [
+                        {
+                            "name": "Glooga Dualies",
+                            "aliases": [
+                                "glooga",
+                                "vglooga"
+                            ],
+                            "sub": "Splash Wall",
+                            "special": "Booyah Bomb",
+                            "special-points": 180
+                        },
+                        {
+                            "name": "Glooga Dualies Deco",
+                            "aliases": [
+                                "glooga deco",
+                                "gloogas deco",
+                                "dglooga"
+                            ],
+                            "sub": "Point Sensor",
+                            "special": "Trizooka",
+                            "special-points": 190
+                        }
+                    ]
+                },
+                {
+                    "name": "Dualie Squelchers",
+                    "description": "A long-range pair of dualies with unique dodge rolls. The dodge rolls are quick and allow the user to slide instead of being locked in place, but they do not increase their fire rate.",
+                    "variants": [
+                        {
+                            "name": "Dualie Squelchers",
+                            "aliases": [
+                                "squelcher",
+                                "vsquelcher",
+                                "ds",
+                                "vds"
+                            ],
+                            "sub": "Splat Bomb",
+                            "special": "Wave Breaker",
+                            "special-points": 200
+                        },
+                        {
+                            "name": "Custom Dualie Squelchers",
+                            "aliases": [
+                                "custom squelcher",
+                                "csquelcher",
+                                "cds"
+                            ],
+                            "sub": "Squid Beakon",
+                            "special": "Super Chump",
+                            "special-points": 210
+                        }
+                    ]
+                },
+                {
+                    "name": "Tetra Dualies",
+                    "description": "These mid-range dualies put a significant emphasis on mobility. They allow up to four consecutive dodge rolls instead of the normal two, and can also shoot while rolling.",
+                    "variants": [
+                        {
+                            "name": "Dark Tetra Dualies",
+                            "aliases": [
+                                "tetra",
+                                "dark tetra",
+                                "vtetra"
+                            ],
+                            "sub": "Autobomb",
+                            "special": "Reefslider",
+                            "special-points": 200
+                        },
+                        {
+                            "name": "Light Tetra Dualies",
+                            "aliases": [
+                                "light tetra",
+                                "zip tetra"
+                            ],
+                            "sub": "Sprinkler",
+                            "special": "Zipcaster",
+                            "special-points": 190
+                        }
+                    ]
+                },
+                {
+                    "name": "Douser Dualies FF",
+                    "description": "A long-range pair of Dualies that can only perform one dodge roll. When performing a dodge roll, the fire rate increases while reducing their range.",
+                    "variants": [
+                        {
+                            "name": "Douser Dualies FF",
+                            "aliases": [
+                                "douser",
+                                "douser dualie",
+                                "vdouser"
+                            ],
+                            "sub": "Ink Mine",
+                            "special": "Killer Wail 5.1",
+                            "special-points": 200
+                        },
+                        {
+                            "name": "Custom Douser Dualies FF",
+                            "aliases": [
+                                "custom douser",
+                                "custom douser dualie",
+                                "cdouser"
+                            ],
+                            "sub": "Burst Bomb",
+                            "special": "Triple Inkstrike",
+                            "special-points": 200
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Brellas",
+            "name2": "Brella",
+            "aliases": [
+                "umbrellas",
+                "umbrella"
+            ],
+            "description": "Brellas are shotgun-like weapons with deployable shields which have large amounts of HP that can be held in front of the user. Most brellas can also launch their shield forward.",
+            "weapons": [
+                {
+                    "name": "Splat Brella",
+                    "description": "The standard Brella, featuring middling range, damage, and shield durability.",
+                    "variants": [
+                        {
+                            "name": "Splat Brella",
+                            "aliases": [
+                                "brella",
+                                "vbrella"
+                            ],
+                            "sub": "Sprinkler",
+                            "special": "Triple Inkstrike",
+                            "special-points": 200
+                        },
+                        {
+                            "name": "Sorella Brella",
+                            "aliases": [
+                                "sorella",
+                                "sbrella"
+                            ],
+                            "sub": "Autobomb",
+                            "special": "Inkjet",
+                            "special-points": 190
+                        }
+                    ]
+                },
+                {
+                    "name": "Tenta Brella",
+                    "description": "A heavier brella with a larger, more durable shield. Its shots have more range and it is able to deal lethal damage in one shot, at the cost of a slow rate of fire.",
+                    "variants": [
+                        {
+                            "name": "Tenta Brella",
+                            "aliases": [
+                                "tent",
+                                "vtent"
+                            ],
+                            "sub": "Squid Beakon",
+                            "special": "Ink Vac",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Tenta Sorella Brella",
+                            "aliases": [
+                                "sorella tent",
+                                "stent"
+                            ],
+                            "sub": "Ink Mine",
+                            "special": "Trizooka",
+                            "special-points": 200
+                        }
+                    ]
+                },
+                {
+                    "name": "Undercover Brella",
+                    "description": "A lightweight brella that can be fired while its shield is open. It has a quick rate of fire, but the damage dealt by each shot is low and its shield is particularly weak. It is unable to launch its shield.",
+                    "variants": [
+                        {
+                            "name": "Undercover Brella",
+                            "aliases": [
+                                "undercover",
+                                "vundercover"
+                            ],
+                            "sub": "Ink Mine",
+                            "special": "Reefslider",
+                            "special-points": 180
+                        },
+                        {
+                            "name": "Undercover Sorella Brella",
+                            "aliases": [
+                                "sorella undercover",
+                                "sundercover"
+                            ],
+                            "sub": "Torpedo",
+                            "special": "Splattercolor Screen",
+                            "special-points": 180
+                        }
+                    ]
+                },
+                {
+                    "name": "Recycled Brella 24 Mk I",
+                    "description": "A Brella with faster shield deployment and recovery.",
+                    "variants": [
+                        {
+                            "name": "Recycled Brella 24 Mk I",
+                            "aliases": [
+                                "recycled brella",
+                                "recycled brella mki",
+                                "recycled",
+                                "vrecycled"
+                            ],
+                            "sub": "Angle Shooter",
+                            "special": "Big Bubbler",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Recycled Brella 24 Mk II",
+                            "aliases": [
+                                "recycled brella mkii",
+                                "recycled mkii"
+                            ],
+                            "sub": "Toxic Mist",
+                            "special": "Triple Splashdown",
+                            "special-points": 200
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Blasters",
+            "name2": "Blaster",
+            "aliases": [],
+            "description": "Blasters are weapons that fire large globs of ink with a delayed explosion, which have a spherical hitbox and are capable of hitting opponents that are behind walls or cover.",
+            "weapons": [
+                {
+                    "name": "Luna Blaster",
+                    "description": "A blaster with short range but above average fire rate, blast radius, and ink efficiency. It is capable of splatting an opponent with one direct hit.",
+                    "variants": [
+                        {
+                            "name": "Luna Blaster",
+                            "aliases": [
+                                "luna",
+                                "vluna"
+                            ],
+                            "sub": "Splat Bomb",
+                            "special": "Zipcaster",
+                            "special-points": 170
+                        },
+                        {
+                            "name": "Luna Blaster Neo",
+                            "aliases": [
+                                "luna neo",
+                                "nluna"
+                            ],
+                            "sub": "Fizzy Bomb",
+                            "special": "Ultra Stamp",
+                            "special-points": 180
+                        }
+                    ]
+                },
+                {
+                    "name": "Blaster",
+                    "description": "The standard blaster. Has a slow firing speed but is well-rounded otherwise.",
+                    "variants": [
+                        {
+                            "name": "Blaster",
+                            "aliases": [
+                                "vblaster"
+                            ],
+                            "sub": "Autobomb",
+                            "special": "Big Bubbler",
+                            "special-points": 180
+                        },
+                        {
+                            "name": "Custom Blaster",
+                            "aliases": [
+                                "cblaster"
+                            ],
+                            "sub": "Point Sensor",
+                            "special": "Triple Splashdown",
+                            "special-points": 180
+                        }
+                    ]
+                },
+                {
+                    "name": "Range Blaster",
+                    "description": "A revised version of the Blaster that boasts higher range at the cost of a slower fire rate.",
+                    "variants": [
+                        {
+                            "name": "Range Blaster",
+                            "aliases": [
+                                "rb",
+                                "vrb"
+                            ],
+                            "sub": "Suction Bomb",
+                            "special": "Wave Breaker",
+                            "special-points": 210
+                        },
+                        {
+                            "name": "Custom Range Blaster",
+                            "aliases": [
+                                "crb"
+                            ],
+                            "sub": "Splat Bomb",
+                            "special": "Kraken Royale",
+                            "special-points": 210
+                        }
+                    ]
+                },
+                {
+                    "name": "Clash Blaster",
+                    "description": "A blaster that fires huge short-ranged blasts in very quick succession, but its low damage makes it hard to splat opponents with it.",
+                    "variants": [
+                        {
+                            "name": "Clash Blaster",
+                            "aliases": [
+                                "clash",
+                                "vclash"
+                            ],
+                            "sub": "Splat Bomb",
+                            "special": "Trizooka",
+                            "special-points": 180
+                        },
+                        {
+                            "name": "Clash Blaster Neo",
+                            "aliases": [
+                                "clash neo",
+                                "neo clash"
+                            ],
+                            "sub": "Curling Bomb",
+                            "special": "Super Chump",
+                            "special-points": 170
+                        }
+                    ]
+                },
+                {
+                    "name": "Rapid Blaster",
+                    "description": "A blaster that fires long range blasts at a good fire rate, with reduced damage and blast radius.",
+                    "variants": [
+                        {
+                            "name": "Rapid Blaster",
+                            "aliases": [
+                                "rapid",
+                                "vrapid"
+                            ],
+                            "sub": "Ink Mine",
+                            "special": "Triple Inkstrike",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Rapid Blaster Deco",
+                            "aliases": [
+                                "rapid deco",
+                                "drapid"
+                            ],
+                            "sub": "Torpedo",
+                            "special": "Inkjet",
+                            "special-points": 210
+                        }
+                    ]
+                },
+                {
+                    "name": "Rapid Blaster Pro",
+                    "description": "This modified version of the Rapid Blaster can hit at even longer ranges, but has a slower fire rate, and uses more ink per shot.",
+                    "variants": [
+                        {
+                            "name": "Rapid Blaster Pro",
+                            "aliases": [
+                                "rapid pro",
+                                "vrapid pro"
+                            ],
+                            "sub": "Toxic Mist",
+                            "special": "Ink Vac",
+                            "special-points": 180
+                        },
+                        {
+                            "name": "Rapid Blaster Pro Deco",
+                            "aliases": [
+                                "rapid pro deco",
+                                "drapid pro"
+                            ],
+                            "sub": "Angle Shooter",
+                            "special": "Killer Wail 5.1",
+                            "special-points": 190
+                        }
+                    ]
+                },
+                {
+                    "name": "S-BLAST",
+                    "description": "A slow-firing, one-shot capable blaster with two firing modes, short-range and long-range. The short-range mode is triggered by pressing ZR after jumping, and fires a huge short-ranged blast. The long-range mode is triggered by pressing ZR on the ground, and fires a long-ranged, high-velocity shot with a small blast radius.",
+                    "variants": [
+                        {
+                            "name": "S-BLAST '92",
+                            "aliases": [
+                                "sblast",
+                                "vsblast"
+                            ],
+                            "sub": "Sprinkler",
+                            "special": "Reefslider",
+                            "special-points": 180
+                        },
+                        {
+                            "name": "S-BLAST '91",
+                            "aliases": [],
+                            "sub": "Burst Bomb",
+                            "special": "Booyah Bomb",
+                            "special-points": 190
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Brushes",
+            "name2": "Brush",
+            "aliases": [
+                "paintbrushes",
+                "paintbrush"
+            ],
+            "description": "Brushes can be pushed along the ground, much like rollers. They are especially fast but leave a narrow trail of ink. They do not deal nearly as much contact damage, and no brush is capable of crushing opponents in one hit. However, instead of flinging large waves of ink, brushes quickly swipe from side to side, flicking many smaller globs.",
+            "weapons": [
+                {
+                    "name": "Inkbrush",
+                    "description": "A fast but short-ranged brush. When pushed along the ground, the user moves at extremely high speed, and leaves behind a narrow trail of ink.",
+                    "variants": [
+                        {
+                            "name": "Inkbrush",
+                            "aliases": [
+                                "brush",
+                                "vbrush",
+                                "vinkbrush"
+                            ],
+                            "sub": "Splat Bomb",
+                            "special": "Killer Wail 5.1",
+                            "special-points": 180
+                        },
+                        {
+                            "name": "Inkbrush Nouveau",
+                            "aliases": [
+                                "brush nouveau",
+                                "nbrush"
+                            ],
+                            "sub": "Ink Mine",
+                            "special": "Ultra Stamp",
+                            "special-points": 180
+                        }
+                    ]
+                },
+                {
+                    "name": "Octobrush",
+                    "description": "A slower brush with decent range. Movement speed while sliding along the ground is a bit slower compared to the Inkbrush.",
+                    "variants": [
+                        {
+                            "name": "Octobrush",
+                            "aliases": [
+                                "octo",
+                                "vocto",
+                                "voctobrush"
+                            ],
+                            "sub": "Suction Bomb",
+                            "special": "Zipcaster",
+                            "special-points": 200
+                        },
+                        {
+                            "name": "Octobrush Nouveau",
+                            "aliases": [
+                                "octo nouveau",
+                                "nocto"
+                            ],
+                            "sub": "Squid Beakon",
+                            "special": "Ink Storm",
+                            "special-points": 180
+                        }
+                    ]
+                },
+                {
+                    "name": "Painbrush",
+                    "description": "An even slower brush that must wind up before it can start swinging. In return, it has greater range, power, and inking capabilities.",
+                    "variants": [
+                        {
+                            "name": "Painbrush",
+                            "aliases": [
+                                "pain",
+                                "vpain",
+                                "vpainbrush"
+                            ],
+                            "sub": "Curling Bomb",
+                            "special": "Wave Breaker",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Painbrush Nouveau",
+                            "aliases": [
+                                "pain nouveau",
+                                "npain"
+                            ],
+                            "sub": "Point Sensor",
+                            "special": "Tenta Missiles",
+                            "special-points": 190
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Stringers",
+            "name2": "Stringer",
+            "aliases": [
+                "bows",
+                "bow"
+            ],
+            "description": "Stringers are bow-like weapons that generally have considerable range and middling damage. Like chargers, a full charge is necessary to achieve maximum range and damage. They have vertical and horizontal shots, similar to rollers. They shoot three strings of ink per shot.",
+            "weapons": [
+                {
+                    "name": "Tri-Stringer",
+                    "description": "The standard stringer, with long range but no charge hold. Reaching the first level of charge allows its shots to lodge themselves in terrain briefly before exploding.",
+                    "variants": [
+                        {
+                            "name": "Tri-Stringer",
+                            "aliases": [
+                                "stringer",
+                                "bow",
+                                "vbow"
+                            ],
+                            "sub": "Toxic Mist",
+                            "special": "Killer Wail 5.1",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Inkline Tri-Stringer",
+                            "aliases": [
+                                "inkline stringer",
+                                "inkline tristringer",
+                                "inkline bow",
+                                "ibow"
+                            ],
+                            "sub": "Sprinkler",
+                            "special": "Super Chump",
+                            "special-points": 190
+                        }
+                    ]
+                },
+                {
+                    "name": "REEF-LUX 450",
+                    "description": "A lightweight stringer that can store its charge, but cannot fire explosive shots. It charges quickly and does more damage than the Tri-Stringer, but it is lacking in range.",
+                    "variants": [
+                        {
+                            "name": "REEF-LUX 450",
+                            "aliases": [
+                                "reeflux",
+                                "reef",
+                                "vreef",
+                                "vreeflux"
+                            ],
+                            "sub": "Curling Bomb",
+                            "special": "Tenta Missiles",
+                            "special-points": 210
+                        },
+                        {
+                            "name": "REEF-LUX 450 Deco",
+                            "aliases": [
+                                "reeflux deco",
+                                "reef deco",
+                                "dreef",
+                                "dreeflux"
+                            ],
+                            "sub": "Splash Wall",
+                            "special": "Reefslider",
+                            "special-points": 200
+                        }
+                    ]
+                },
+                {
+                    "name": "Wellstring V",
+                    "description": "A stringer with five explosive shots.",
+                    "variants": [
+                        {
+                            "name": "Wellstring V",
+                            "aliases": [
+                                "wellstring",
+                                "vwellstring",
+                                "best weapon"
+                            ],
+                            "sub": "Autobomb",
+                            "special": "Ultra Stamp",
+                            "special-points": 200
+                        },
+                        {
+                            "name": "Custom Wellstring V",
+                            "aliases": [
+                                "custom wellstring",
+                                "cwellstring"
+                            ],
+                            "sub": "Point Sensor",
+                            "special": "Wave Breaker",
+                            "special-points": 200
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Splatanas",
+            "name2": "Splatana",
+            "aliases": [
+                "swords",
+                "sword"
+            ],
+            "description": "Splatanas are sword-like weapons that are similar to brushes, without the rolling function. Instead, when ZR is held, they will charge a more powerful vertical swing. All splatanas have an additional melee hitbox as the splatana itself, and when charged, this hitbox can splat opponents in one hit.",
+            "weapons": [
+                {
+                    "name": "Splatana Stamper",
+                    "description": "The standard stringer, with long range but no charge hold. Reaching the first level of charge allows its shots to lodge themselves in terrain briefly before exploding.",
+                    "variants": [
+                        {
+                            "name": "Splatana Stamper",
+                            "aliases": [
+                                "stamper",
+                                "vstamper"
+                            ],
+                            "sub": "Burst Bomb",
+                            "special": "Zipcaster",
+                            "special-points": 210
+                        },
+                        {
+                            "name": "Splatana Stamper Nouveau",
+                            "aliases": [
+                                "stamper nouveau",
+                                "nstamper"
+                            ],
+                            "sub": "Toxic Mist",
+                            "special": "Crab Tank",
+                            "special-points": 210
+                        }
+                    ]
+                },
+                {
+                    "name": "Splatana Wiper",
+                    "description": "The standard Splatana, with decent range but low damage. It moves quickly when slashing and charging, and has good ink efficiency.",
+                    "variants": [
+                        {
+                            "name": "Splatana Wiper",
+                            "aliases": [
+                                "wiper",
+                                "vwiper",
+                                "viper"
+                            ],
+                            "sub": "Torpedo",
+                            "special": "Ultra Stamp",
+                            "special-points": 190
+                        },
+                        {
+                            "name": "Splatana Wiper Deco",
+                            "aliases": [
+                                "wiper deco",
+                                "dwiper",
+                                "diper"
+                            ],
+                            "sub": "Squid Beakon",
+                            "special": "Tenta Missiles",
+                            "special-points": 190
+                        }
+                    ]
+                },
+                {
+                    "name": "Decavitator",
+                    "description": "A splatana with a long-ranged horizontal lunging attack, which can be redirected while mid-lunge.",
+                    "variants": [
+                        {
+                            "name": "Mint Decavitator",
+                            "aliases": [
+                                "mint decav",
+                                "decav",
+                                "vdecav",
+                                "mint",
+                                "slashy dashy"
+                            ],
+                            "sub": "Suction Bomb",
+                            "special": "Big Bubbler",
+                            "special-points": 210
+                        },
+                        {
+                            "name": "Charcoal Decavitator",
+                            "aliases": [
+                                "charcoal decav",
+                                "charcoal",
+                                "slashy dashy 2"
+                            ],
+                            "image": "https://cdn.wikimg.net/en/splatoonwiki/images/5/52/S3_Weapon_Main_Charcoal_Decavitator.png",
+                            "sub": "Splash Wall",
+                            "special": "Inkjet",
+                            "special-points": 200
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
