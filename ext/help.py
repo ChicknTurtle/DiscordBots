@@ -47,8 +47,8 @@ class HelpView(discord.ui.View):
 
 def setup(bot:discord.Bot):
 
-    @bot.command(name="help", description="Get help for the bot")
+    @bot.command(name="help", description="Get help for the bot", integration_types={discord.IntegrationType.guild_install,discord.IntegrationType.user_install})
     async def help_command(ctx:discord.ApplicationContext):
         view = HelpView(bot)
         embed = bot.newembed("Help Menu", "Choose a category to get help for below:")
-        await ctx.respond(embed=embed, view=view)
+        await ctx.respond(embed=embed, view=view, ephemeral=True)
