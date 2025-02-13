@@ -14,7 +14,7 @@ Data = Data()
 
 def setup(bot:discord.Bot):
     
-    bot_group = bot.create_group("bot", "Bot information.", integration_types={discord.IntegrationType.guild_install,discord.IntegrationType.user_install})
+    bot_group = bot.create_group("bot", "Bot information.")
 
     # stats
     @bot_group.command(name="stats", description="View interesting bot statistics")
@@ -24,7 +24,10 @@ def setup(bot:discord.Bot):
         servers = format_number(len(bot.guilds))
         users = format_number(len(bot.users))
         commands_used = format_number(Data.get(f"{bot.name.lower()}/global", {}).get('commandsUsed', 0))
-        invite_url = f"https://discord.com/oauth2/authorize?client_id={bot.user.id}"
+        if discord.IntegrationType.user_install in bot.default_command_integration_types:
+            invite_url = f"https://discord.com/oauth2/authorize?client_id={bot.user.id}"
+        else:
+            invite_url = f"https://discord.com/oauth2/authorize?client_id={bot.user.id}&scope=applications.commands%20bot"
         msg = [f"## {bot.name} Statistics"]
         msg.append(f":ping_pong: Ping: `{ping}ms`")
         msg.append(f":stopwatch: Bot started <t:{uptime}:R>")

@@ -20,14 +20,14 @@ class Bots:
         intents = discord.Intents.all()
         intents.presences = False
 
-        self.tuttlebot = discord.AutoShardedBot(intents=intents, help_command=None)
+        self.tuttlebot = discord.AutoShardedBot(intents=intents, help_command=None, default_command_integration_types={discord.IntegrationType.guild_install,discord.IntegrationType.user_install})
         self.tuttlebot.name = "TuttleBot"
         self.tuttlebot.token = os.getenv('tuttlebot')
         self.tuttlebot.color = 0x309c58
         if self.tuttlebot.token:
             self._bots.append(self.tuttlebot)
 
-        self.neoturtle = discord.AutoShardedBot(intents=intents, help_command=None)
+        self.neoturtle = discord.AutoShardedBot(intents=intents, help_command=None, default_command_integration_types={discord.IntegrationType.guild_install,discord.IntegrationType.user_install})
         self.neoturtle.name = "NeoTurtle"
         self.neoturtle.token = os.getenv('neoturtle')
         self.neoturtle.color = 0x00ff00
@@ -38,10 +38,10 @@ class Bots:
         if self.neoturtle.token:
             self._bots.append(self.neoturtle)
         
-        self.splatdrone = discord.AutoShardedBot(intents=intents, help_command=None)
+        self.splatdrone = discord.AutoShardedBot(intents=intents, help_command=None, default_command_integration_types={discord.IntegrationType.guild_install,discord.IntegrationType.user_install})
         self.splatdrone.name = "Splatdrone"
         self.splatdrone.token = os.getenv('splatdrone')
-        self.splatdrone.color = 0x76f5f3
+        self.splatdrone.color = 0x00b4ff
         if self.splatdrone.token:
             self._bots.append(self.splatdrone)
 
