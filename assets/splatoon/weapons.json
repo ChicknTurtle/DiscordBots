@@ -2,118 +2,118 @@
     "subs": {
         "Splat Bomb": {
             "bomb": true,
-            "emote": 0
+            "emote": 1339419824714940519
         },
         "Suction Bomb": {
             "bomb": true,
-            "emote": 0
+            "emote": 1339420699294433351
         },
         "Burst Bomb": {
             "bomb": true,
-            "emote": 0
+            "emote": 1339420793184190564
         },
         "Curling Bomb": {
             "bomb": true,
-            "emote": 0
+            "emote": 1339420856564318252
         },
         "Autobomb": {
             "bomb": true,
-            "emote": 0
+            "emote": 1339420934380978217
         },
         "Ink Mine": {
             "bomb": false,
-            "emote": 0
+            "emote": 1339421891869282394
         },
         "Toxic Mist": {
             "bomb": false,
-            "emote": 0
+            "emote": 1339422023507771503
         },
         "Point Sensor": {
             "bomb": false,
-            "emote": 0
+            "emote": 1339422112351387678
         },
         "Splash Wall": {
             "bomb": false,
-            "emote": 1339360931934900255
+            "emote": 1339054507086315560
         },
         "Sprinkler": {
             "bomb": false,
-            "emote": 0
+            "emote": 1339422173332246538
         },
         "Squid Beakon": {
             "bomb": false,
-            "emote": 0
+            "emote": 1339422281675575378
         },
         "Fizzy Bomb": {
             "bomb": true,
-            "emote": 0
+            "emote": 1339422354467590185
         },
         "Torpedo": {
             "bomb": true,
-            "emote": 0
+            "emote": 1339422411044687952
         },
         "Angle Shooter": {
             "bomb": false,
-            "emote": 0
+            "emote": 1339422600694075536
         }
     },
     "specials": {
         "Big Bubbler": {
-            "emote": 0
+            "emote": 1339424356777988096
         },
         "Booyah Bomb": {
-            "emote": 0
+            "emote": 1339424402609147934
         },
         "Crab Tank": {
-            "emote": 0
+            "emote": 1339424749083955303
         },
         "Ink Storm": {
-            "emote": 0
+            "emote": 1339424792100732960
         },
         "Ink Vac": {
-            "emote": 0
+            "emote": 1339424834182189136
         },
         "Inkjet": {
-            "emote": 1339361697109901472
+            "emote": 1339419444946145361
         },
         "Killer Wail 5.1": {
-            "emote": 0
+            "emote": 1339424875777097802
         },
         "Kraken Royale": {
-            "emote": 0
+            "emote": 1339424947646234687
         },
         "Reefslider": {
-            "emote": 0
+            "emote": 1339424997768298559
         },
         "Splattercolor Screen": {
-            "emote": 0
+            "emote": 1339425044463358043
         },
         "Super Chump": {
-            "emote": 0
+            "emote": 1339425110276440106
         },
         "Tacticooler": {
-            "emote": 0
+            "emote": 1339425152018157649
         },
         "Tenta Missiles": {
-            "emote": 0
+            "emote": 1339425194212851823
         },
         "Triple Inkstrike": {
-            "emote": 0
+            "emote": 1339425234238836816
         },
         "Triple Splashdown": {
-            "emote": 0
+            "emote": 1339425276903555152
         },
         "Trizooka": {
-            "emote": 0
+            "emote": 1339425314358431804
         },
         "Ultra Stamp": {
-            "emote": 0
+            "emote": 1339425372613378089
         },
         "Wave Breaker": {
-            "emote": 0
+            "emote": 1339425401432444980
         },
         "Zipcaster": {
-            "emote": 0
+            "emote": 1339425413004267540
         }
     },
     "classes": [
