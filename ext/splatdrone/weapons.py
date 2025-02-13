@@ -7,7 +7,7 @@ from utils import *
 
 Log = Log()
 
-def setup(bot):
+def setup(bot:discord.AutoShardedBot):
 
     # Setup weapon data
     weapons:dict = [] # data of each main weapon (not kit specific)
@@ -68,11 +68,9 @@ def setup(bot):
                     if name == variant['name'].lower() or name in [alias.lower() for alias in variant['aliases']]:
                         return weapon_class
         return None
-
-    weapon_group = bot.create_group("weapon", "Info about splatoon weapons.")
-
+    
     # rw
-    @bot.command(name="rw", description="Give a random weapon")
+    @bot.command(name="rw", description="Give a random weapon", integration_types={discord.IntegrationType.guild_install,discord.IntegrationType.user_install})
     async def rw_command(ctx:discord.ApplicationContext, weaponclass=discord.Option(str, name='class', required=False, choices=weapon_class_names2, description="Filter by a class"), sub=discord.Option(str, required=False, choices=list(all_subs.keys())+['Any Bomb'], description="Filter by a sub weapon"), special=discord.Option(str, required=False, choices=list(all_specials.keys()), description="Filter by a special weapon"), getclass=discord.Option(bool, required=False, description="Get a random weapon class instead of weapon. All other options will be ignored")):
         if getclass == True:
             randomclass = random.choice(weapon_classes)['name2']
@@ -101,7 +99,7 @@ def setup(bot):
         
         await ctx.respond(f"Your random weapon is **{randomweapon['name']}**! {sub_emote} {special_emote}")
 
-    @bot.command(name="kit", description="View a weapon's kit")
+    @bot.command(name="kit", description="View a weapon's kit", integration_types={discord.IntegrationType.guild_install,discord.IntegrationType.user_install})
     async def kit_command(ctx: discord.ApplicationContext, weapon=discord.Option(str, name='weapon', required=True, description="Weapon name, aliases supported")):
         weapon_data = get_weapon_variant(weapon)
         if weapon_data:

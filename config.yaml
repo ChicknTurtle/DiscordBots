@@ -35,3 +35,4 @@ ext_neoturtle:
 ext_splatdrone:
   - events
   - help
+  - bot

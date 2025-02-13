@@ -16,6 +16,7 @@ def load_exts(bot:discord.Bot):
         for ext in exts:
             try:
                 bot.load_extension(f"ext.{ext}")
+                Log.debug(f"Loaded ext '{ext}' for {bot.name}")
             except Exception as e:
                 Log.error(f"Failed to load extension: 'ext.{ext}' for {bot.name}")
                 Log.error(traceback.format_exc())
