@@ -76,6 +76,7 @@ def setup(bot:discord.Bot):
         Log.log(f"{bot.name} | @{ctx.author.name} used /{ctx.command}")
         await bot.get_channel(config['channels']['log']).send(f"<@{ctx.author.id}> used /{ctx.command}", allowed_mentions=discord.AllowedMentions.none())
         if Data.get(f"{bot.name.lower()}/global"):
+            Data[f"{bot.name.lower()}/global"].setdefault('commandsUsed', 0)
             Data[f"{bot.name.lower()}/global"]['commandsUsed'] += 1
     
     # on join
