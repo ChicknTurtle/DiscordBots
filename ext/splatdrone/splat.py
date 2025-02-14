@@ -2,6 +2,7 @@
 import random
 import json
 import requests
+from datetime import datetime, timezone
 import discord
 
 from data import Data
@@ -32,6 +33,14 @@ def get_image_url(weapon:str):
             Log.debug(f"Splatdrone | Added new weapon image to cache: {weapon}")
             return url
     return None
+
+def get_random_title(seed=None) -> tuple[str,str]:
+    seeded_random = random.Random(seed) if seed else random
+    with open('assets/splatoon/title_adjectives.txt') as file:
+        adjectives:list[str] = file.read().splitlines()
+    with open('assets/splatoon/title_subjects.txt') as file:
+        subjects:list[str] = file.read().splitlines()
+    return (seeded_random.choice(adjectives), seeded_random.choice(subjects))
 
 def setup(bot:discord.AutoShardedBot):
 
@@ -153,7 +162,8 @@ def setup(bot:discord.AutoShardedBot):
                 await ctx.respond(result)
 
     @splat_group.command(name="kit", description="View a weapon's kit")
-    async def kit_command(ctx: discord.ApplicationContext, weapon=discord.Option(str, name='weapon', required=True, description="Weapon name, aliases supported")):
+    async def splat_kit_command(ctx:discord.ApplicationContext,
+                          weapon=discord.Option(str, name='weapon', required=True, description="Weapon name, aliases supported")):
         weapon_data = get_weapon_variant(weapon)
         if weapon_data:
             sub = get_sub(weapon_data['sub'])
@@ -171,3 +181,17 @@ def setup(bot:discord.AutoShardedBot):
             await ctx.respond('', embed=embed)
         else:
             await ctx.respond(f"No weapon found for `{weapon}`\n-# If you believe this should be a valid alias, let me know with **/bot suggest**", ephemeral=True)
+
+    @splat_group.command(name="title", description="Get a random title")
+    async def splat_title_command(ctx:discord.ApplicationContext,
+                                  daily=discord.Option(bool, default=False, description="View your daily title"),
+                                  user=discord.Option(discord.User, default=None, description="View someone else's daily title. Does nothing if daily=False")):
+        if daily:
+            user:discord.User = user or ctx.author
+            who = 'Your' if user == ctx.author else f"{user.display_name}'s"
+            adjective, subject = get_random_title(f"{user.id}-{datetime.now(timezone.utc).date()}")
+            await ctx.respond(f"{who} daily title is **{adjective} {subject}**!")
+        else:
+            adjective, subject = get_random_title()
+            await ctx.respond(f"Your random title is **{adjective} {subject}**!")
+    splat_title_command.helpdesc="Daily title uses UTC timezone (same as Splatoon daily reset)"
