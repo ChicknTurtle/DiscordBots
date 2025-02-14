@@ -35,6 +35,8 @@ def get_image_url(weapon:str):
 
 def setup(bot:discord.AutoShardedBot):
 
+    splat_group = bot.create_group("splat", "General Splatoon-related commands.")
+
     # Setup weapon data
     weapons:dict = [] # data of each main weapon (not kit specific)
     weapon_variants:dict = [] # data of each main weapon variant (kit specific)
@@ -96,36 +98,61 @@ def setup(bot:discord.AutoShardedBot):
         return None
     
     # rw
-    @bot.command(name="rw", description="Give a random weapon")
-    async def rw_command(ctx:discord.ApplicationContext, weaponclass=discord.Option(str, name='class', required=False, choices=weapon_class_names2, description="Filter by a class"), sub=discord.Option(str, required=False, choices=list(all_subs.keys())+['Any Bomb'], description="Filter by a sub weapon"), special=discord.Option(str, required=False, choices=list(all_specials.keys()), description="Filter by a special weapon"), getclass=discord.Option(bool, required=False, description="Get a random weapon class instead of weapon. All other options will be ignored")):
-        if getclass == True:
-            randomclass = random.choice(weapon_classes)['name2']
-            await ctx.respond(f"Your random weapon class is **{randomclass}**!")
-            return
-        valid_variants = weapon_variants
-        if weaponclass:
-            valid_variants = [variant for variant in weapon_variants if get_weapon_class(variant['name'])['name2'].lower() == weaponclass.lower()]
-        if sub:
-            if sub == 'Any Bomb':
-                valid_variants = [variant for variant in valid_variants if get_sub(variant['sub']).get('bomb')]
+    @splat_group.command(name="rw", description="Choose a random weapon with optional filters")
+    async def splat_rw_command(ctx:discord.ApplicationContext,
+                               amount=discord.Option(int, min_value=1, max_value=8, default=1, description="Amount of weapons to choose"),
+                               class_filter=discord.Option(str, name='class_filter', required=False, choices=weapon_class_names2, description="Filter by a class"),
+                               sub_filter=discord.Option(str, name='sub_filter', required=False, choices=list(all_subs.keys())+['Any Bomb'], description="Filter by a sub weapon"),
+                               special_filter=discord.Option(str, name='special_filter', required=False, choices=list(all_specials.keys()), description="Filter by a special weapon"),
+                               get_class=discord.Option(bool, name='get_class', required=False, description="Get a random weapon class instead of weapon. All filter options will be ignored")):
+        responses = []
+        for i in range(amount):
+            if get_class == True:
+                randomclass = random.choice(weapon_classes)['name2']
+                #responses.append(f"Your random weapon class is **{randomclass}**!")
+                responses.append(randomclass)
+                continue
+            valid_variants = weapon_variants
+            if class_filter:
+                valid_variants = [variant for variant in weapon_variants if get_weapon_class(variant['name'])['name2'].lower() == class_filter.lower()]
+            if sub_filter:
+                if sub_filter == 'Any Bomb':
+                    valid_variants = [variant for variant in valid_variants if get_sub(variant['sub']).get('bomb')]
+                else:
+                    valid_variants = [variant for variant in valid_variants if variant['sub'].lower() == sub_filter.lower()]
+            if special_filter:
+                valid_variants = [variant for variant in valid_variants if variant['special'].lower() == special_filter.lower()]
+            if valid_variants:
+                randomweapon = random.choice(valid_variants)
             else:
-                valid_variants = [variant for variant in valid_variants if variant['sub'].lower() == sub.lower()]
-        if special:
-            valid_variants = [variant for variant in valid_variants if variant['special'].lower() == special.lower()]
-        if valid_variants:
-            randomweapon = random.choice(valid_variants)
+                await ctx.respond(f"No weapons matched the selected filters! Try with less filters.", ephemeral=True)
+                return
+            
+            sub = get_sub(randomweapon['sub'])
+            special = get_special(randomweapon['special'])
+            sub_emote = (f"<:sub:{sub['emote']}>")
+            special_emote = (f"<:special:{special['emote']}>")
+            
+            responses.append((randomweapon['name'], f"{sub_emote} {special_emote}"))
+        
+        if get_class is True:
+            if amount == 1:
+                await ctx.respond(f"Your random weapon class is **{responses[0]}**!")
+            else:
+                await ctx.respond(f"Your random weapon classes are {', '.join([f"**{response}**" for response in responses])}!")
         else:
-            await ctx.respond(f"No weapons matched the selected filters! Try with less filters.", ephemeral=True)
-            return
-        
-        sub = get_sub(randomweapon['sub'])
-        special = get_special(randomweapon['special'])
-        sub_emote = (f"<:sub:{sub['emote']}>")
-        special_emote = (f"<:special:{special['emote']}>")
-        
-        await ctx.respond(f"Your random weapon is **{randomweapon['name']}**! {sub_emote} {special_emote}")
+            if amount == 1:
+                await ctx.respond(f"Your random weapon is **{responses[0][0]}**! {responses[0][1]}")
+            else:
+                result = "Your random weapons are:"
+                for i in range(1, amount+1):
+                    if i == 1:
+                        result = f"{result}\n1. **{responses[i-1][0]}** {responses[i-1][1]}"
+                    else:
+                        result = f"{result}\n- **{responses[i-1][0]}** {responses[i-1][1]}"
+                await ctx.respond(result)
 
-    @bot.command(name="kit", description="View a weapon's kit")
+    @splat_group.command(name="kit", description="View a weapon's kit")
     async def kit_command(ctx: discord.ApplicationContext, weapon=discord.Option(str, name='weapon', required=True, description="Weapon name, aliases supported")):
         weapon_data = get_weapon_variant(weapon)
         if weapon_data:

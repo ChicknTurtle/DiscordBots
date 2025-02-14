@@ -1,50 +1,62 @@
 {
     "subs": {
         "Splat Bomb": {
+            "compname": "Splat bomb",
             "bomb": true,
             "emote": 1339419824714940519
         },
         "Suction Bomb": {
+            "compname": "Suction",
             "bomb": true,
             "emote": 1339420699294433351
         },
         "Burst Bomb": {
+            "compname": "Burst",
             "bomb": true,
             "emote": 1339420793184190564
         },
         "Curling Bomb": {
+            "compname": "Curling",
             "bomb": true,
             "emote": 1339420856564318252
         },
         "Autobomb": {
+            "compname": "Autobomb",
             "bomb": true,
             "emote": 1339420934380978217
         },
         "Ink Mine": {
+            "compname": "Mine",
             "bomb": false,
             "emote": 1339421891869282394
         },
         "Toxic Mist": {
+            "compname": "Mist",
             "bomb": false,
             "emote": 1339422023507771503
         },
         "Point Sensor": {
+            "compname": "Sensor",
             "bomb": false,
             "emote": 1339422112351387678
         },
         "Splash Wall": {
+            "compname": "Wall",
             "bomb": false,
             "emote": 1339054507086315560
         },
         "Sprinkler": {
+            "compname": "Sprinkler",
             "bomb": false,
             "emote": 1339422173332246538
         },
         "Squid Beakon": {
+            "compname": "Beakon",
             "bomb": false,
             "emote": 1339422281675575378
         },
         "Fizzy Bomb": {
+            "compname": "Fizzy",
             "bomb": true,
             "emote": 1339422354467590185
         },
@@ -53,66 +65,86 @@
             "emote": 1339422411044687952
         },
         "Angle Shooter": {
+            "compname": "Torp",
             "bomb": false,
             "emote": 1339422600694075536
         }
     },
     "specials": {
         "Big Bubbler": {
+            "compname": "Bubble",
             "emote": 1339424356777988096
         },
         "Booyah Bomb": {
+            "compname": "Booyah",
             "emote": 1339424402609147934
         },
         "Crab Tank": {
+            "compname": "Crab",
             "emote": 1339424749083955303
         },
         "Ink Storm": {
+            "compname": "Storm",
             "emote": 1339424792100732960
         },
         "Ink Vac": {
+            "compname": "Vac",
             "emote": 1339424834182189136
         },
         "Inkjet": {
+            "compname": "Jet",
             "emote": 1339419444946145361
         },
         "Killer Wail 5.1": {
+            "compname": "Wail",
             "emote": 1339424875777097802
         },
         "Kraken Royale": {
+            "compname": "Kraken",
             "emote": 1339424947646234687
         },
         "Reefslider": {
+            "compname": "Slider",
             "emote": 1339424997768298559
         },
         "Splattercolor Screen": {
+            "compname": "Splattercolor",
             "emote": 1339425044463358043
         },
         "Super Chump": {
+            "compname": "Chump",
             "emote": 1339425110276440106
         },
         "Tacticooler": {
+            "compname": "Cooler",
             "emote": 1339425152018157649
         },
         "Tenta Missiles": {
+            "compname": "Missiles",
             "emote": 1339425194212851823
         },
         "Triple Inkstrike": {
+            "compname": "Strikes",
             "emote": 1339425234238836816
         },
         "Triple Splashdown": {
+            "compname": "Triple splash",
             "emote": 1339425276903555152
         },
         "Trizooka": {
+            "compname": "Zooka",
             "emote": 1339425314358431804
         },
         "Ultra Stamp": {
+            "compname": "Stamp",
             "emote": 1339425372613378089
         },
         "Wave Breaker": {
+            "compname": "Wave",
             "emote": 1339425401432444980
         },
         "Zipcaster": {
+            "compname": "Zip",
             "emote": 1339425413004267540
         }
     },
@@ -128,10 +160,12 @@
             "weapons": [
                 {
                     "name": "Sploosh-o-matic",
+                    "compname": "Sploosh",
                     "description": "A mid-damage, close-range shooter with a high fire rate. It features the highest damage output per second in its class, at the cost of having the shortest range.",
                     "variants": [
                         {
                             "name": "Sploosh-o-matic",
+                            "compname": "Sploosh",
                             "aliases": [
                                 "sploosh",
                                 "vsploosh"
@@ -142,6 +176,7 @@
                         },
                         {
                             "name": "Neo Sploosh-o-matic",
+                            "compname": "Neo Sploosh",
                             "aliases": [
                                 "neo sploosh"
                             ],
@@ -153,10 +188,12 @@
                 },
                 {
                     "name": "Splattershot Jr.",
+                    "compname": "Jr.",
                     "description": "The first weapon given to the player upon starting the game. It is a low-damage, close-range shooter with a high fire rate. Its fire rate and ink efficiency ensure that new players will be able to accomplish something.",
                     "variants": [
                         {
                             "name": "Splattershot Jr.",
+                            "compname": "Jr.",
                             "aliases": [
                                 "splattershot jr",
                                 "jr",
@@ -170,6 +207,7 @@
                         },
                         {
                             "name": "Custom Splattershot Jr.",
+                            "compname": "Custom Jr.",
                             "aliases": [
                                 "custom splattershot jr",
                                 "cjr",
@@ -183,10 +221,12 @@
                 },
                 {
                     "name": "Splash-o-matic",
+                    "compname": "Splash",
                     "description": "A low-damage, mid-range shooter with a high fire rate. It features perfect accuracy, the best among all automatic shooters.",
                     "variants": [
                         {
                             "name": "Splash-o-matic",
+                            "compname": "Splash",
                             "aliases": [
                                 "splash",
                                 "vsplash"
@@ -197,6 +237,7 @@
                         },
                         {
                             "name": "Neo Splash-o-matic",
+                            "compname": "Neo Splash",
                             "aliases": [
                                 "neo splash"
                             ],
@@ -208,10 +249,12 @@
                 },
                 {
                     "name": "Aerospray",
+                    "compname": "Aero",
                     "description": "A low-damage, close-range shooter with a high fire rate. It has the widest shot spread and the fastest firing rate in its class, allowing it to excel at covering turf.",
                     "variants": [
                         {
                             "name": "Aerospray MG",
+                            "compname": "Silver Aero",
                             "aliases": [
                                 "aerospray",
                                 "aero",
@@ -225,6 +268,7 @@
                         },
                         {
                             "name": "Aerospray RG",
+                            "compname": "Gold Aero",
                             "aliases": [
                                 "gold aerospray",
                                 "gold aero",
@@ -238,13 +282,36 @@
                 },
                 {
                     "name": "Splattershot",
+                    "compname": "Shot",
                     "description": "A mid-damage, mid-range shooter with an average fire rate. It has no real weaknesses and can adapt to any situation.",
                     "variants": [
                         {
                             "name": "Splattershot",
+                            "compname": "Shot",
                             "aliases": [
                                 "shot",
                                 "vshot"
+                            ],
+                            "replicas": [
+                                {
+                                    "name": "Hero Shot Replica",
+                                    "compname": "Hero Shot",
+                                    "aliases": [
+                                        "hero shot",
+                                        "hero replica",
+                                        "shot hero replica",
+                                        "splattershot hero replica"
+                                    ]
+                                },
+                                {
+                                    "name": "Order Shot Replica",
+                                    "compname": "Order Shot",
+                                    "aliases": [
+                                        "order shot",
+                                        "shot order replica",
+                                        "splattershot order replica"
+                                    ]
+                                }
                             ],
                             "sub": "Suction Bomb",
                             "special": "Trizooka",
@@ -252,11 +319,26 @@
                         },
                         {
                             "name": "Tentatek Splattershot",
+                            "compname": "Ttek Shot",
                             "aliases": [
                                 "tentatek",
                                 "ttek",
                                 "ttek splattershot",
                                 "ttek shot"
+                            ],
+                            "replicas": [
+                                {
+                                    "name": "Octo Shot Replica",
+                                    "compname": "Octo Shot",
+                                    "aliases": [
+                                        "octo shot",
+                                        "octo ttek",
+                                        "octo tentatek",
+                                        "octo replica",
+                                        "ttek octo",
+                                        "ttek octo replica"
+                                    ]
+                                }
                             ],
                             "sub": "Splat Bomb",
                             "special": "Triple Inkstrike",
@@ -266,10 +348,12 @@
                 },
                 {
                     "name": ".52 Gal",
+                    "compname": "Gal",
                     "description": "A high-damage, mid-range shooter with a slow fire rate. This weapon suffers from low accuracy.",
                     "variants": [
                         {
                             "name": ".52 Gal",
+                            "compname": "Gal",
                             "aliases": [
                                 "52",
                                 "gal"
@@ -280,9 +364,11 @@
                         },
                         {
                             "name": ".52 Gal Deco",
+                            "compname": "Gal Deco",
                             "aliases": [
                                 "52 deco",
-                                "gal deco"
+                                "gal deco",
+                                "dgal"
                             ],
                             "sub": "Curling Bomb",
                             "special": "Splattercolor Screen",
@@ -292,10 +378,12 @@
                 },
                 {
                     "name": "N-ZAP",
+                    "compname": "N-zap",
                     "description": "A low-damage, mid-range shooter with a fast fire rate. It has the fastest strafe speed in its class.",
                     "variants": [
                         {
                             "name": "N-ZAP '85",
+                            "compname": "Gray zap",
                             "aliases": [
                                 "nzap",
                                 "zap",
@@ -309,6 +397,7 @@
                         },
                         {
                             "name": "N-ZAP '89",
+                            "compname": "Orange zap",
                             "aliases": [
                                 "89",
                                 "orange zap"
@@ -321,10 +410,12 @@
                 },
                 {
                     "name": "Splattershot Pro",
+                    "compname": "Shot pro",
                     "description": "A mid-damage, long-range shooter with a slow fire rate. Notably, this weapon has very high ink consumption.",
                     "variants": [
                         {
                             "name": "Splattershot Pro",
+                            "compname": "Shot pro",
                             "aliases": [
                                 "vpro",
                                 "shot pro",
@@ -337,6 +428,7 @@
                         },
                         {
                             "name": "Forge Splattershot Pro",
+                            "compname": "Forge shot pro",
                             "aliases": [
                                 "forge",
                                 "forge pro",
@@ -351,10 +443,12 @@
                 },
                 {
                     "name": ".96 Gal",
+                    "compname": "96 gal",
                     "description": "A high-damage, long-range shooter with a very slow fire rate. As a trade-off for its power and range, this weapon suffers from low accuracy, and it consumes more ink per shot than any other weapon in its class.",
                     "variants": [
                         {
                             "name": ".96 Gal",
+                            "compname": "96 gal",
                             "aliases": [
                                 "96"
                             ],
@@ -364,6 +458,7 @@
                         },
                         {
                             "name": ".96 Gal Deco",
+                            "compname": "96 gal deco",
                             "aliases": [
                                 "96 deco"
                             ],
@@ -375,10 +470,12 @@
                 },
                 {
                     "name": "Jet Squelcher",
+                    "compname": "Jet",
                     "description": "A low-damage, long-range shooter with a slow fire rate. It has the longest range in its class.",
                     "variants": [
                         {
                             "name": "Jet Squelcher",
+                            "compname": "Jet",
                             "aliases": [
                                 "jet",
                                 "vjet",
@@ -391,6 +488,7 @@
                         },
                         {
                             "name": "Custom Jet Squelcher",
+                            "compname": "Custom jet",
                             "aliases": [
                                 "cjet",
                                 "custom squelcher",
@@ -405,10 +503,12 @@
                 },
                 {
                     "name": "Splattershot Nova",
+                    "compname": "Nova",
                     "description": "A low-damage, mid-range shooter with an average fire rate. It has good ink efficiency, but is in turn less accurate.",
                     "variants": [
                         {
                             "name": "Splattershot Nova",
+                            "compname": "Nova",
                             "aliases": [
                                 "nova shot",
                                 "shot nova",
@@ -420,9 +520,12 @@
                         },
                         {
                             "name": "Annaki Splattershot Nova",
+                            "compname": "Annaki nova",
                             "aliases": [
                                 "annaki",
-                                "annaki shot"
+                                "annaki shot",
+                                "annaki nova shot",
+                                "annaki shot nova"
                             ],
                             "sub": "Ink Mine",
                             "special": "Inkjet",
@@ -432,12 +535,15 @@
                 },
                 {
                     "name": "L-3 Nozzlenose",
+                    "compname": "L-3",
                     "description": "A low-damage, mid-range shooter. It is a burst fire weapon, firing three bullets after a pull of the trigger. Well-timed button presses are required to maintain an optimal fire rate.",
                     "variants": [
                         {
                             "name": "L-3 Nozzlenose",
+                            "compname": "L-3",
                             "aliases": [
                                 "l3",
+                                "nozzle",
                                 "nozzlenose"
                             ],
                             "sub": "Curling Bomb",
@@ -446,8 +552,10 @@
                         },
                         {
                             "name": "L-3 Nozzlenose D",
+                            "compname": "L-3 D",
                             "aliases": [
                                 "l3d",
+                                "nozzle d",
                                 "nozzlenose d"
                             ],
                             "sub": "Burst Bomb",
@@ -458,10 +566,12 @@
                 },
                 {
                     "name": "H-3 Nozzlenose",
+                    "compname": "H-3",
                     "description": "A mid-damage, long-range shooter. It is burst-fire, firing three bullets after a pull of the trigger.",
                     "variants": [
                         {
                             "name": "H-3 Nozzlenose",
+                            "compname": "H-3",
                             "aliases": [
                                 "h3"
                             ],
@@ -471,6 +581,7 @@
                         },
                         {
                             "name": "H-3 Nozzlenose D",
+                            "compname": "H-3 D",
                             "aliases": [
                                 "h3d"
                             ],
@@ -482,10 +593,12 @@
                 },
                 {
                     "name": "Squeezer",
+                    "compname": "Squeezer",
                     "description": "A shooter with two firing modes: semi-automatic and fully automatic. Pulling the trigger once will squirt out a single long range, mid-power shot with perfect accuracy. Holding the button leads to successive low range, high spread, lower-powered shots. The trigger can be tapped repeatedly to maintain the high-power mode.",
                     "variants": [
                         {
                             "name": "Squeezer",
+                            "compname": "Squeezer",
                             "aliases": [
                                 "vsqueezer"
                             ],
@@ -495,6 +608,7 @@
                         },
                         {
                             "name": "Foil Squeezer",
+                            "compname": "Foil Squeezer",
                             "aliases": [
                                 "fsqueezer"
                             ],
@@ -514,10 +628,12 @@
             "weapons": [
                 {
                     "name": "Carbon Roller",
+                    "compname": "Carbon",
                     "description": "A light, mobile roller that has a fast rolling speed. It has extremely fast flicks in exchange for a short range. It is unable to crush opponents in one hit.",
                     "variants": [
                         {
                             "name": "Carbon Roller",
+                            "compname": "Carbon",
                             "aliases": [
                                 "carbon",
                                 "vcarbon"
@@ -528,6 +644,7 @@
                         },
                         {
                             "name": "Carbon Roller Deco",
+                            "compname": "Carbon deco",
                             "aliases": [
                                 "carbon deco"
                             ],
@@ -539,13 +656,17 @@
                 },
                 {
                     "name": "Splat Roller",
+                    "compname": "Roller",
                     "description": "The standard roller. It has decent range and mobility.",
                     "variants": [
                         {
                             "name": "Splat Roller",
+                            "compname": "vRoller",
                             "aliases": [
                                 "roller",
-                                "vroller"
+                                "vroller",
+                                "v splat roller",
+                                "decav is better"
                             ],
                             "sub": "Curling Bomb",
                             "special": "Big Bubbler",
@@ -553,8 +674,11 @@
                         },
                         {
                             "name": "Krak-On Splat Roller",
+                            "compname": "Krak-on",
                             "aliases": [
                                 "kraken roller",
+                                "krakon roller",
+                                "krakon",
                                 "kraken splat roller",
                                 "kroller"
                             ],
@@ -566,10 +690,12 @@
                 },
                 {
                     "name": "Dynamo Roller",
+                    "compname": "Dynamo",
                     "description": "A heavy roller. It deals high damage and can throw ink farther than all other rollers. However, it is very slow and consumes the most ink of any roller.",
                     "variants": [
                         {
                             "name": "Dynamo Roller",
+                            "compname": "Silver dynamo",
                             "aliases": [
                                 "dynamo",
                                 "silver dynamo",
@@ -581,6 +707,7 @@
                         },
                         {
                             "name": "Gold Dynamo Roller",
+                            "compname": "Gold dynamo",
                             "aliases": [
                                 "gold dynamo",
                                 "gdynamo"
@@ -593,10 +720,12 @@
                 },
                 {
                     "name": "Flingza Roller",
+                    "compname": "Flingza",
                     "description": "A roller that changes shape when performing a vertical swing. Its horizontal swing and rolling capabilities are similar to that of the Splat Roller, while its vertical swing is slow but has better range, inking, and damage.",
                     "variants": [
                         {
                             "name": "Flingza Roller",
+                            "compname": "Flingza",
                             "aliases": [
                                 "flingza",
                                 "vflingza"
@@ -607,6 +736,7 @@
                         },
                         {
                             "name": "Foil Flingza Roller",
+                            "compname": "Foil flingza",
                             "aliases": [
                                 "foil flingza"
                             ],
@@ -618,10 +748,12 @@
                 },
                 {
                     "name": "Big Swig Roller",
+                    "compname": "Swig",
                     "description": "A roller with exceptional inking capabilities and wider range. It is extremely ink efficient and fast while rolling. Its swings are somewhat quick but tend to be weaker compared to other rollers. It cannot splat opponents with a single horizontal swing, and it cannot crush opponents in one hit.",
                     "variants": [
                         {
                             "name": "Big Swig Roller",
+                            "compname": "Swig",
                             "aliases": [
                                 "big swig",
                                 "swig",
@@ -633,6 +765,7 @@
                         },
                         {
                             "name": "Big Swig Roller Express",
+                            "compname": "Swig express",
                             "aliases": [
                                 "big swig express",
                                 "express swig",
@@ -658,10 +791,12 @@
             "weapons": [
                 {
                     "name": "Squiffer",
+                    "compname": "Squiffer",
                     "description": "A short-range charger with a fast charge time that is unaffected while in mid-air.",
                     "variants": [
                         {
                             "name": "Classic Squiffer",
+                            "compname": "vSquiffer",
                             "aliases": [
                                 "squiffer",
                                 "vsquiffer"
@@ -672,6 +807,7 @@
                         },
                         {
                             "name": "New Squiffer",
+                            "compname": "New squiffer",
                             "aliases": [
                                 "nsquiffer",
                                 "zip squiffer",
@@ -685,10 +821,12 @@
                 },
                 {
                     "name": "Splat Charger",
+                    "compname": "Charger",
                     "description": "The standard charger, featuring a long range and a decent charge time.",
                     "variants": [
                         {
                             "name": "Splat Charger",
+                            "compname": "vCharger",
                             "aliases": [
                                 "charger",
                                 "vcharger"
@@ -699,6 +837,7 @@
                         },
                         {
                             "name": "Z+F Splat Charger",
+                            "compname": "Z+F",
                             "aliases": [
                                 "zf charger",
                                 "zf"
@@ -711,10 +850,12 @@
                 },
                 {
                     "name": "Splatterscope",
+                    "compname": "Splatterscope",
                     "description": "A Splat Charger with a scope, for extra range and precision at the cost of the inability to store charges.",
                     "variants": [
                         {
                             "name": "Splatterscope",
+                            "compname": "Splatterscope",
                             "aliases": [
                                 "scope",
                                 "vscope",
@@ -726,6 +867,7 @@
                         },
                         {
                             "name": "Z+F Splatterscope",
+                            "compname": "Z+F scope",
                             "aliases": [
                                 "zf charger scope",
                                 "zf scope"
@@ -738,10 +880,12 @@
                 },
                 {
                     "name": "E-liter",
+                    "compname": "Liter",
                     "description": "A charger with extreme range and damage in exchange for a slow charge time and heavy ink consumption.",
                     "variants": [
                         {
                             "name": "E-liter 4K",
+                            "compname": "vLiter",
                             "aliases": [
                                 "eliter",
                                 "liter",
@@ -754,6 +898,7 @@
                         },
                         {
                             "name": "Custom E-liter 4K",
+                            "compname": "cLiter",
                             "aliases": [
                                 "custom eliter",
                                 "custom liter",
@@ -768,10 +913,12 @@
                 },
                 {
                     "name": "E-liter Scope",
+                    "compname": "Liter scope",
                     "description": "An E-liter with a stronger scope than the Splatterscope, allowing for more range and extra precision. However, it cannot store its charge.",
                     "variants": [
                         {
                             "name": "E-liter 4K Scope",
+                            "compname": "vLiter scope",
                             "aliases": [
                                 "eliter scope",
                                 "liter scope",
@@ -784,6 +931,7 @@
                         },
                         {
                             "name": "Custom E-liter 4K Scope",
+                            "compname": "cLiter scope",
                             "aliases": [
                                 "custom eliter scope",
                                 "custom liter scope",
@@ -798,15 +946,18 @@
                 },
                 {
                     "name": "Bamboozler 14",
+                    "compname": "Bamboo",
                     "description": "A mid-range charger with an extremely fast charge time. However, its fully charged shots cannot splat opponents in a single hit. It also lacks the ability to store its charge and pierce targets.",
                     "variants": [
                         {
                             "name": "Bamboozler 14 Mk I",
+                            "compname": "vBamboo",
                             "aliases": [
                                 "bamboozler",
                                 "bamboozler mki",
                                 "bamboo",
                                 "bamboo i",
+                                "bamboo 1",
                                 "vbamboo"
                             ],
                             "sub": "Autobomb",
@@ -815,10 +966,14 @@
                         },
                         {
                             "name": "Bamboozler 14 Mk II",
+                            "compname": "Bamboo II",
                             "aliases": [
                                 "bamboozler mkii",
+                                "bamboozler ii",
+                                "bamboozler 2",
                                 "bamboo mkii",
-                                "bamboo ii"
+                                "bamboo ii",
+                                "bamboo 2"
                             ],
                             "sub": "Fizzy Bomb",
                             "special": "Super Chump",
@@ -828,10 +983,12 @@
                 },
                 {
                     "name": "Goo Tuber",
+                    "compname": "Goo",
                     "description": "A mid-range charger that can hold both full and partial charges for an exceptionally long time at the cost of a slow charge time. A single partially charged shot from this weapon can deal enough damage to splat an undamaged target on its own.",
                     "variants": [
                         {
                             "name": "Goo Tuber",
+                            "compname": "vGoo",
                             "aliases": [
                                 "goo",
                                 "tuber",
@@ -844,6 +1001,7 @@
                         },
                         {
                             "name": "Custom Goo Tuber",
+                            "compname": "cGoo",
                             "aliases": [
                                 "custom goo",
                                 "custom tuber",
@@ -858,10 +1016,12 @@
                 },
                 {
                     "name": "Snipewriter",
+                    "compname": "Pencil",
                     "description": "A long-range charger that holds five, medium-damage shots per full charge, requiring two hits to splat an opponent. It lacks the ability to store its charge and pierce targets.",
                     "variants": [
                         {
                             "name": "Snipewriter 5H",
+                            "compname": "Pencil",
                             "aliases": [
                                 "snipewriter",
                                 "5h",
@@ -874,6 +1034,7 @@
                         },
                         {
                             "name": "Snipewriter 5B",
+                            "compname": "Red pencil",
                             "aliases": [
                                 "pencil 5b",
                                 "pen 5b",
@@ -898,10 +1059,12 @@
             "weapons": [
                 {
                     "name": "Slosher",
+                    "compname": "Bucket",
                     "description": "The standard slosher, with balanced performance. It can curve its sloshes to cover a wider area.",
                     "variants": [
                         {
                             "name": "Slosher",
+                            "compname": "vBucket",
                             "aliases": [
                                 "vslosher",
                                 "vslosh"
@@ -912,6 +1075,7 @@
                         },
                         {
                             "name": "Slosher Deco",
+                            "compname": "Bucket deco",
                             "aliases": [
                                 "dslosher",
                                 "dslosh",
@@ -925,10 +1089,12 @@
                 },
                 {
                     "name": "Tri-Slosher",
+                    "compname": "Tri-slosh",
                     "description": "A slosher that throws ink in three directions simultaneously. It has a high fire rate, but lower damage output and range.",
                     "variants": [
                         {
                             "name": "Tri-Slosher",
+                            "compname": "Tri-slosh",
                             "aliases": [
                                 "trislosh",
                                 "tri",
@@ -940,6 +1106,7 @@
                         },
                         {
                             "name": "Tri-Slosher Nouveau",
+                            "compname": "Tri-slosh nouveau",
                             "aliases": [
                                 "trislosh nouveau",
                                 "ntri"
@@ -952,10 +1119,12 @@
                 },
                 {
                     "name": "Sloshing Machine",
+                    "compname": "Machine",
                     "description": "A slosher that launches a small mortar-like glob that is trailed by a vortex of ink. The vortex does splash damage in a small radius, while the glob itself does higher damage, with a smaller hitbox.",
                     "variants": [
                         {
                             "name": "Sloshing Machine",
+                            "compname": "vMachine",
                             "aliases": [
                                 "machine",
                                 "slosh machine",
@@ -967,6 +1136,7 @@
                         },
                         {
                             "name": "Sloshing Machine Neo",
+                            "compname": "Machine neo",
                             "aliases": [
                                 "neo machine",
                                 "machine neo",
@@ -982,10 +1152,12 @@
                 },
                 {
                     "name": "Bloblobber",
+                    "compname": "Blob",
                     "description": "A mid- to long-ranged slosher. Each swing lobs a volley of four, slow-moving \"blobs\" which bounce along the ground and reflect off of walls. It's the only slosher that can splat in one swing.",
                     "variants": [
                         {
                             "name": "Bloblobber",
+                            "compname": "Blob",
                             "aliases": [
                                 "blob",
                                 "vblob",
@@ -997,6 +1169,7 @@
                         },
                         {
                             "name": "Bloblobber Deco",
+                            "compname": "Blob deco",
                             "aliases": [
                                 "blob deco",
                                 "dblob",
@@ -1010,10 +1183,12 @@
                 },
                 {
                     "name": "Explosher",
+                    "compname": "Explo",
                     "description": "A slosher that launches a slow, long-range projectile that explodes on impact with solid surfaces. It has high ink consumption and poor mobility, but in return has strong inking capabilities. Uniquely, the projectile and the explosion deal damage separately.",
                     "variants": [
                         {
                             "name": "Explosher",
+                            "compname": "vExplo",
                             "aliases": [
                                 "explo",
                                 "vexplo",
@@ -1025,6 +1200,7 @@
                         },
                         {
                             "name": "Custom Explosher",
+                            "compname": "cExplo",
                             "aliases": [
                                 "custom explo",
                                 "cexplo",
@@ -1038,10 +1214,12 @@
                 },
                 {
                     "name": "Dread Wringer",
+                    "compname": "Dread",
                     "description": "A slosher that sloshes two times in succession, allowing it to cover a wider area with a single swing, or focus one area for maximum damage. It has better range and inking capabilities than the standard Slosher, but at the cost of a lower fire rate.",
                     "variants": [
                         {
                             "name": "Dread Wringer",
+                            "compname": "vDread",
                             "aliases": [
                                 "dread",
                                 "vdread"
@@ -1052,6 +1230,7 @@
                         },
                         {
                             "name": "Dread Wringer D",
+                            "compname": "Dread D",
                             "aliases": [
                                 "dread d"
                             ],
@@ -1071,10 +1250,12 @@
             "weapons": [
                 {
                     "name": "Mini Splatling",
+                    "compname": "Mini",
                     "description": "A light splatling with a short charge time but shorter range. It allows users to strafe quickly while charging and firing.",
                     "variants": [
                         {
                             "name": "Mini Splatling",
+                            "compname": "vMini",
                             "aliases": [
                                 "mini",
                                 "vmini"
@@ -1085,6 +1266,7 @@
                         },
                         {
                             "name": "Zink Mini Splatling",
+                            "compname": "zMini",
                             "aliases": [
                                 "zink mini",
                                 "zmini"
@@ -1097,10 +1279,12 @@
                 },
                 {
                     "name": "Heavy Splatling",
+                    "compname": "Heavy",
                     "description": "The standard splatling. Its stats are well-rounded, having no glaring strengths or weaknesses.",
                     "variants": [
                         {
                             "name": "Heavy Splatling",
+                            "compname": "vHeavy",
                             "aliases": [
                                 "heavy",
                                 "vheavy"
@@ -1111,6 +1295,7 @@
                         },
                         {
                             "name": "Heavy Splatling Deco",
+                            "compname": "Heavy deco",
                             "aliases": [
                                 "heavy deco",
                                 "deco heavy",
@@ -1124,10 +1309,12 @@
                 },
                 {
                     "name": "Hydra Splatling",
+                    "compname": "Hydra",
                     "description": "The Splatling with the longest range in its class. It can fire continuously for a lengthy period of time, with the drawback being its ink hunger and high charge time. When fully charged, a high-damage feature activates, allowing users to splat opponents with three hits.",
                     "variants": [
                         {
                             "name": "Hydra Splatling",
+                            "compname": "vHydra",
                             "aliases": [
                                 "hydra",
                                 "vhydra"
@@ -1138,6 +1325,7 @@
                         },
                         {
                             "name": "Custom Hydra Splatling",
+                            "compname": "cHydra",
                             "aliases": [
                                 "custom hydra",
                                 "chydra"
@@ -1150,10 +1338,12 @@
                 },
                 {
                     "name": "Ballpoint Splatling",
+                    "compname": "Ballpoint",
                     "description": "A Splatling with two different firing modes, an initial short ranged firing mode with a high fire rate and a secondary firing mode that has a slower fire rate but longer range and perfect accuracy. Unlike most other splatlings, it can interrupt its fire to recharge. Upon completing a full charge, subsequent charges will retain the secondary mode attributes until the charge is entirely expended.",
                     "variants": [
                         {
                             "name": "Ballpoint Splatling",
+                            "compname": "vBallpoint",
                             "aliases": [
                                 "ballpoint",
                                 "vballpoint"
@@ -1164,6 +1354,7 @@
                         },
                         {
                             "name": "Ballpoint Splatling Nouveau",
+                            "compname": "Ballpoint nouveau",
                             "aliases": [
                                 "ballpoint nouveau",
                                 "nballpoint"
@@ -1176,10 +1367,12 @@
                 },
                 {
                     "name": "Nautilus",
+                    "compname": "Naut",
                     "description": "A shorter ranged Splatling with a medium charge rate. The weapon boasts the ability to store its charge much like some chargers and can interrupt its fire to recharge. Its accuracy in the air is comparable to its accuracy when grounded.",
                     "variants": [
                         {
                             "name": "Nautilus 47",
+                            "compname": "vNaut",
                             "aliases": [
                                 "nautilus",
                                 "naut 47",
@@ -1193,6 +1386,7 @@
                         },
                         {
                             "name": "Nautilus 79",
+                            "compname": "Gold naut",
                             "aliases": [
                                 "naut 79"
                             ],
@@ -1204,10 +1398,12 @@
                 },
                 {
                     "name": "Heavy Edit Splatling",
+                    "compname": "Edit",
                     "description": "A Splatling with a slow charge time, but a very high fire rate when fully charged.",
                     "variants": [
                         {
                             "name": "Heavy Edit Splatling",
+                            "compname": "vEdit",
                             "aliases": [
                                 "heavy edit",
                                 "edit",
@@ -1219,6 +1415,7 @@
                         },
                         {
                             "name": "Heavy Edit Splatling Nouveau",
+                            "compname": "Edit nouveau",
                             "aliases": [
                                 "heavy edit nouveau",
                                 "edit nouveau",
@@ -1240,10 +1437,12 @@
             "weapons": [
                 {
                     "name": "Dapple Dualies",
+                    "compname": "Dapples",
                     "description": "Lightweight dualies that have quick dodge rolls, a high fire rate, and middling damage. However, they have poor range, and their dodge rolls only cover a short distance.",
                     "variants": [
                         {
                             "name": "Dapple Dualies",
+                            "compname": "vDapples",
                             "aliases": [
                                 "dapple",
                                 "vdapple"
@@ -1254,6 +1453,7 @@
                         },
                         {
                             "name": "Dapple Dualies Nouveau",
+                            "compname": "Blue dapples",
                             "aliases": [
                                 "dapple nouveau",
                                 "dapples nouveau",
@@ -1267,10 +1467,12 @@
                 },
                 {
                     "name": "Splat Dualies",
+                    "compname": "Dualies",
                     "description": "The first available pair of dualies in the Splatoon weapons. They feature balanced performance, having a high fire rate to compensate for the low damage typical of the class.",
                     "variants": [
                         {
                             "name": "Splat Dualies",
+                            "compname": "vDualies",
                             "aliases": [
                                 "dualie",
                                 "vdualie"
@@ -1281,6 +1483,7 @@
                         },
                         {
                             "name": "Enperry Splat Dualies",
+                            "compname": "Enperries",
                             "aliases": [
                                 "enperry dualie",
                                 "enperry",
@@ -1294,10 +1497,12 @@
                 },
                 {
                     "name": "Glooga Dualies",
+                    "compname": "Gloogas",
                     "description": "A mid-range, mid-damage pair of dualies with a low fire rate. Their dodge rolls are slow, but shot damage and range increase after a dodge roll instead of fire rate, allowing it to splat opponents with one fewer shot at greater distances.",
                     "variants": [
                         {
                             "name": "Glooga Dualies",
+                            "compname": "vGloogas",
                             "aliases": [
                                 "glooga",
                                 "vglooga"
@@ -1308,6 +1513,7 @@
                         },
                         {
                             "name": "Glooga Dualies Deco",
+                            "compname": "Gloogas deco",
                             "aliases": [
                                 "glooga deco",
                                 "gloogas deco",
@@ -1321,10 +1527,12 @@
                 },
                 {
                     "name": "Dualie Squelchers",
+                    "compname": "Squelchers",
                     "description": "A long-range pair of dualies with unique dodge rolls. The dodge rolls are quick and allow the user to slide instead of being locked in place, but they do not increase their fire rate.",
                     "variants": [
                         {
                             "name": "Dualie Squelchers",
+                            "compname": "vSquelchers",
                             "aliases": [
                                 "squelcher",
                                 "vsquelcher",
@@ -1337,6 +1545,7 @@
                         },
                         {
                             "name": "Custom Dualie Squelchers",
+                            "compname": "cSquelchers",
                             "aliases": [
                                 "custom squelcher",
                                 "csquelcher",
@@ -1350,10 +1559,12 @@
                 },
                 {
                     "name": "Tetra Dualies",
+                    "compname": "Tetras",
                     "description": "These mid-range dualies put a significant emphasis on mobility. They allow up to four consecutive dodge rolls instead of the normal two, and can also shoot while rolling.",
                     "variants": [
                         {
                             "name": "Dark Tetra Dualies",
+                            "compname": "Dark tetras",
                             "aliases": [
                                 "tetra",
                                 "dark tetra",
@@ -1365,6 +1576,7 @@
                         },
                         {
                             "name": "Light Tetra Dualies",
+                            "compname": "Light tetras",
                             "aliases": [
                                 "light tetra",
                                 "zip tetra"
@@ -1377,10 +1589,12 @@
                 },
                 {
                     "name": "Douser Dualies FF",
+                    "compname": "Dousers",
                     "description": "A long-range pair of Dualies that can only perform one dodge roll. When performing a dodge roll, the fire rate increases while reducing their range.",
                     "variants": [
                         {
                             "name": "Douser Dualies FF",
+                            "compname": "vDousers",
                             "aliases": [
                                 "douser",
                                 "douser dualie",
@@ -1392,6 +1606,7 @@
                         },
                         {
                             "name": "Custom Douser Dualies FF",
+                            "compname": "cDousers",
                             "aliases": [
                                 "custom douser",
                                 "custom douser dualie",
@@ -1416,10 +1631,12 @@
             "weapons": [
                 {
                     "name": "Splat Brella",
+                    "compname": "Brella",
                     "description": "The standard Brella, featuring middling range, damage, and shield durability.",
                     "variants": [
                         {
                             "name": "Splat Brella",
+                            "compname": "vBrella",
                             "aliases": [
                                 "brella",
                                 "vbrella"
@@ -1430,6 +1647,7 @@
                         },
                         {
                             "name": "Sorella Brella",
+                            "compname": "Sorella",
                             "aliases": [
                                 "sorella",
                                 "sbrella"
@@ -1442,10 +1660,12 @@
                 },
                 {
                     "name": "Tenta Brella",
+                    "compname": "Tent",
                     "description": "A heavier brella with a larger, more durable shield. Its shots have more range and it is able to deal lethal damage in one shot, at the cost of a slow rate of fire.",
                     "variants": [
                         {
                             "name": "Tenta Brella",
+                            "compname": "vTent",
                             "aliases": [
                                 "tent",
                                 "vtent"
@@ -1456,6 +1676,7 @@
                         },
                         {
                             "name": "Tenta Sorella Brella",
+                            "compname": "Sorella tent",
                             "aliases": [
                                 "sorella tent",
                                 "stent"
@@ -1468,10 +1689,12 @@
                 },
                 {
                     "name": "Undercover Brella",
+                    "compname": "Undercover",
                     "description": "A lightweight brella that can be fired while its shield is open. It has a quick rate of fire, but the damage dealt by each shot is low and its shield is particularly weak. It is unable to launch its shield.",
                     "variants": [
                         {
                             "name": "Undercover Brella",
+                            "compname": "vUndercover",
                             "aliases": [
                                 "undercover",
                                 "vundercover"
@@ -1482,6 +1705,7 @@
                         },
                         {
                             "name": "Undercover Sorella Brella",
+                            "compname": "Sorella undercover",
                             "aliases": [
                                 "sorella undercover",
                                 "sundercover"
@@ -1494,10 +1718,12 @@
                 },
                 {
                     "name": "Recycled Brella 24 Mk I",
+                    "compname": "Recycled",
                     "description": "A Brella with faster shield deployment and recovery.",
                     "variants": [
                         {
                             "name": "Recycled Brella 24 Mk I",
+                            "compname": "vRecycled",
                             "aliases": [
                                 "recycled brella",
                                 "recycled brella mki",
@@ -1510,6 +1736,7 @@
                         },
                         {
                             "name": "Recycled Brella 24 Mk II",
+                            "compname": "Recycled II",
                             "aliases": [
                                 "recycled brella mkii",
                                 "recycled mkii"
@@ -1530,10 +1757,12 @@
             "weapons": [
                 {
                     "name": "Luna Blaster",
+                    "compname": "Luna",
                     "description": "A blaster with short range but above average fire rate, blast radius, and ink efficiency. It is capable of splatting an opponent with one direct hit.",
                     "variants": [
                         {
                             "name": "Luna Blaster",
+                            "compname": "vLuna",
                             "aliases": [
                                 "luna",
                                 "vluna"
@@ -1544,6 +1773,7 @@
                         },
                         {
                             "name": "Luna Blaster Neo",
+                            "compname": "Luna neo",
                             "aliases": [
                                 "luna neo",
                                 "nluna"
@@ -1556,10 +1786,12 @@
                 },
                 {
                     "name": "Blaster",
+                    "compname": "Blaster",
                     "description": "The standard blaster. Has a slow firing speed but is well-rounded otherwise.",
                     "variants": [
                         {
                             "name": "Blaster",
+                            "compname": "vBlaster",
                             "aliases": [
                                 "vblaster"
                             ],
@@ -1569,6 +1801,7 @@
                         },
                         {
                             "name": "Custom Blaster",
+                            "compname": "cBlaster",
                             "aliases": [
                                 "cblaster"
                             ],
@@ -1580,10 +1813,12 @@
                 },
                 {
                     "name": "Range Blaster",
+                    "compname": "Range",
                     "description": "A revised version of the Blaster that boasts higher range at the cost of a slower fire rate.",
                     "variants": [
                         {
                             "name": "Range Blaster",
+                            "compname": "vRange",
                             "aliases": [
                                 "rb",
                                 "vrb"
@@ -1594,6 +1829,7 @@
                         },
                         {
                             "name": "Custom Range Blaster",
+                            "compname": "cRange",
                             "aliases": [
                                 "crb"
                             ],
@@ -1605,10 +1841,12 @@
                 },
                 {
                     "name": "Clash Blaster",
+                    "compname": "Clash",
                     "description": "A blaster that fires huge short-ranged blasts in very quick succession, but its low damage makes it hard to splat opponents with it.",
                     "variants": [
                         {
                             "name": "Clash Blaster",
+                            "compname": "vClash",
                             "aliases": [
                                 "clash",
                                 "vclash"
@@ -1619,6 +1857,7 @@
                         },
                         {
                             "name": "Clash Blaster Neo",
+                            "compname": "Neo clash",
                             "aliases": [
                                 "clash neo",
                                 "neo clash"
@@ -1631,10 +1870,12 @@
                 },
                 {
                     "name": "Rapid Blaster",
+                    "compname": "Rapid",
                     "description": "A blaster that fires long range blasts at a good fire rate, with reduced damage and blast radius.",
                     "variants": [
                         {
                             "name": "Rapid Blaster",
+                            "compname": "vRapid",
                             "aliases": [
                                 "rapid",
                                 "vrapid"
@@ -1645,6 +1886,7 @@
                         },
                         {
                             "name": "Rapid Blaster Deco",
+                            "compname": "Rapid deco",
                             "aliases": [
                                 "rapid deco",
                                 "drapid"
@@ -1657,10 +1899,12 @@
                 },
                 {
                     "name": "Rapid Blaster Pro",
+                    "compname": "Rapid pro",
                     "description": "This modified version of the Rapid Blaster can hit at even longer ranges, but has a slower fire rate, and uses more ink per shot.",
                     "variants": [
                         {
                             "name": "Rapid Blaster Pro",
+                            "compname": "vRapid pro",
                             "aliases": [
                                 "rapid pro",
                                 "vrapid pro"
@@ -1671,6 +1915,7 @@
                         },
                         {
                             "name": "Rapid Blaster Pro Deco",
+                            "compname": "Rapid pro deco",
                             "aliases": [
                                 "rapid pro deco",
                                 "drapid pro"
@@ -1683,10 +1928,12 @@
                 },
                 {
                     "name": "S-BLAST",
+                    "compname": "S-blast",
                     "description": "A slow-firing, one-shot capable blaster with two firing modes, short-range and long-range. The short-range mode is triggered by pressing ZR after jumping, and fires a huge short-ranged blast. The long-range mode is triggered by pressing ZR on the ground, and fires a long-ranged, high-velocity shot with a small blast radius.",
                     "variants": [
                         {
                             "name": "S-BLAST '92",
+                            "compname": "vS-blast",
                             "aliases": [
                                 "sblast",
                                 "vsblast"
@@ -1697,6 +1944,7 @@
                         },
                         {
                             "name": "S-BLAST '91",
+                            "compname": "S-blast 91",
                             "aliases": [],
                             "sub": "Burst Bomb",
                             "special": "Booyah Bomb",
@@ -1717,14 +1965,17 @@
             "weapons": [
                 {
                     "name": "Inkbrush",
+                    "compname": "Inkbrush",
                     "description": "A fast but short-ranged brush. When pushed along the ground, the user moves at extremely high speed, and leaves behind a narrow trail of ink.",
                     "variants": [
                         {
                             "name": "Inkbrush",
+                            "compname": "vInkbrush",
                             "aliases": [
                                 "brush",
                                 "vbrush",
-                                "vinkbrush"
+                                "vinkbrush",
+                                "long range"
                             ],
                             "sub": "Splat Bomb",
                             "special": "Killer Wail 5.1",
@@ -1732,6 +1983,7 @@
                         },
                         {
                             "name": "Inkbrush Nouveau",
+                            "compname": "Inkbrush nouveau",
                             "aliases": [
                                 "brush nouveau",
                                 "nbrush"
@@ -1744,10 +1996,12 @@
                 },
                 {
                     "name": "Octobrush",
+                    "compname": "Octobrush",
                     "description": "A slower brush with decent range. Movement speed while sliding along the ground is a bit slower compared to the Inkbrush.",
                     "variants": [
                         {
                             "name": "Octobrush",
+                            "compname": "vOctobrush",
                             "aliases": [
                                 "octo",
                                 "vocto",
@@ -1759,6 +2013,7 @@
                         },
                         {
                             "name": "Octobrush Nouveau",
+                            "compname": "Octobrush nouveau",
                             "aliases": [
                                 "octo nouveau",
                                 "nocto"
@@ -1771,14 +2026,18 @@
                 },
                 {
                     "name": "Painbrush",
+                    "compname": "Painbrush",
                     "description": "An even slower brush that must wind up before it can start swinging. In return, it has greater range, power, and inking capabilities.",
                     "variants": [
                         {
                             "name": "Painbrush",
+                            "compname": "vPainbrush",
                             "aliases": [
                                 "pain",
+                                "pbrush",
                                 "vpain",
-                                "vpainbrush"
+                                "vpainbrush",
+                                "vpbrush"
                             ],
                             "sub": "Curling Bomb",
                             "special": "Wave Breaker",
@@ -1786,6 +2045,7 @@
                         },
                         {
                             "name": "Painbrush Nouveau",
+                            "compname": "Painbrush nouveau",
                             "aliases": [
                                 "pain nouveau",
                                 "npain"
@@ -1809,10 +2069,12 @@
             "weapons": [
                 {
                     "name": "Tri-Stringer",
+                    "compname": "Stringer",
                     "description": "The standard stringer, with long range but no charge hold. Reaching the first level of charge allows its shots to lodge themselves in terrain briefly before exploding.",
                     "variants": [
                         {
                             "name": "Tri-Stringer",
+                            "compname": "vStringer",
                             "aliases": [
                                 "stringer",
                                 "bow",
@@ -1824,6 +2086,7 @@
                         },
                         {
                             "name": "Inkline Tri-Stringer",
+                            "compname": "Inkline stringer",
                             "aliases": [
                                 "inkline stringer",
                                 "inkline tristringer",
@@ -1838,15 +2101,19 @@
                 },
                 {
                     "name": "REEF-LUX 450",
+                    "compname": "Reeflux",
                     "description": "A lightweight stringer that can store its charge, but cannot fire explosive shots. It charges quickly and does more damage than the Tri-Stringer, but it is lacking in range.",
                     "variants": [
                         {
                             "name": "REEF-LUX 450",
+                            "compname": "vReeflux",
                             "aliases": [
                                 "reeflux",
                                 "reef",
+                                "flux",
+                                "vreeflux",
                                 "vreef",
-                                "vreeflux"
+                                "vflux"
                             ],
                             "sub": "Curling Bomb",
                             "special": "Tenta Missiles",
@@ -1854,10 +2121,15 @@
                         },
                         {
                             "name": "REEF-LUX 450 Deco",
+                            "compname": "Reeflux deco",
                             "aliases": [
                                 "reeflux deco",
                                 "reef deco",
+                                "flux deco",
                                 "dreef",
+                                "dflux",
+                                "deco reef",
+                                "deco flux",
                                 "dreeflux"
                             ],
                             "sub": "Splash Wall",
@@ -1868,12 +2140,18 @@
                 },
                 {
                     "name": "Wellstring V",
+                    "compname": "Wellstring",
                     "description": "A stringer with five explosive shots.",
                     "variants": [
                         {
                             "name": "Wellstring V",
+                            "compname": "vWellstring",
                             "aliases": [
                                 "wellstring",
+                                "well",
+                                "wellV",
+                                "vwell",
+                                "vwellV",
                                 "vwellstring",
                                 "best weapon"
                             ],
@@ -1883,9 +2161,13 @@
                         },
                         {
                             "name": "Custom Wellstring V",
+                            "compname": "cWellstring",
                             "aliases": [
                                 "custom wellstring",
-                                "cwellstring"
+                                "cwell",
+                                "cwellV",
+                                "cwellstring",
+                                "also best weapon"
                             ],
                             "sub": "Point Sensor",
                             "special": "Wave Breaker",
@@ -1906,13 +2188,16 @@
             "weapons": [
                 {
                     "name": "Splatana Stamper",
+                    "compname": "Stamper",
                     "description": "The standard stringer, with long range but no charge hold. Reaching the first level of charge allows its shots to lodge themselves in terrain briefly before exploding.",
                     "variants": [
                         {
                             "name": "Splatana Stamper",
+                            "compname": "vStamper",
                             "aliases": [
                                 "stamper",
-                                "vstamper"
+                                "vstamper",
+                                "slashy not so dashy"
                             ],
                             "sub": "Burst Bomb",
                             "special": "Zipcaster",
@@ -1920,9 +2205,12 @@
                         },
                         {
                             "name": "Splatana Stamper Nouveau",
+                            "compname": "Stamper nouveau",
                             "aliases": [
                                 "stamper nouveau",
-                                "nstamper"
+                                "nstamper",
+                                "crab stamper",
+                                "slashy not so dashy nouveau"
                             ],
                             "sub": "Toxic Mist",
                             "special": "Crab Tank",
@@ -1932,14 +2220,17 @@
                 },
                 {
                     "name": "Splatana Wiper",
+                    "compname": "Wiper",
                     "description": "The standard Splatana, with decent range but low damage. It moves quickly when slashing and charging, and has good ink efficiency.",
                     "variants": [
                         {
                             "name": "Splatana Wiper",
+                            "compname": "vWiper",
                             "aliases": [
                                 "wiper",
                                 "vwiper",
-                                "viper"
+                                "viper",
+                                "windshield wiper"
                             ],
                             "sub": "Torpedo",
                             "special": "Ultra Stamp",
@@ -1947,10 +2238,13 @@
                         },
                         {
                             "name": "Splatana Wiper Deco",
+                            "compname": "Wiper deco",
                             "aliases": [
                                 "wiper deco",
                                 "dwiper",
-                                "diper"
+                                "diper",
+                                "diaper",
+                                "windshield wiper deco"
                             ],
                             "sub": "Squid Beakon",
                             "special": "Tenta Missiles",
@@ -1960,10 +2254,12 @@
                 },
                 {
                     "name": "Decavitator",
+                    "compname": "Decav",
                     "description": "A splatana with a long-ranged horizontal lunging attack, which can be redirected while mid-lunge.",
                     "variants": [
                         {
                             "name": "Mint Decavitator",
+                            "compname": "Mint",
                             "aliases": [
                                 "mint decav",
                                 "decav",
@@ -1977,6 +2273,7 @@
                         },
                         {
                             "name": "Charcoal Decavitator",
+                            "compname": "Charcoal",
                             "aliases": [
                                 "charcoal decav",
                                 "charcoal",
