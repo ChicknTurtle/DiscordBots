@@ -1,11 +1,37 @@
 
 import random
 import json
+import requests
 import discord
 
+from data import Data
 from utils import *
 
 Log = Log()
+Data = Data()
+
+def get_image_url(weapon:str):
+    if weapon in Data['splatdrone/global'].get('weaponImageCache', {}):
+        return Data['splatdrone/global']['weaponImageCache'][weapon]
+    base_url = "https://splatoonwiki.org/w/api.php"
+    filename = f"S3 Weapon Main {weapon}.png"
+    params = {
+        "action": "query",
+        "titles": f"File:{filename}",
+        "prop": "imageinfo",
+        "iiprop": "url",
+        "format": "json"
+    }
+    response = requests.get(base_url, params=params).json()
+    pages = response.get("query", {}).get("pages", {})
+    for page in pages.values():
+        if "imageinfo" in page:
+            url = page["imageinfo"][0]["url"]
+            Data['splatdrone/global'].setdefault('weaponImageCache', {})
+            Data['splatdrone/global']['weaponImageCache'][weapon] = url
+            Log.debug(f"Splatdrone | Added new weapon image to cache: {weapon}")
+            return url
+    return None
 
 def setup(bot:discord.AutoShardedBot):
 
@@ -112,10 +138,9 @@ def setup(bot:discord.AutoShardedBot):
                 f"{weapon_data['name']}",
                 f"{sub_emote} {weapon_data['sub']}\n{special_emote} {weapon_data['special']} ({weapon_data['special-points']}p)\n-# [Inkipedia Page](<https://splatoonwiki.org/wiki/{wiki}>)"
             )
-            image_url = weapon_data.get('image')
+            image_url = get_image_url(weapon_data['name'])
             if image_url:
                 embed.set_thumbnail(url=image_url)
             await ctx.respond('', embed=embed)
         else:
             await ctx.respond(f"No weapon found for `{weapon}`\n-# If you believe this should be a valid alias, let me know with **/bot suggest**", ephemeral=True)
-    
