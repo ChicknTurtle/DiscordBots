@@ -35,6 +35,8 @@ def get_image_url(weapon:str):
 
 def setup(bot:discord.AutoShardedBot):
 
+    splat_group = bot.create_group("splat", "General Splatoon-related commands.")
+
     # Setup weapon data
     weapons:dict = [] # data of each main weapon (not kit specific)
     weapon_variants:dict = [] # data of each main weapon variant (kit specific)
@@ -95,9 +97,9 @@ def setup(bot:discord.AutoShardedBot):
                         return weapon_class
         return None
     
-    # rw
-    @bot.command(name="rw", description="Give a random weapon")
-    async def rw_command(ctx:discord.ApplicationContext, weaponclass=discord.Option(str, name='class', required=False, choices=weapon_class_names2, description="Filter by a class"), sub=discord.Option(str, required=False, choices=list(all_subs.keys())+['Any Bomb'], description="Filter by a sub weapon"), special=discord.Option(str, required=False, choices=list(all_specials.keys()), description="Filter by a special weapon"), getclass=discord.Option(bool, required=False, description="Get a random weapon class instead of weapon. All other options will be ignored")):
+    # randomweapon
+    @splat_group.command(name="randomweapon", description="Choose a random weapon with optional filters")
+    async def splat_randomweapon_command(ctx:discord.ApplicationContext, weaponclass=discord.Option(str, name='class', required=False, choices=weapon_class_names2, description="Filter by a class"), sub=discord.Option(str, required=False, choices=list(all_subs.keys())+['Any Bomb'], description="Filter by a sub weapon"), special=discord.Option(str, required=False, choices=list(all_specials.keys()), description="Filter by a special weapon"), getclass=discord.Option(bool, required=False, description="Get a random weapon class instead of weapon. All other options will be ignored")):
         if getclass == True:
             randomclass = random.choice(weapon_classes)['name2']
             await ctx.respond(f"Your random weapon class is **{randomclass}**!")
@@ -125,7 +127,7 @@ def setup(bot:discord.AutoShardedBot):
         
         await ctx.respond(f"Your random weapon is **{randomweapon['name']}**! {sub_emote} {special_emote}")
 
-    @bot.command(name="kit", description="View a weapon's kit")
+    @splat_group.command(name="kit", description="View a weapon's kit")
     async def kit_command(ctx: discord.ApplicationContext, weapon=discord.Option(str, name='weapon', required=True, description="Weapon name, aliases supported")):
         weapon_data = get_weapon_variant(weapon)
         if weapon_data:
