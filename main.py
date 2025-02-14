@@ -6,6 +6,7 @@
 from os import chdir
 from sys import stdout
 import asyncio
+import aiohttp
 from traceback import format_exc
 
 from bots import Bots
@@ -38,7 +39,15 @@ loop = asyncio.get_event_loop()
 
 # Run the bots
 for bot in Bots:
-    loop.create_task(bot.start(bot.token))
+    async def run_bot(bot):
+        try:
+            await bot.start(bot.token)
+        except aiohttp.client_exceptions.ClientConnectionResetError:
+            Log.error(f"Ignoring ClientConnectionResetError for bot {bot.name}")
+        except Exception as e:
+            Log.error(f"Unexpected error in {bot.name}'s run bot loop:\n{format_exc()}")
+
+    loop.create_task(run_bot(bot))
 
 try:
     loop.run_forever()
