@@ -184,14 +184,14 @@ def setup(bot:discord.AutoShardedBot):
 
     @splat_group.command(name="title", description="Get a random title")
     async def splat_title_command(ctx:discord.ApplicationContext,
-                                  daily=discord.Option(bool, default=False, description="View your daily title"),
-                                  user=discord.Option(discord.User, default=None, description="View someone else's daily title. Does nothing if daily=False")):
-        if daily:
+                                  user=discord.Option(discord.User, default=None, description="View someone else's daily title. Does nothing if random=True"),
+                                  random=discord.Option(bool, default=False, description="Get a random title instead of daily"),):
+        if random:
+            adjective, subject = get_random_title()
+            await ctx.respond(f"Your random title is **{adjective} {subject}**!")
+        else:
             user:discord.User = user or ctx.author
             who = 'Your' if user == ctx.author else f"{user.display_name}'s"
             adjective, subject = get_random_title(f"{user.id}-{datetime.now(timezone.utc).date()}")
             await ctx.respond(f"{who} daily title is **{adjective} {subject}**!")
-        else:
-            adjective, subject = get_random_title()
-            await ctx.respond(f"Your random title is **{adjective} {subject}**!")
     splat_title_command.helpdesc="Daily title uses UTC timezone (same as Splatoon daily reset)"
