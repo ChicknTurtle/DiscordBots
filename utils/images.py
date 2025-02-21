@@ -19,7 +19,26 @@ async def attachment_to_image(attach:discord.Attachment) -> Image.Image|None:
     except UnidentifiedImageError:
         return None
 
-def rgb_split_image(img: Image.Image) -> Image.Image:
+def fill_block(block, data, axis, cmyk):
+	# Mapping: (offset, channel, color_index)
+	channels = [(0, 0, 0), (1, 1, 1), (2, 2, 2)] if not cmyk else [
+		(0, 1, 1), (1, 2, 2), (2, 0, 0),  # green, blue, red
+		(0, 2, 2), (1, 0, 0), (2, 1, 1)   # magenta, yellow, cyan
+	]
+	for offset, channel, color_index in channels:
+		tiled = np.tile(data[:, color_index].reshape(-1, 1), (1, 3)) if axis == 0 else np.tile(data[:, color_index], (3, 1))
+		if axis == 0:
+			block[offset::3, :, channel] = tiled
+		else:
+			block[:, offset::3, channel] = tiled
+	# alpha
+	alpha = np.tile(data[:, 3].reshape(-1, 1), (1, 3)) if axis == 0 else np.tile(data[:, 3], (3, 1))
+	if axis == 0:
+		block[0::3, :, 3] = block[1::3, :, 3] = block[2::3, :, 3] = alpha
+	else:
+		block[:, 0::3, 3] = block[:, 1::3, 3] = block[:, 2::3, 3] = alpha
+
+def rgb_split_image(img:Image.Image, cmyk:bool=False, horizontal:bool=False) -> Image.Image:
     # config
     main_size = 64
     # scale input down if over these dimensions
@@ -41,22 +60,23 @@ def rgb_split_image(img: Image.Image) -> Image.Image:
         width, height = img.size
     
     original = np.array(img)
-    result = Image.new('RGBA', (width * 3, height * 3))
+    result = Image.new('RGBA', (width*3, height*3))
     
     # build effect
-    for y in range(height):
-        block = np.zeros((3, width * 3, 4), dtype=np.uint8)
-        row = original[y, :, :]
-        
-        block[:, 0::3, 0] = np.tile(row[:, 0], (3, 1))  # red
-        block[:, 1::3, 1] = np.tile(row[:, 1], (3, 1))  # green
-        block[:, 2::3, 2] = np.tile(row[:, 2], (3, 1))  # blue
-        block[:, 0::3, 3] = np.tile(row[:, 3], (3, 1))  # alpha red
-        block[:, 1::3, 3] = np.tile(row[:, 3], (3, 1))  # alpha green
-        block[:, 2::3, 3] = np.tile(row[:, 3], (3, 1))  # alpha blue
-        
-        block_img = Image.fromarray(block)
-        result.paste(block_img, (0, y * 3), block_img)  # Use alpha channel as mask for pasting
+    if horizontal:
+        for x in range(width):
+            block = np.zeros((height * 3, 3, 4), dtype=np.uint8)
+            column = original[:, x, :]
+            fill_block(block, column, axis=0, cmyk=cmyk)
+            block_img = Image.fromarray(block)
+            result.paste(block_img, (x * 3, 0), block_img)
+    else:
+        for y in range(height):
+            block = np.zeros((3, width * 3, 4), dtype=np.uint8)
+            row = original[y, :, :]
+            fill_block(block, row, axis=1, cmyk=cmyk)
+            block_img = Image.fromarray(block)
+            result.paste(block_img, (0, y * 3), block_img)
     
     # scale up final image
     scale_factor = 1
