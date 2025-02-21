@@ -27,8 +27,8 @@ def setup(bot):
     @bot_group.command(name="ai",description="Generate an image using ai")
     @commands.cooldown(1, 10, commands.BucketType.user)
     async def image_ai_command(ctx:discord.ApplicationContext, prompt=discord.Option(str, max_length=1000, description="Image prompt")):
-        original = await ctx.respond(f"**Generating Image...**\nPrompt: `{prompt}`")
         start_time = datetime.now() 
+        original = await ctx.respond(f"**Generating Image...**\nPrompt: `{prompt}`")
         image_bytes = await query({"inputs": prompt})
         end_time = datetime.now()
         total_time = end_time - start_time
@@ -52,7 +52,8 @@ def setup(bot):
     # rgbsplit
     @bot_group.command(name="rgbsplit",description="Split image pixels into red, green, and blue")
     @commands.cooldown(1, 10, commands.BucketType.user)
-    async def image_rgbsplit_command(ctx:discord.ApplicationContext, attach=discord.Option(discord.Attachment, name='image', description="Image file to rgb split. Try a png or jpg file")):
+    async def image_rgbsplit_command(ctx:discord.ApplicationContext, attach=discord.Option(discord.Attachment, name='image', description="Image file to rgb split. Try a png or jpg file"), cmyk=discord.Option(bool, default=False, description="Display using cmyk instead of rgb"), horizontal=discord.Option(bool, default=False, description="Display colors horizontally instead of vertically")):
+        start_time = datetime.now() 
         # make sure image is valid
         img = await attachment_to_image(attach)
         if not img:
@@ -60,16 +61,15 @@ def setup(bot):
             return
         
         original = await ctx.respond(f"**RGB Splitting Image...**")
-        start_time = datetime.now() 
         # get image
-        rgbimg = rgb_split_image(img)
+        rgbimg = rgb_split_image(img, cmyk, horizontal)
         buffer = image_to_bufferimg(rgbimg)
 
         end_time = datetime.now()
         total_time = end_time - start_time
         file = discord.File(buffer, filename="rgb_split.png")
         try:
-            await original.edit_original_response(content=f"RGB Split Image\n**Created in {format_time(total_time)}**", file=file, allowed_mentions=discord.AllowedMentions.none())
+            await original.edit_original_response(content=f"RGB Split Image{" (CMYK)" if cmyk else ''}\n**Created in {format_time(total_time)}**", file=file, allowed_mentions=discord.AllowedMentions.none())
         except discord.NotFound:
             await ctx.send(f"-# {ctx.author.mention} used /image rgbsplit\nRGB Split Image\n**Created in {format_time(total_time)}**", file=file, allowed_mentions=discord.AllowedMentions.none())
     # rgbsplit error
