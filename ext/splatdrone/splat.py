@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 import discord
 
 from data import Data
-from utils import *
+from utils import Log
 
 Log = Log()
 Data = Data()

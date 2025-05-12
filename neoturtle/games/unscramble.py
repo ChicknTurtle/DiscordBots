@@ -5,7 +5,7 @@ import math
 import discord
 
 from data import Data
-from utils import *
+from utils import Log, config
 from neoturtle.gamesmanager import GamesManager
 from neoturtle.wordsmanager import WordsManager
 

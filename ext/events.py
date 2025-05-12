@@ -6,7 +6,7 @@ import discord
 from bots import Bots
 from data import Data
 from dev import handle_dev
-from utils import *
+from utils import Log, config, format_time
 
 config = config()
 

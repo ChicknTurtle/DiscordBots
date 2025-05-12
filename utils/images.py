@@ -1,8 +1,24 @@
 
-from PIL import Image, ImageOps, UnidentifiedImageError
+from PIL import Image, ImageOps, UnidentifiedImageError, ImageDraw, ImageFilter
 import numpy as np
 import io
 import discord
+import requests
+import os
+
+def load_image(url:str) -> Image.Image:
+    os.makedirs('cache', exist_ok=True)
+    filename = os.path.join('cache', url.split('/')[-1])
+    # load from cache
+    if os.path.exists(filename):
+        return Image.open(filename)
+    # download image
+    response = requests.get(url)
+    if response.status_code != 200:
+        raise Exception(f"Failed to download image: {url}")
+    with open(filename, 'wb') as f:
+        f.write(response.content)
+    return Image.open(io.BytesIO(response.content))
 
 def image_to_bufferimg(img:Image.Image) -> io.BytesIO:
     buffer = io.BytesIO()
@@ -48,7 +64,7 @@ def rgb_split_image(img:Image.Image, cmyk:bool=False, horizontal:bool=False) -> 
     min_width = main_size * 8
     min_height = main_size * 8
 
-    img = ImageOps.exif_transpose(img).convert('RGBA')  # Use RGBA to handle transparency
+    img = ImageOps.exif_transpose(img).convert('RGBA')
     width, height = img.size
     
     # scale down image
@@ -89,3 +105,38 @@ def rgb_split_image(img:Image.Image, cmyk:bool=False, horizontal:bool=False) -> 
         result = result.resize((scaled_width, scaled_height), Image.NEAREST)
     
     return result
+
+def stack_images_horizontally(images:list[Image.Image], gap:int=0) -> Image.Image:
+    if not images:
+        raise ValueError("The list of images is empty.")
+    max_height = max(img.height for img in images)
+    total_width = sum(img.width for img in images) + gap * (len(images) - 1)
+    combined = Image.new("RGBA", (total_width, max_height), (0, 0, 0, 0))
+    current_x = 0
+    for img in images:
+        y_offset = (max_height - img.height) // 2
+        combined.paste(img, (current_x, y_offset))
+        current_x += img.width + gap    
+    return combined
+
+def overlay_center(bg_img:Image.Image, overlay_img:Image.Image, overlay_scale:float=1.0, shadow:float=0.0) -> Image.Image:
+    target_height = int(bg_img.height * overlay_scale)
+    overlay_aspect = overlay_img.width / overlay_img.height
+    target_width = int(target_height * overlay_aspect)
+    if target_width > bg_img.width:
+        target_width = bg_img.width
+        target_height = int(target_width / overlay_aspect)
+    resized_overlay = overlay_img.resize((target_width, target_height), Image.LANCZOS)
+    combined = bg_img.copy()
+    x = (bg_img.width - target_width) // 2
+    y = (bg_img.height - target_height) // 2
+    if shadow:
+        shadow_offset = int(target_height * shadow * 0.1)
+        shadow_radius = int(target_height * shadow * 0.1)
+        overlay_alpha = resized_overlay.convert("L")
+        shadow_img = Image.new("RGBA", resized_overlay.size, (0, 0, 0, 255))
+        shadow_img.putalpha(overlay_alpha)
+        shadow_img = shadow_img.filter(ImageFilter.GaussianBlur(radius=shadow_radius))
+        combined.paste(shadow_img, (x + shadow_offset, y + shadow_offset), shadow_img)
+    combined.paste(resized_overlay, (x, y), resized_overlay.convert("RGBA"))
+    return combined

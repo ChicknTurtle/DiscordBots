@@ -5,7 +5,7 @@ import discord
 from discord.ext import commands
 
 from data import Data
-from utils import *
+from utils import Log, config, format_number
 
 config = config()
 
