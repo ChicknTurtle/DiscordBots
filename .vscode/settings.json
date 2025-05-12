@@ -1,0 +1,5 @@
+{
+    "search.exclude": {
+        "**/assets/wordlists/dictionary.txt": true
+    }
+}
