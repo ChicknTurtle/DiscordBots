@@ -185,7 +185,7 @@ def setup(bot:discord.AutoShardedBot):
     @splat_group.command(name="title", description="Get a random title")
     async def splat_title_command(ctx:discord.ApplicationContext,
                                   user=discord.Option(discord.User, default=None, description="View someone else's daily title. Does nothing if random=True"),
-                                  random=discord.Option(bool, default=False, description="Get a random title instead of daily"),):
+                                  random=discord.Option(bool, default=False, description="Get a random title instead of daily")):
         if random:
             adjective, subject = get_random_title()
             await ctx.respond(f"Your random title is **{adjective} {subject}**!")
