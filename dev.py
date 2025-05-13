@@ -12,6 +12,20 @@ Log = Log()
 Bots = Bots()
 Data = Data()
 
+def format_codeblock(text, limit=2000):
+    lang = 'py'
+    try:
+        if isinstance(eval(text), (dict, list)):
+            lang = 'json'
+    except Exception:
+        pass
+    text = text.replace('```', '`​``')
+    start, end = f"```{lang}\n", "\n```"
+    max_content = limit -len(start) -len(end)
+    if len(text) > max_content:
+        text = text[:max_content-3] + "..."
+    return f"{start}{text}{end}"
+
 async def handle_dev(bot:discord.Bot, msg:discord.Message):
     
     # Check owner            ChicknTurtle       Super Turtle
@@ -61,11 +75,11 @@ async def handle_dev(bot:discord.Bot, msg:discord.Message):
             exec(code, globals(), locals2)
             result = locals2.get("result", None)
             if result is not None:
-                await response.edit(f"```py\n{result}\n```")
+                await response.edit(format_codeblock(str(result)))
             else:
                 await response.edit("Done.")
         except Exception as e:
-            await response.edit(f"```py\n{traceback.format_exc()}\n```")
+            await response.edit(format_codeblock(traceback.format_exc()))
     
     # eval
     elif args[1] == 'eval':
@@ -78,6 +92,6 @@ async def handle_dev(bot:discord.Bot, msg:discord.Message):
         response = await msg.reply("Evaluating...")
         try:
             output = str(eval(code))
-            await response.edit(f"```py\n{output}\n```")
+            await response.edit(format_codeblock(output))
         except Exception as e:
-            await response.edit(f"```py\n{traceback.format_exc()}\n```")
+            await response.edit(format_codeblock(traceback.format_exc()))

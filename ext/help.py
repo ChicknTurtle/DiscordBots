@@ -1,7 +1,7 @@
 
 import discord
 
-from utils import *
+from utils import Log
 
 Log = Log()
 

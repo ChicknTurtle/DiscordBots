@@ -1,7 +1,7 @@
 
 import discord
 
-from utils import *
+from utils import Log
 
 Log = Log()
 
@@ -18,7 +18,10 @@ def setup(bot):
             ]:
             await ctx.respond(f"This user cannot be mimicked!", ephemeral=True)
             return
-        await ctx.respond(f"Mimicking <@{user.id}>", ephemeral=True)
+        if isinstance(ctx.channel, discord.DMChannel):
+            await ctx.respond(f"You can't mimic in a DM channel!", ephemeral=True)
+            return
+        await ctx.respond(f"Mimicking <@{user.id}>", ephemeral=True, allowed_mentions=discord.AllowedMentions.none())
         try:
             webhook = await ctx.channel.create_webhook(name=user.name)
             if user.bot:

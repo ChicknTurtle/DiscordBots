@@ -3,7 +3,7 @@ import os
 import json
 import traceback
 
-from utils import *
+from utils import Log
 
 Log = Log()
 

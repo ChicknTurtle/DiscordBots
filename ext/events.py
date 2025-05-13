@@ -6,7 +6,7 @@ import discord
 from bots import Bots
 from data import Data
 from dev import handle_dev
-from utils import *
+from utils import Log, config, format_time
 
 config = config()
 
@@ -37,6 +37,8 @@ def setup(bot:discord.Bot):
     @bot.listen(once=True)
     async def on_ready():
         Log.log(f"{bot.name} ready!")
+        app_info = await bot.application_info()
+        Log.debug(f"approx user installs: {app_info.approximate_user_install_count}")
         if bot.name == Bots[0].name:
             now = datetime.now()
             Data['global']['startTime'] = now
@@ -45,7 +47,8 @@ def setup(bot:discord.Bot):
             except KeyError:
                 downtime = 'unknown'
             await bot.get_channel(config['channels']['system']).send(f"Started! **Downtime**: {downtime}")
-            Data[f"{bot.name.lower()}/global"].setdefault('commandsUsed', 0)
+            if Data.get(f"{bot.name.lower()}/global"):
+                Data[f"{bot.name.lower()}/global"].setdefault('commandsUsed', 0)
     
     async def on_quit():
         """Should be called before the bot is stopped."""

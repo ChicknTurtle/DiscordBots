@@ -5,7 +5,7 @@ import math
 import discord
 
 from data import Data
-from utils import *
+from utils import Log, config
 from neoturtle.gamesmanager import GamesManager
 from neoturtle.wordsmanager import WordsManager
 
@@ -149,10 +149,11 @@ def setup_game(play_group:discord.SlashCommandGroup, bot:discord.Bot):
         ctx:discord.ApplicationContext,
         permanent=discord.Option(bool, default=False, description="Requires Manage Channels permission"),
         ):
-        if permanent:
-            if not ctx.author.guild_permissions.manage_channels:
-                await GamesManager.permanent_start_noperm_prompt(ctx)
-                return
+        if (permanent
+            and not isinstance(ctx.channel, discord.DMChannel)
+            and not ctx.author.guild_permissions.manage_channels):
+            await GamesManager.permanent_start_noperm_prompt(ctx)
+            return
         # Handle already playing a game in this channel
         if Data['neoturtle/channel'].get(ctx.channel_id, {}).get('playing'):
             if Data['neoturtle/channel'][ctx.channel_id]['playing']['game'] == 'unscramble':

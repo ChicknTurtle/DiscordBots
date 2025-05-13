@@ -2,7 +2,7 @@
 import discord
 
 from data import Data
-from utils import *
+from utils import Log
 
 Log = Log()
 Data = Data()
@@ -34,10 +34,11 @@ class GamesManager():
         
     async def cancel_game(self, ctx:discord.ApplicationContext):
         if Data['neoturtle/channel'].get(ctx.channel_id, {}).get('playing'):
-            if Data['neoturtle/channel'][ctx.channel_id]['playing']['permanent'] is True:
-                if not ctx.author.guild_permissions.manage_channels:
-                    await self.permanent_cancel_noperm_prompt(ctx)
-                    return
+            if (Data['neoturtle/channel'][ctx.channel_id]['playing']['permanent']
+                and not isinstance(ctx.channel, discord.DMChannel)
+                and not ctx.author.guild_permissions.manage_channels):
+                await self.permanent_cancel_noperm_prompt(ctx)
+                return
             await ctx.respond(f"Cancelled {Data['neoturtle/channel'][ctx.channel_id]['playing']['game']}.")
             Data['neoturtle/channel'][ctx.channel_id].pop('playing', None)
         else:

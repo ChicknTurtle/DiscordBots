@@ -166,3 +166,4 @@ cython_debug/
 tokens.env
 /data/*
 !data/.gitkeep
+/cache
