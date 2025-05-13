@@ -21,8 +21,8 @@ def setup(bot:discord.Bot):
     async def bot_stats_command(ctx:discord.ApplicationContext):
         ping = round(bot.latency*1000)
         uptime = round(Data['global']['startTime'].timestamp())
-        servers = format_number(len(bot.guilds))
-        users = format_number(len(bot.users))
+        server_count = format_number(len(bot.guilds))
+        member_count = format_number(len(bot.users))
         commands_used = format_number(Data.get(f"{bot.name.lower()}/global", {}).get('commandsUsed', 0))
         if discord.IntegrationType.user_install in bot.default_command_integration_types:
             invite_url = f"https://discord.com/oauth2/authorize?client_id={bot.user.id}"
@@ -31,8 +31,8 @@ def setup(bot:discord.Bot):
         msg = [f"## {bot.name} Statistics"]
         msg.append(f":ping_pong: Ping: `{ping}ms`")
         msg.append(f":stopwatch: Bot started <t:{uptime}:R>")
-        msg.append(f":homes: {servers} servers")
-        msg.append(f":busts_in_silhouette: {users} users")
+        msg.append(f":homes: {server_count} servers")
+        msg.append(f":busts_in_silhouette: {member_count} members")
         msg.append(f":robot: {commands_used} commands used")
         msg.append(f":incoming_envelope: [Add {bot.name} to My Apps or Server](<{invite_url}>)")
         await ctx.respond('\n'.join(msg), ephemeral=True)
