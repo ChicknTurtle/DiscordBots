@@ -37,8 +37,6 @@ def setup(bot:discord.Bot):
     @bot.listen(once=True)
     async def on_ready():
         Log.log(f"{bot.name} ready!")
-        app_info = await bot.application_info()
-        Log.debug(f"approx user installs: {app_info.approximate_user_install_count}")
         if bot.name == Bots[0].name:
             now = datetime.now()
             Data['global']['startTime'] = now
