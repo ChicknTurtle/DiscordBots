@@ -1,4 +1,5 @@
 
+import asyncio
 import discord
 from dotenv import load_dotenv
 import os
@@ -47,6 +48,7 @@ class Bots:
 
         for bot in self:
             bot.newembed = self.newembed_wrapper(bot)
+            bot.wait_for_message_or_edit = self.wait_for_message_or_edit_wrapper(bot)
         
     def newembed_wrapper(self, bot):
         def newembed(title:str='', description:str='', footer:str=None, color:discord.Color=None, fields:list[tuple]=[], **kwargs):
@@ -59,6 +61,27 @@ class Bots:
                 embed.add_field(name=name, value=value, inline=inline)
             return embed
         return newembed
+
+    def wait_for_message_or_edit_wrapper(self, bot):
+        async def wait_for_message_or_edit(check, timeout=None):
+            task_msg  = asyncio.create_task(bot.wait_for('message', check=check))
+            task_edit = asyncio.create_task(bot.wait_for('message_edit',check=lambda before, after: check(after)))
+            # wait for one to complete
+            done, pending = await asyncio.wait(
+                {task_msg, task_edit},
+                return_when=asyncio.FIRST_COMPLETED,
+                timeout=timeout
+            )
+            for t in pending:
+                t.cancel()
+            if not done:
+                return None
+            result = done.pop().result()
+            # get 'after' for edits
+            if isinstance(result, tuple):
+                return result[1]
+            return result
+        return wait_for_message_or_edit
     
     def __iter__(self):
         return iter(self._bots)
