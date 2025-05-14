@@ -102,6 +102,7 @@ async def listen_game(bot:discord.Bot, channel:discord.TextChannel, invoked_at:f
         guess = format_guess(guess_msg.content)
         words = Data['neoturtle/channel'][channel.id]['playing']['words']
         reward = Data['neoturtle/channel'][channel.id]['playing']['reward']
+        Data['neoturtle/channel'][channel.id]['playing']['rewardmult'] = Data['neoturtle/channel'][channel.id]['playing'].setdefault('rewardmult',1)
         rewardmult = Data['neoturtle/channel'][channel.id]['playing']['rewardmult']
         actual_reward = math.ceil(reward*rewardmult)
         earn_tokens(guess_msg.author, actual_reward)
@@ -160,7 +161,7 @@ async def use_hint(bot:discord.Bot, ctx:discord.ApplicationContext=None):
     Data['neoturtle/channel'][ctx.channel_id]['playing']['hints'] = hints
     shown_word = Data['neoturtle/channel'][ctx.channel_id]['playing'].get(f'hint{hints}',scrambled)
     # Lower reward
-    reward = Data['neoturtle/channel'][ctx.channel_id]['playing']['reward']
+    Data['neoturtle/channel'][ctx.channel_id]['playing']['rewardmult'] = Data['neoturtle/channel'][ctx.channel_id]['playing'].setdefault('rewardmult',1)
     Data['neoturtle/channel'][ctx.channel_id]['playing']['rewardmult'] /= 2
     rewardmult = Data['neoturtle/channel'][ctx.channel_id]['playing']['rewardmult']
     if bonus:
@@ -184,8 +185,7 @@ def setup_game(play_group:discord.SlashCommandGroup, bot:discord.Bot):
         # Handle already playing a game in this channel
         if Data['neoturtle/channel'].get(ctx.channel_id, {}).get('playing'):
             if Data['neoturtle/channel'][ctx.channel_id]['playing']['game'] == 'unscramble':
-                reward = Data['neoturtle/channel'][ctx.channel_id]['playing']['reward']
-                rewardmult = Data['neoturtle/channel'][ctx.channel_id]['playing']['rewardmult']
+                rewardmult = Data['neoturtle/channel'][ctx.channel_id]['playing'].setdefault('rewardmult',1)
                 hints = Data['neoturtle/channel'][ctx.channel_id]['playing']['hints']
                 bonus = Data['neoturtle/channel'][ctx.channel_id]['playing']['bonus']
                 scrambled = Data['neoturtle/channel'][ctx.channel_id]['playing']['scrambled']
