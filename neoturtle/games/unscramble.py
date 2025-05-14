@@ -1,8 +1,11 @@
 
+import asyncio
 import random
 import time
 import math
 import discord
+import emoji
+import re
 
 from data import Data
 from utils import Log, config
@@ -17,96 +20,120 @@ config = config()
 
 from ext.neoturtle.account import earn_tokens, change_xp
 
-def scramble(word:str) -> str:
-    scrambled = list(word)
-    attempts = 0
-    while attempts < 100:
+BOLD_UNDERLINE = "\033[1m\033[4m"
+RESET_BOLD_UNDERLINE = "\033[22m\033[24m"
+
+def scramble(words:list[str], attempts:int=100) -> str:
+    scrambled = list(words[0])
+    for _ in range(attempts):
         random.shuffle(scrambled)
         result = ''.join(scrambled)
-        if result != word:
+        if result not in words:
             return result
-        attempts += 1
-    else:
-        #Log.warn(f"Failed to scrambled word {word} after {attempts} attempts")
-        return word
+    Log.warn(f"Failed to scrambled word {'/'.join(words)} after {attempts} attempts")
+    return random.choice(words)
 
-def scramble_hint(word:str, hint_amount:float=0.5) -> str:
-    word_length = len(word)
+def scramble_hint(words:list[str], level:int=1, attempts:int=100) -> str:
+    word_length = len(words[0])
     fixed_positions = {0}
-    num_fixed = max(1, int(word_length * hint_amount))
-    while len(fixed_positions) < num_fixed:
+    hint_amount = max(1,min(word_length-2,(word_length-1)/4))
+    while len(fixed_positions) < math.ceil(hint_amount*level):
         fixed_positions.add(random.randint(1, word_length - 1))
-    original_word = word
-    attempts = 0
-    while attempts < 100:
-        scrambled = list(word)
+    success = False
+    for _ in range(attempts):
+        scrambled = list(words[0])
         unfixed_indices = [i for i in range(word_length) if i not in fixed_positions]
         random.shuffle(unfixed_indices)
-        temp_word = [word[i] for i in unfixed_indices]
+        temp_word = [words[0][i] for i in unfixed_indices]
         random.shuffle(temp_word)
         for i, new_pos in zip(unfixed_indices, temp_word):
             scrambled[i] = new_pos
-        if ''.join(scrambled) != original_word:
+        if ''.join(scrambled) not in words:
+            success = True
             break
-        attempts += 1
-    else:
-        #Log.warn(f"Failed to scrambled word {original_word} after {attempts} attempts")
-        pass
     result = []
+    debug_result = []
     i = 0
     while i < word_length:
         if i in fixed_positions:
             start = i
             while i + 1 < word_length and i + 1 in fixed_positions:
                 i += 1
-            result.append(f"**__{''.join(word[start:i + 1])}__**")
+            result.append(f"**__{''.join(words[0][start:i+1])}__**")
+            debug_result.append(f"{BOLD_UNDERLINE}{''.join(words[0][start:i+1])}{RESET_BOLD_UNDERLINE}")
         else:
             result.append(scrambled[i])
+            debug_result.append(scrambled[i])
         i += 1
+    if not success:
+        Log.warn(f"Failed to scramble hint for {'/'.join(words)} after {attempts} attempts: {''.join(debug_result)}")
     return ''.join(result)
+
+def format_guess(guess:str) -> str:
+    guess = guess.strip().lower()
+    # allow emojis to work
+    match = re.match(r"<a?:([a-zA-Z0-9_]+):\d+>", guess)
+    if match:
+        guess = match.group(1)
+    guess = emoji.demojize(guess, language='alias')
+    if guess.startswith(':') and guess.endswith(':'):
+        guess = guess[1:-1]
+    return guess
 
 # Listen unscramble
 async def listen_game(bot:discord.Bot, channel:discord.TextChannel, invoked_at:float):
-    def check(m):
-        return m.channel == channel
+    def check(msg:discord.Message):
+        game = Data['neoturtle/channel'].get(channel.id, {}).get('playing')
+        # pass check if game isn't being played anymore so we can stop listening
+        if not game or game['start'] != invoked_at:
+            return True
+        if msg.channel.id != channel.id:
+            return False
+        # check if the guess is correct
+        guess = format_guess(msg.content)
+        words = Data['neoturtle/channel'][channel.id]['playing']['words']
+        return guess in words
     while True:
-        guess_msg = await bot.wait_for('message', check=check)
+        guess_msg = await bot.wait_for_message_or_edit(check)
         # Stop if game isn't being played anymore
         game = Data['neoturtle/channel'].get(channel.id, {}).get('playing')
         if not game or game['start'] != invoked_at:
             break
-        # Check if the guess is correct
-        guess = guess_msg.content.strip().lower()
-        if guess in Data['neoturtle/channel'][channel.id]['playing']['words']:
-            reward = Data['neoturtle/channel'][channel.id]['playing']['reward']
-            earn_tokens(guess_msg.author, reward)
-            xp = 10
-            change_xp(guess_msg.author, xp)
-            await channel.send(f"Correct! The word was **{guess}** +{bot.customemojis['neotoken2']}{reward}, {xp}xᴘ")
-            permanent = Data['neoturtle/channel'][channel.id]['playing']['permanent']
-            Data['neoturtle/channel'][channel.id].pop('playing', None)
-            if permanent:
-                await start_game(bot, channel, True)
-            break
+        guess = format_guess(guess_msg.content)
+        words = Data['neoturtle/channel'][channel.id]['playing']['words']
+        reward = Data['neoturtle/channel'][channel.id]['playing']['reward']
+        rewardmult = Data['neoturtle/channel'][channel.id]['playing']['rewardmult']
+        actual_reward = math.ceil(reward*rewardmult)
+        earn_tokens(guess_msg.author, actual_reward)
+        xp = 10
+        change_xp(guess_msg.author, xp)
+        real_word = f" ({words[0]})" if guess != words[0] else ''
+        await channel.send(f"Correct! The word was **{guess}**{real_word} +{bot.customemojis['neotoken2']}{actual_reward}, {xp}xᴘ")
+        permanent = Data['neoturtle/channel'][channel.id]['playing']['permanent']
+        Data['neoturtle/channel'][channel.id].pop('playing', None)
+        if permanent:
+            await start_game(bot, channel, True)
+        break
 
 # Start unscramble
 async def start_game(bot:discord.Bot, channel:discord.TextChannel, permanent:bool, ctx:discord.ApplicationContext=None):
     # Choose word
     anagrams = WordsManager.anagrams['main']
     words = anagrams[random.choice(list(anagrams.keys()))]
-    scrambled = scramble(words[0])
-    hint = scramble_hint(words[0], 0.5)
-    hint2 = scramble_hint(words[0], 0.75)
+    loop = asyncio.get_running_loop()
+    scrambled = await loop.run_in_executor(None, scramble, words)
+    hint1 = await loop.run_in_executor(None, scramble_hint, words, 1)
+    hint2 = await loop.run_in_executor(None, scramble_hint, words, 2)
     # Choose reward
     reward = len(words[0])
     bonus = False
     if random.random() > 0.99:
         reward = random.choice([25,50])
         bonus = True
-    if reward < 25:
-        msg = f"Unscramble: {scrambled}"
+    if bonus:
+        msg = f"Unscramble: {scrambled} :sparkles:"
     else:
-        msg = f"Unscramble: {scrambled} :sparkles: {bot.customemojis['neotoken2']}{reward}"
+        msg = f"Unscramble: {scrambled}"
     if config['dev_mode']:
         msg += f" ||{'/'.join(words)}||"
     if ctx:
@@ -116,30 +143,30 @@ async def start_game(bot:discord.Bot, channel:discord.TextChannel, permanent:boo
     # Create game
     invoked_at = time.time()
     Data['neoturtle/channel'].setdefault(channel.id, {})
-    Data['neoturtle/channel'][channel.id]['playing'] = {'game':'unscramble','start':invoked_at,'permanent':permanent,'words':words,'scrambled':scrambled,'hint':hint,'hint2':hint2,'reward':reward,'bonus':bonus,'hints':0}
+    Data['neoturtle/channel'][channel.id]['playing'] = {'game':'unscramble','start':invoked_at,'permanent':permanent,'words':words,'scrambled':scrambled,'hint1':hint1,'hint2':hint2,'reward':reward,'rewardmult':1,'bonus':bonus,'hints':0}
     # Listen for correct guess
     await listen_game(bot, channel, invoked_at)
 
 # Use hint
 async def use_hint(bot:discord.Bot, ctx:discord.ApplicationContext=None):
-    Data['neoturtle/channel'][ctx.channel_id]['playing']['hints'] += 1
+    scrambled = Data['neoturtle/channel'][ctx.channel_id]['playing']['scrambled']
+    bonus = Data['neoturtle/channel'][ctx.channel_id]['playing']['bonus']
+    # Increase hints
     hints = Data['neoturtle/channel'][ctx.channel_id]['playing']['hints']
-    if hints >= 3:
+    if hints >= 2:
         await GamesManager.max_hints_prompt(ctx)
         return
-    if hints < 2:
-        hint = Data['neoturtle/channel'][ctx.channel_id]['playing']['hint']
-    else:
-        hint = Data['neoturtle/channel'][ctx.channel_id]['playing']['hint2']
+    hints += 1
+    Data['neoturtle/channel'][ctx.channel_id]['playing']['hints'] = hints
+    shown_word = Data['neoturtle/channel'][ctx.channel_id]['playing'].get(f'hint{hints}',scrambled)
     # Lower reward
     reward = Data['neoturtle/channel'][ctx.channel_id]['playing']['reward']
-    Data['neoturtle/channel'][ctx.channel_id]['playing']['reward'] = math.ceil(reward / 2)
-    reward = Data['neoturtle/channel'][ctx.channel_id]['playing']['reward']
-    bonus = Data['neoturtle/channel'][ctx.channel_id]['playing']['bonus']
-    if bonus == False:
-        msg = f"Unscramble: {hint} {bot.customemojis['neotoken2']}{reward}"
+    Data['neoturtle/channel'][ctx.channel_id]['playing']['rewardmult'] /= 2
+    rewardmult = Data['neoturtle/channel'][ctx.channel_id]['playing']['rewardmult']
+    if bonus:
+        msg = f"Unscramble: {shown_word} :sparkles: ({bot.customemojis['neotoken2']}{100*rewardmult}%)"
     else:
-        msg = f"Unscramble: {hint} :sparkles: {bot.customemojis['neotoken2']}{reward}"
+        msg = f"Unscramble: {shown_word} ({bot.customemojis['neotoken2']}{int(100*rewardmult)}%)"
     await ctx.respond(msg)
 
 def setup_game(play_group:discord.SlashCommandGroup, bot:discord.Bot):
@@ -158,12 +185,16 @@ def setup_game(play_group:discord.SlashCommandGroup, bot:discord.Bot):
         if Data['neoturtle/channel'].get(ctx.channel_id, {}).get('playing'):
             if Data['neoturtle/channel'][ctx.channel_id]['playing']['game'] == 'unscramble':
                 reward = Data['neoturtle/channel'][ctx.channel_id]['playing']['reward']
+                rewardmult = Data['neoturtle/channel'][ctx.channel_id]['playing']['rewardmult']
+                hints = Data['neoturtle/channel'][ctx.channel_id]['playing']['hints']
                 bonus = Data['neoturtle/channel'][ctx.channel_id]['playing']['bonus']
                 scrambled = Data['neoturtle/channel'][ctx.channel_id]['playing']['scrambled']
-                if bonus == False:
-                    msg = f"Unscramble: {scrambled}"
+                shown_word = Data['neoturtle/channel'][ctx.channel_id]['playing'].get(f'hint{hints}',scrambled)
+                if bonus:
+                    msg = f"Unscramble: {shown_word} :sparkles:"
                 else:
-                    msg = f"Unscramble: {scrambled} :sparkles: {bot.customemojis['neotoken2']}{reward}"
+                    msg = f"Unscramble: {shown_word}"
+                    msg += f" ({bot.customemojis['neotoken2']}{int(100*rewardmult)}%)" if rewardmult != 1 else ""
                 await ctx.respond(msg)
             else:
                 await GamesManager.cancel_prompt(ctx, Data['neoturtle/channel'][ctx.channel_id]['playing']['game'])
