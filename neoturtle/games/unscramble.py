@@ -8,7 +8,7 @@ import emoji
 import re
 
 from data import Data
-from utils import Log, config
+from utils import Log, config, get_holiday
 from neoturtle.gamesmanager import GamesManager
 from neoturtle.wordsmanager import WordsManager
 
@@ -70,7 +70,7 @@ def scramble_hint(words:list[str], level:int=1, attempts:int=100) -> str:
     return ''.join(result)
 
 def format_guess(guess:str) -> str:
-    guess = guess.strip().lower()
+    guess = guess.strip().lower().split(' ',1)[0]
     # allow emojis to work
     match = re.match(r"<a?:([a-zA-Z0-9_]+):\d+>", guess)
     if match:
@@ -119,7 +119,9 @@ async def listen_game(bot:discord.Bot, channel:discord.TextChannel, invoked_at:f
 # Start unscramble
 async def start_game(bot:discord.Bot, channel:discord.TextChannel, permanent:bool, ctx:discord.ApplicationContext=None):
     # Choose word
-    anagrams = WordsManager.anagrams['main']
+    holiday = get_holiday()
+    holiday = holiday if holiday in ['halloween','christmas'] else 'main'
+    anagrams = WordsManager.anagrams[holiday]
     words = anagrams[random.choice(list(anagrams.keys()))]
     loop = asyncio.get_running_loop()
     scrambled = await loop.run_in_executor(None, scramble, words)
@@ -194,7 +196,7 @@ def setup_game(play_group:discord.SlashCommandGroup, bot:discord.Bot):
                     msg = f"Unscramble: {shown_word} :sparkles:"
                 else:
                     msg = f"Unscramble: {shown_word}"
-                    msg += f" ({bot.customemojis['neotoken2']}{int(100*rewardmult)}%)" if rewardmult != 1 else ""
+                msg += f" ({bot.customemojis['neotoken2']}{int(100*rewardmult)}%)" if rewardmult != 1 else ""
                 await ctx.respond(msg)
             else:
                 await GamesManager.cancel_prompt(ctx, Data['neoturtle/channel'][ctx.channel_id]['playing']['game'])
