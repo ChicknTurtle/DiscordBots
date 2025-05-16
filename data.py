@@ -64,6 +64,8 @@ class Data:
         return iter([self])
 
     def get(self, key, default=None):
+        if key not in self._data:
+            self._load_file(key)
         return self._data.get(key, default)
     
     def save(self, autosave=False):
