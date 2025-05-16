@@ -1,6 +1,6 @@
 alien
 autumn
-bats,stab
+bats
 beast
 bewitching
 blood
@@ -10,7 +10,7 @@ cackle
 candy
 casket
 cauldron
-cemetary
+cemetery
 cobweb
 coffin
 corpse
@@ -30,7 +30,7 @@ dusk
 ectoplasm
 eerie
 enchanting
-evil,live
+evil
 eyeball
 fangs
 fear
