@@ -13,6 +13,7 @@ candle
 candy
 candycane
 card
+carol
 caroler
 celebrate
 charity
@@ -33,6 +34,7 @@ december
 decorate
 decorations
 donner
+eggnog
 elves
 evergreen
 exchange
@@ -70,6 +72,7 @@ nice
 noel
 northpole
 nutcracker
+nutmeg
 ornament
 partridge
 peppermint
@@ -77,9 +80,11 @@ pine
 pinecone
 pinetree
 plum
+poinsettia
 popcorn
 prancer
 present
+pudding
 receive
 reindeer
 rejoice
@@ -93,7 +98,9 @@ season
 shepherd
 sled
 sleigh
+snow
 snowball
+snowflake
 snowman
 spirit
 stocking
@@ -116,3 +123,5 @@ workshop
 worship
 wrapping
 wreath
+yule
+yuletide
