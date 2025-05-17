@@ -1,6 +1,5 @@
 alien
 autumn
-bats
 beast
 bewitching
 blood
@@ -38,6 +37,7 @@ foggy
 frankenstein
 frighten
 funeral
+ghastly
 ghost
 goblin
 grave
@@ -97,12 +97,16 @@ rotten
 scare
 scarecrow
 scary
+scream
 shadow
+shiver
 skeleton
 skull
 specter
+spectral
 spider
 spooky
+stab
 terror
 thriller
 tomb
