@@ -39,7 +39,7 @@ def setup(bot:discord.Bot):
         earned_tokens = format_number(earned_tokens)
         xp = format_number(xp)
         s = "'" if user.display_name.endswith('s') else "'s"
-        await ctx.respond(f"## {user.display_name}{s} Profile\n{xp} xᴘ\nBalance: {bot.customemojis['neotoken2']}{tokens}\n{bot.customemojis['neotoken2']}{earned_tokens} earned total", ephemeral=True)
+        await ctx.respond(f"## {user.display_name}{s} Profile\n{xp} xᴘ\nBalance: {bot.app_emojis['token']}{tokens}\n{bot.app_emojis['token']}{earned_tokens} earned total", ephemeral=True)
 
     # achievements
     @bot.command(name="achievements", description="View your achievements")

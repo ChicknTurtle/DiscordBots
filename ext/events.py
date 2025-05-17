@@ -36,7 +36,8 @@ def setup(bot:discord.Bot):
     # on ready
     @bot.listen(once=True)
     async def on_ready():
-        Log.log(f"{bot.name} ready!")
+        Log.log(f"{bot.name} ready! Logged in as {bot.user.name}#{bot.user.discriminator} ({bot.user.id})")
+        # Only load stuff once
         if bot.name == Bots[0].name:
             now = datetime.now()
             Data['global']['startTime'] = now
@@ -47,6 +48,10 @@ def setup(bot:discord.Bot):
             await bot.get_channel(config['channels']['system']).send(f"Started! **Downtime**: {downtime}")
             if Data.get(f"{bot.name.lower()}/global"):
                 Data[f"{bot.name.lower()}/global"].setdefault('commandsUsed', 0)
+        # Load application emojis
+        Log.debug(f"Loading application emojis for {bot.name}...")
+        bot.app_emojis = await bot.fetch_application_emojis()
+        Log.log(f"Loaded {len(bot.app_emojis)} application emojis for {bot.name}")
     
     async def on_quit():
         """Should be called before the bot is stopped."""

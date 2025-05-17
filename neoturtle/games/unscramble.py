@@ -109,7 +109,7 @@ async def listen_game(bot:discord.Bot, channel:discord.TextChannel, invoked_at:f
         xp = 10
         change_xp(guess_msg.author, xp)
         real_word = f" ({words[0]})" if guess != words[0] else ''
-        await channel.send(f"Correct! The word was **{guess}**{real_word} +{bot.customemojis['neotoken2']}{actual_reward}, {xp}xᴘ")
+        await channel.send(f"Correct! The word was **{guess}**{real_word} +{bot.app_emojis['token']}{actual_reward}, {xp}xᴘ")
         permanent = Data['neoturtle/channel'][channel.id]['playing']['permanent']
         Data['neoturtle/channel'][channel.id].pop('playing', None)
         if permanent:
@@ -167,9 +167,9 @@ async def use_hint(bot:discord.Bot, ctx:discord.ApplicationContext=None):
     Data['neoturtle/channel'][ctx.channel_id]['playing']['rewardmult'] /= 2
     rewardmult = Data['neoturtle/channel'][ctx.channel_id]['playing']['rewardmult']
     if bonus:
-        msg = f"Unscramble: {shown_word} :sparkles: ({bot.customemojis['neotoken2']}{100*rewardmult}%)"
+        msg = f"Unscramble: {shown_word} :sparkles: ({bot.app_emojis['token']}{100*rewardmult}%)"
     else:
-        msg = f"Unscramble: {shown_word} ({bot.customemojis['neotoken2']}{int(100*rewardmult)}%)"
+        msg = f"Unscramble: {shown_word} ({bot.app_emojis['token']}{int(100*rewardmult)}%)"
     await ctx.respond(msg)
 
 def setup_game(play_group:discord.SlashCommandGroup, bot:discord.Bot):
@@ -196,7 +196,7 @@ def setup_game(play_group:discord.SlashCommandGroup, bot:discord.Bot):
                     msg = f"Unscramble: {shown_word} :sparkles:"
                 else:
                     msg = f"Unscramble: {shown_word}"
-                msg += f" ({bot.customemojis['neotoken2']}{int(100*rewardmult)}%)" if rewardmult != 1 else ""
+                msg += f" ({bot.app_emojis['token']}{int(100*rewardmult)}%)" if rewardmult != 1 else ""
                 await ctx.respond(msg)
             else:
                 await GamesManager.cancel_prompt(ctx, Data['neoturtle/channel'][ctx.channel_id]['playing']['game'])
