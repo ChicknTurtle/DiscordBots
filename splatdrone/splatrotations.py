@@ -26,20 +26,21 @@ class SplatFetcher():
     async def fetchdata(self):
         schedules_url = "https://splatoon3.ink/data/schedules.json"
         Log.debug("Fetching new rotation data from https://splatoon3.ink/...")
-        async with aiohttp.ClientSession() as session:
-            async with session.get(schedules_url) as response:
-                if response.status == 200:
-                    newschedules = await response.json()
-                    if newschedules == Data['splatdrone/global'].get('schedules'):
-                        Log.debug("Got same schedules as before! Retrying in 10s...")
-                        await asyncio.sleep(10)
-                        await self.fetchdata()
+        while True:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(schedules_url) as response:
+                    if response.status == 200:
+                        newschedules = await response.json()
+                        if newschedules == Data['splatdrone/global'].get('schedules'):
+                            Log.warn("Got same schedules as before! Retrying in 10s...")
+                            await asyncio.sleep(10)
+                            continue
+                        Data['splatdrone/global']['schedules'] = newschedules
                         return
-                    Data['splatdrone/global']['schedules'] = newschedules
-                else:
-                    Log.warn(f"Failed to retrieve schedules from https://splatoon3.ink/ ({response.status})! Retrying in 5m...")
-                    await asyncio.sleep(5*60)
-                    await self.fetchdata()
+                    else:
+                        Log.error(f"Failed to retrieve schedules from https://splatoon3.ink/ ({response.status})! Retrying in 5m...")
+                        await asyncio.sleep(5*60)
+                        continue
 
     async def request_loop(self):
         if not Data['splatdrone/global'].get('schedules'):
