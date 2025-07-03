@@ -30,11 +30,6 @@ if config['dev_mode']:
 stdout.write(f"\033]0;{terminal_title}\007")
 stdout.flush()
 
-# Load extensions
-from extensionloader import load_exts
-for bot in Bots:
-    load_exts(bot)
-
 loop = asyncio.get_event_loop()
 
 # Run the bots

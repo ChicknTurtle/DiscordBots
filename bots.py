@@ -2,6 +2,7 @@
 import aiohttp
 import asyncio
 import discord
+import traceback
 from dotenv import load_dotenv
 import os
 
@@ -10,6 +11,16 @@ from utils import Log
 Log = Log()
 
 load_dotenv(dotenv_path='tokens.env')
+
+def load_exts(bot:discord.Bot, exts:list[str]):
+    for ext in exts:
+        try:
+            bot.load_extension(f"ext.{ext}")
+            Log.debug(f"Loaded ext '{ext}' for {bot.name}")
+        except Exception as e:
+            Log.error(f"Failed to load extension: 'ext.{ext}' for {bot.name}")
+            Log.error(traceback.format_exc())
+    Log.log(f"Loaded extensions for {bot.name}.")
 
 class Bots:
     _instance = None
@@ -32,6 +43,7 @@ class Bots:
         self.tuttlebot.color = 0x309c58
         if self.tuttlebot.token:
             self._bots.append(self.tuttlebot)
+            load_exts(self.tuttlebot, ["events","help","bot","tuttlebot"])
 
         self.neoturtle = discord.AutoShardedBot(intents=intents, help_command=None, default_command_integration_types={discord.IntegrationType.guild_install,discord.IntegrationType.user_install})
         self.neoturtle.name = "NeoTurtle"
@@ -39,6 +51,7 @@ class Bots:
         self.neoturtle.color = 0x00ff00
         if self.neoturtle.token:
             self._bots.append(self.neoturtle)
+            load_exts(self.neoturtle, ["events","help","bot","neoturtle"])
         
         self.splatdrone = discord.AutoShardedBot(intents=intents, help_command=None, default_command_integration_types={discord.IntegrationType.guild_install,discord.IntegrationType.user_install})
         self.splatdrone.name = "Splatdrone"
@@ -46,6 +59,7 @@ class Bots:
         self.splatdrone.color = 0x00b4ff
         if self.splatdrone.token:
             self._bots.append(self.splatdrone)
+            load_exts(self.splatdrone, ["events","help","bot","splatdrone"])
 
         for bot in self:
             bot.newembed = self.newembed_wrapper(bot)

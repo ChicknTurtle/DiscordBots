@@ -120,7 +120,14 @@ async def listen_game(bot:discord.Bot, channel:discord.TextChannel, invoked_at:f
 async def start_game(bot:discord.Bot, channel:discord.TextChannel, permanent:bool, ctx:discord.ApplicationContext=None):
     # Choose word
     holiday = get_holiday()
-    holiday = holiday if holiday in ['halloween','christmas'] else 'main'
+    holiday = holiday if holiday in ['4thofjuly','halloween','christmas'] else 'main'
+    extratext = ''
+    if holiday == '4thofjuly':
+        extratext = ' :fireworks:'
+    elif holiday == 'halloween':
+        extratext = ' :jack_o_lantern:'
+    elif holiday == 'christmas':
+        extratext = ' :christmas_tree:'
     anagrams = WordsManager.anagrams[holiday]
     words = anagrams[random.choice(list(anagrams.keys()))]
     loop = asyncio.get_running_loop()
@@ -139,6 +146,7 @@ async def start_game(bot:discord.Bot, channel:discord.TextChannel, permanent:boo
         msg = f"Unscramble: {scrambled}"
     if config['dev_mode']:
         msg += f" ||{'/'.join(words)}||"
+    msg += extratext
     if ctx:
         await ctx.respond(msg)
     else:
@@ -146,7 +154,7 @@ async def start_game(bot:discord.Bot, channel:discord.TextChannel, permanent:boo
     # Create game
     invoked_at = time.time()
     Data['neoturtle/channel'].setdefault(channel.id, {})
-    Data['neoturtle/channel'][channel.id]['playing'] = {'game':'unscramble','start':invoked_at,'permanent':permanent,'words':words,'scrambled':scrambled,'hint1':hint1,'hint2':hint2,'reward':reward,'rewardmult':1,'bonus':bonus,'hints':0}
+    Data['neoturtle/channel'][channel.id]['playing'] = {'game':'unscramble','start':invoked_at,'permanent':permanent,'words':words,'scrambled':scrambled,'hint1':hint1,'hint2':hint2,'reward':reward,'rewardmult':1,'bonus':bonus,'hints':0,'extratext':extratext}
     # Listen for correct guess
     await listen_game(bot, channel, invoked_at)
 
@@ -170,6 +178,7 @@ async def use_hint(bot:discord.Bot, ctx:discord.ApplicationContext=None):
         msg = f"Unscramble: {shown_word} :sparkles: ({bot.app_emojis['token']}{100*rewardmult}%)"
     else:
         msg = f"Unscramble: {shown_word} ({bot.app_emojis['token']}{int(100*rewardmult)}%)"
+    msg += Data['neoturtle/channel'][ctx.channel_id]['playing'].get('extratext','')
     await ctx.respond(msg)
 
 def setup_game(play_group:discord.SlashCommandGroup, bot:discord.Bot):
