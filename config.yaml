@@ -19,20 +19,3 @@ channels:
 
 # Other ids
 dev_guild: 985362099490390096
-
-# Modules for each bot
-
-ext_tuttlebot:
-  - events
-  - help
-  - bot
-
-ext_neoturtle:
-  - events
-  - help
-  - bot
-
-ext_splatdrone:
-  - events
-  - help
-  - bot
