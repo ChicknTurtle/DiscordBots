@@ -68,7 +68,7 @@ class WordsManager:
         Log.log("Loading anagrams...")
         self.anagrams = {
             'main': load_anagrams(self.wordlists['dictionary'], self.wordlists['unscramble/main']),
+            '4thofjuly': load_anagrams(self.wordlists['dictionary'], self.wordlists['unscramble/4thofjuly']),
             'halloween': load_anagrams(self.wordlists['dictionary'], self.wordlists['unscramble/halloween']),
             'christmas': load_anagrams(self.wordlists['dictionary'], self.wordlists['unscramble/christmas'])
         }
-

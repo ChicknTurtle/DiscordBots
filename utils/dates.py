@@ -3,6 +3,7 @@ import datetime
 
 HOLIDAYS = {
     "aprilfools": {"month": 4, "day": 1},
+    "4thofjuly": {"month": 7, "day": 4},
     "halloween":  {"month": (10, 11), "day": (29, 1)},
     "christmas":  {"month": 12, "day": (24, 31)},
 }
