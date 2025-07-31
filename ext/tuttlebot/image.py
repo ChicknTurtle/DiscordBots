@@ -1,8 +1,10 @@
 
+import os
 from time import time
 from math import ceil
 from datetime import datetime
 from aiohttp import ClientSession
+from PIL import Image, UnidentifiedImageError
 from io import BytesIO
 import discord
 from discord.ext import commands
@@ -16,7 +18,7 @@ def setup(bot):
     bot_group = bot.create_group("image", "Modify images with cool effects.")
 
     API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
-    headers = {"Authorization": "Bearer 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"}
+    headers = {"Authorization": f"Bearer {os.getenv("huggingface-imageai-token")}"}
 
     async def query(payload):
         async with ClientSession() as session:
@@ -25,15 +27,24 @@ def setup(bot):
 
     # ai
     @bot_group.command(name="ai",description="Generate an image using ai")
-    @commands.cooldown(1, 10, commands.BucketType.user)
-    async def image_ai_command(ctx:discord.ApplicationContext, prompt=discord.Option(str, max_length=1000, description="Image prompt")):
+    @commands.cooldown(1, 15, commands.BucketType.user)
+    async def image_ai_command(ctx:discord.ApplicationContext, prompt=discord.Option(str, max_length=256, description="Image prompt")):
         start_time = datetime.now() 
         original = await ctx.respond(f"**Generating Image...**\nPrompt: `{prompt}`")
         image_bytes = await query({"inputs": prompt})
         end_time = datetime.now()
         total_time = end_time - start_time
-        image_io = BytesIO(image_bytes)
-        file = discord.File(image_io, filename="generated_image.png")
+        try:
+            image_io = BytesIO(image_bytes)
+            Image.open(image_io).verify()
+            image_io.seek(0)
+            file = discord.File(image_io, filename="generated_image.png")
+        except UnidentifiedImageError:
+            try:
+                await original.edit_original_response(content=f"**Unable to generate image**: `{image_bytes.decode(errors='ignore')}`", allowed_mentions=discord.AllowedMentions.none())
+            except discord.NotFound:
+                await ctx.send(f"-# {ctx.author.mention} used /image ai\n**Unable to generate image**: `{image_bytes.decode(errors='ignore')}`", allowed_mentions=discord.AllowedMentions.none())
+            return
         try:
             await original.edit_original_response(content=f"{prompt}\n**Generated in {format_time(total_time)}**", file=file, allowed_mentions=discord.AllowedMentions.none())
         except discord.NotFound:
