@@ -70,5 +70,6 @@ class WordsManager:
             'main': load_anagrams(self.wordlists['dictionary'], self.wordlists['unscramble/main']),
             '4thofjuly': load_anagrams(self.wordlists['dictionary'], self.wordlists['unscramble/4thofjuly']),
             'halloween': load_anagrams(self.wordlists['dictionary'], self.wordlists['unscramble/halloween']),
-            'christmas': load_anagrams(self.wordlists['dictionary'], self.wordlists['unscramble/christmas'])
+            'christmas': load_anagrams(self.wordlists['dictionary'], self.wordlists['unscramble/christmas']),
+            'aprilfools': load_anagrams(self.wordlists['dictionary'], self.wordlists['unscramble/aprilfools'])
         }

@@ -120,7 +120,7 @@ async def listen_game(bot:discord.Bot, channel:discord.TextChannel, invoked_at:f
 async def start_game(bot:discord.Bot, channel:discord.TextChannel, permanent:bool, ctx:discord.ApplicationContext=None):
     # Choose word
     holiday = get_holiday()
-    holiday = holiday if holiday in ['4thofjuly','halloween','christmas'] else 'main'
+    holiday = holiday if holiday in ['4thofjuly','halloween','christmas','aprilfools'] else 'main'
     extratext = ''
     if holiday == '4thofjuly':
         extratext = ' :fireworks:'
