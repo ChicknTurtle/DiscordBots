@@ -4,18 +4,20 @@
 #     ------------------------------   
 
 from os import chdir
-from sys import stdout
+import sys
 import asyncio
 import aiohttp
 from traceback import format_exc
 
-from bots import Bots
-from data import Data
-from utils import Log, config, filepath
-
+from utils import Log, Config, filepath
 chdir(filepath)
 
-config = config()
+from bots import Bots
+from data import Data
+
+config = Config()
+config['dev_mode'] = '--dev' in sys.argv
+config['log_debug'] = '--debug' in sys.argv
 
 Log = Log()
 Log.set_debug(config['log_debug'])
@@ -27,48 +29,37 @@ Bots = Bots()
 terminal_title = config['terminal_title']
 if config['dev_mode']:
     terminal_title += ' DEV'
-stdout.write(f"\033]0;{terminal_title}\007")
-stdout.flush()
+sys.stdout.write(f"\033]0;{terminal_title}\007")
+sys.stdout.flush()
 
-loop = asyncio.get_event_loop()
+async def run_bot(bot):
+    try:
+        async with bot:
+            try:
+                await bot.start(bot.token)
+            finally:
+                await bot.on_quit()
+    except aiohttp.client_exceptions.ClientConnectionResetError:
+        Log.error(f"Ignoring ClientConnectionResetError for bot {bot.name}")
+    except asyncio.CancelledError:
+        raise
+    except Exception:
+        Log.error(f"Unexpected error in {bot.name}'s run bot loop:\n{format_exc()}")
 
-# Run the bots
-for bot in Bots:
-    async def run_bot(bot):
-        try:
-            await bot.start(bot.token)
-        except aiohttp.client_exceptions.ClientConnectionResetError:
-            Log.error(f"Ignoring ClientConnectionResetError for bot {bot.name}")
-        except Exception as e:
-            Log.error(f"Unexpected error in {bot.name}'s run bot loop:\n{format_exc()}")
-
-    loop.create_task(run_bot(bot))
+async def main():
+    async with asyncio.TaskGroup() as tg:
+        if Data._autosave:
+            tg.create_task(Data._autosave())
+        for bot in Bots:
+            tg.create_task(run_bot(bot))
 
 try:
-    loop.run_forever()
+    asyncio.run(main())
 except KeyboardInterrupt:
     pass
-finally:
-    # Cancel all tasks
-    Log.log("Shutting down tasks...")
-    tasks = asyncio.all_tasks(loop)
-    for task in tasks:
-        task.cancel()
-    try:
-        loop.run_until_complete(asyncio.gather(*tasks, return_exceptions=True))
-    except Exception as e:
-        Log.error(f"Error during task cancellation:\n{format_exc()}")
-
-for bot in Bots:
-    try:
-        loop.run_until_complete(bot.on_quit())
-        loop.run_until_complete(bot.close())
-    except Exception as e:
-        Log.error(f"Error during shutdown of bot {bot.name}:\n{format_exc()}")
-loop.stop()
 
 # Reset terminal title
-stdout.write("\033]0;\007")
-stdout.flush()
+sys.stdout.write("\033]0;\007")
+sys.stdout.flush()
 
 exit(1)

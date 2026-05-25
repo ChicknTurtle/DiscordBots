@@ -1,0 +1,10 @@
+aiohttp==3.13.5
+colorama==0.4.6
+emoji==2.15.0
+numpy==2.4.6
+Pillow==12.2.0
+python-dotenv==1.2.2
+python_dateutil==2.9.0.post0
+py-cord==2.8.0
+PyYAML==6.0.3
+Requests==2.34.2

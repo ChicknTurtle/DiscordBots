@@ -1,13 +1,12 @@
+
 import datetime
 import discord
 from PIL import Image
 
-from data import Data
-from utils import Log, load_image, image_to_bufferimg, stack_images_horizontally, overlay_center
-from splatdrone.splatrotations import SplatFetcher, get_offset, get_rot
+from utils import load_image, image_to_bufferimg, stack_images_horizontally, overlay_center
+from splatdrone.fetcher import SplatFetcher
+from splatdrone.rotations import get_rot
 
-Log = Log()
-Data = Data()
 SplatFetcher = SplatFetcher()
 
 emojis = {
@@ -190,6 +189,4 @@ def setup(bot:discord.AutoShardedBot):
         await ctx.respond(embed=embed, files=files)
 
     # Start loop to fetch new rotation data
-    async def start_fetch_loop():
-        await SplatFetcher.request_loop()
-    bot.loop.create_task(start_fetch_loop())
+    bot.extra_tasks.append(SplatFetcher.request_loop)

@@ -7,11 +7,14 @@ from utils.images import load_image, rgb_split_image, attachment_to_image, image
 from utils.numbers import format_time, format_time_short, format_number
 from utils.dates import get_holiday
 
-# directory of project
 filepath = path.dirname(path.dirname(path.abspath(__file__)))
 
-def config():
-    chdir(filepath)
-    with open('config.yaml', 'r') as file:
-        config = safe_load(file)
-    return config
+class Config:
+    _instance = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            chdir(filepath)
+            with open('config.yaml', 'r') as file:
+                cls._instance = safe_load(file)
+        return cls._instance
