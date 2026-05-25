@@ -8,7 +8,7 @@ import emoji
 import re
 
 from data import Data
-from utils import Log, config, get_holiday
+from utils import Log, Config, get_holiday
 from neoturtle.gamesmanager import GamesManager
 from neoturtle.wordsmanager import WordsManager
 
@@ -16,7 +16,7 @@ Log = Log()
 Data = Data()
 WordsManager = WordsManager()
 GamesManager = GamesManager()
-config = config()
+config = Config()
 
 from ext.neoturtle.account import earn_tokens, change_xp
 
@@ -109,7 +109,7 @@ async def listen_game(bot:discord.Bot, channel:discord.TextChannel, invoked_at:f
         xp = 10
         change_xp(guess_msg.author, xp)
         real_word = f" ({words[0]})" if guess != words[0] else ''
-        await channel.send(f"Correct! The word was **{guess}**{real_word} +{bot.app_emojis['token']}{actual_reward}, {xp}xᴘ")
+        await channel.send(f"Correct! The word was **{guess}**{real_word} +{bot.bot_emojis['token']}{actual_reward}, {xp}xᴘ")
         permanent = Data['neoturtle/channel'][channel.id]['playing']['permanent']
         Data['neoturtle/channel'][channel.id].pop('playing', None)
         if permanent:
@@ -175,9 +175,9 @@ async def use_hint(bot:discord.Bot, ctx:discord.ApplicationContext=None):
     Data['neoturtle/channel'][ctx.channel_id]['playing']['rewardmult'] /= 2
     rewardmult = Data['neoturtle/channel'][ctx.channel_id]['playing']['rewardmult']
     if bonus:
-        msg = f"Unscramble: {shown_word} :sparkles: ({bot.app_emojis['token']}{100*rewardmult}%)"
+        msg = f"Unscramble: {shown_word} :sparkles: ({bot.bot_emojis['token']}{100*rewardmult}%)"
     else:
-        msg = f"Unscramble: {shown_word} ({bot.app_emojis['token']}{int(100*rewardmult)}%)"
+        msg = f"Unscramble: {shown_word} ({bot.bot_emojis['token']}{int(100*rewardmult)}%)"
     msg += Data['neoturtle/channel'][ctx.channel_id]['playing'].get('extratext','')
     await ctx.respond(msg)
 
@@ -205,7 +205,7 @@ def setup_game(play_group:discord.SlashCommandGroup, bot:discord.Bot):
                     msg = f"Unscramble: {shown_word} :sparkles:"
                 else:
                     msg = f"Unscramble: {shown_word}"
-                msg += f" ({bot.app_emojis['token']}{int(100*rewardmult)}%)" if rewardmult != 1 else ""
+                msg += f" ({bot.bot_emojis['token']}{int(100*rewardmult)}%)" if rewardmult != 1 else ""
                 await ctx.respond(msg)
             else:
                 await GamesManager.cancel_prompt(ctx, Data['neoturtle/channel'][ctx.channel_id]['playing']['game'])

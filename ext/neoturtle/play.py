@@ -1,4 +1,5 @@
 
+import asyncio
 import time
 import discord
 
@@ -24,7 +25,7 @@ def setup(bot:discord.Bot):
         await GamesManager.cancel_game(ctx)
     
     # Hint
-    @play_group.command(name="hint", description="Get a hint for the current game.")
+    @play_group.command(name="hint", description="Get a hint for the current game")
     async def play_hint_command(ctx:discord.ApplicationContext):
         await GamesManager.use_hint(bot, ctx)
     play_hint_command.help_desc = "Also lowers the reward."
@@ -32,6 +33,7 @@ def setup(bot:discord.Bot):
     # Continue games when bot restarts
     async def start_games():
         await bot.wait_until_ready()
+        started = 0
         for channel_id, channel_data in Data['neoturtle/channel'].items():
             if channel_data.get('playing'):
                 invoked_at = time.time()
@@ -39,7 +41,9 @@ def setup(bot:discord.Bot):
                 channel = await bot.fetch_channel(channel_id)
                 try:
                     game = GamesManager.games[channel_data['playing']['game']]
-                    bot.loop.create_task(game['listen'](bot, channel, invoked_at))
+                    asyncio.create_task(game['listen'](bot, channel, invoked_at))
+                    started += 1
                 except KeyError:
                     Log.warn(f"Tried to continue an unknown game: {channel_data['playing']['game']} ({channel_id})")
-    bot.loop.create_task(start_games())
+        Log.log(f"Continued {started} game(s)")
+    bot.extra_tasks.append(start_games)

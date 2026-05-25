@@ -3,10 +3,10 @@ import os
 import pickle
 import asyncio
 
-from utils import Log, config
+from utils import Log, Config
 
 Log = Log()
-config = config()
+config = Config()
 
 class Data:
     _instance = None
@@ -27,8 +27,9 @@ class Data:
                 while True:
                     await asyncio.sleep(config['autosave_time'])
                     self.save(autosave=True)
-            loop = asyncio.get_event_loop()
-            loop.create_task(autosave())
+            self._autosave = autosave
+        else:
+            self._autosave = None
     
     def _load_file(self, key):
         if key in self._files:

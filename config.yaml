@@ -1,12 +1,6 @@
 
-# Dev mode enabled?
-dev_mode: false
-
 # Terminal title
 terminal_title: "ChicknTurtle's Bots"
-
-# Should debug messages be shown in log?
-log_debug: false
 
 # Time between each autosave (seconds)
 autosave_time: 60

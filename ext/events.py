@@ -1,14 +1,15 @@
 
+import asyncio
 import traceback
 from datetime import datetime
 import discord
 
-from bots import Bots
+from bots import Bots, AppEmojis
 from data import Data
 from dev import handle_dev
-from utils import Log, config, format_time
+from utils import Log, Config, format_time
 
-config = config()
+config = Config()
 
 Bots = Bots()
 Log = Log()
@@ -27,17 +28,9 @@ def setup(bot:discord.Bot):
     async def on_connect():
         Log.debug(f"{bot.name} connected to discord.")
         await bot.sync_commands()
-
-    # on disconnect
-    @bot.event
-    async def on_disconnect():
-        Log.debug(f"{bot.name} disconnected from discord...")
-
-    # on ready
-    @bot.listen(once=True)
-    async def on_ready():
-        Log.log(f"{bot.name} ready! Logged in as {bot.user.name}#{bot.user.discriminator} ({bot.user.id})")
-        # Only load stuff once
+        if (hasattr(bot, 'has_connected')) and bot.has_connected:
+            return
+        bot.has_connected = True
         if bot.name == Bots[0].name:
             now = datetime.now()
             Data['global']['startTime'] = now
@@ -50,8 +43,23 @@ def setup(bot:discord.Bot):
                 Data[f"{bot.name.lower()}/global"].setdefault('commandsUsed', 0)
         # Load application emojis
         Log.debug(f"Loading application emojis for {bot.name}...")
-        bot.app_emojis = await bot.fetch_application_emojis()
-        Log.log(f"Loaded {len(bot.app_emojis)} application emojis for {bot.name}")
+        app_emojis = await bot.fetch_emojis()
+        bot.bot_emojis = AppEmojis({e.name: e for e in app_emojis})
+        Log.log(f"Loaded {len(bot.bot_emojis)} application emojis for {bot.name}")
+        # Start bot tasks
+        for task_fn in getattr(bot, 'extra_tasks', []):
+            asyncio.create_task(task_fn())
+        bot.extra_tasks = []
+
+    # on disconnect
+    @bot.event
+    async def on_disconnect():
+        Log.debug(f"{bot.name} disconnected from discord...")
+
+    # on ready
+    @bot.listen(once=True)
+    async def on_ready():
+        Log.log(f"{bot.name} ready! Logged in as {bot.user.name}#{bot.user.discriminator} ({bot.user.id})")
     
     async def on_quit():
         """Should be called before the bot is stopped."""

@@ -5,9 +5,9 @@ import discord
 from discord.ext import commands
 
 from data import Data
-from utils import Log, config, format_number
+from utils import Log, Config, format_number
 
-config = config()
+config = Config()
 
 Log = Log()
 Data = Data()

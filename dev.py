@@ -4,9 +4,9 @@ import discord
 
 from bots import Bots
 from data import Data
-from utils import Log, config
+from utils import Log, Config
 
-config = config()
+config = Config()
 
 Log = Log()
 Bots = Bots()
@@ -28,17 +28,12 @@ def format_codeblock(text, limit=2000):
 
 async def handle_dev(bot:discord.Bot, msg:discord.Message):
     
-    # Check owner            ChicknTurtle       Super Turtle
-    if not msg.author.id in [957464464507166750,1026346464554782740]:
+    # Check owner
+    if not await bot.is_owner(msg.author):
         return
     
     # build args
     args = msg.content.split(' ')
-
-    # console channel
-    if msg.channel.id == 1312089859095138354:
-        if bot.name == Bots[0].name and config['dev_mode'] == True:
-            args.insert(0, bot.user.mention)
     
     # split second arg by newline (for codeblocks)
     if len(args) > 1:
