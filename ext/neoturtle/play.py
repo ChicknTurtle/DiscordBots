@@ -38,11 +38,15 @@ def setup(bot:discord.Bot):
             if channel_data.get('playing'):
                 invoked_at = time.time()
                 channel_data['playing']['start'] = invoked_at
-                channel = await bot.fetch_channel(channel_id)
+                try:
+                    channel = await bot.fetch_channel(channel_id)
+                except discord.HTTPException:
+                    channel = channel_id
                 try:
                     game = GamesManager.games[channel_data['playing']['game']]
-                    asyncio.create_task(game['listen'](bot, channel, invoked_at))
-                    started += 1
+                    if game.get('listen'):
+                        asyncio.create_task(game['listen'](bot, invoked_at, channel))
+                        started += 1
                 except KeyError:
                     Log.warn(f"Tried to continue an unknown game: {channel_data['playing']['game']} ({channel_id})")
         Log.log(f"Continued {started} game(s)")

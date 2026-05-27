@@ -16,7 +16,7 @@ def load_games():
             try:
                 module = importlib.import_module(module_path)
                 games[game_name] = {
-                    'listen': getattr(module, 'listen_game'),
+                    'listen': getattr(module, 'listen_game', None),
                     'setup_game': getattr(module, 'setup_game'),
                     'use_hint': getattr(module, 'use_hint', None),
                 }

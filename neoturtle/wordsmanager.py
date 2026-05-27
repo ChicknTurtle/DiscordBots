@@ -23,31 +23,25 @@ def load_wordlists():
                 # Load json file
                 elif file_ext == '.json':
                     with open(file_path, 'r') as f:
-                        wordlists[name] = json.load(f)
-                        wordlists[name] = list(wordlists[name].keys())
+                        wordlists[name] = set(json.load(f).keys())
             except Exception as e:
                 Log.error(f"Error loading wordlist '{file_path}':\n{traceback.format_exc()}")
     return wordlists
 
-def load_anagrams(dictionary: list, words: list[str]):
-    dictionary_set = set(dictionary)
-    dictionary_set.update(words)
-
+def load_anagrams(dictionary: set, words: list[str]):
+    dictionary = dictionary | set(words)
     anagrams_dict = {}
-    for word in dictionary_set:
+    for word in dictionary:
         sorted_word = ''.join(sorted(word))
         anagrams_dict.setdefault(sorted_word, []).append(word)
-
     result = {}
     for word in words:
         sorted_word = ''.join(sorted(word))
         anagram_list = anagrams_dict.get(sorted_word, [])
-        
         # Move original word to beginning
         if anagram_list and anagram_list[0] != word:
             anagram_list.remove(word)
             anagram_list.insert(0, word)
-        
         result[sorted_word] = anagram_list
     return result
 

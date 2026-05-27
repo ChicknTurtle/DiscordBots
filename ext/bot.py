@@ -16,24 +16,25 @@ def setup(bot:discord.Bot):
     
     bot_group = bot.create_group("bot", "Bot information.")
 
-    # stats
-    @bot_group.command(name="stats", description="View interesting bot statistics")
-    async def bot_stats_command(ctx:discord.ApplicationContext):
+    # info
+    @bot_group.command(name="info", description="See the bot's ping, uptime, server count, user count, commands used, invite link")
+    async def bot_info_command(ctx:discord.ApplicationContext):
+        app_info = await bot.application_info()
         ping = round(bot.latency*1000)
         uptime = round(Data['global']['startTime'].timestamp())
-        server_count = format_number(len(bot.guilds))
-        member_count = format_number(len(bot.users))
+        server_count = format_number(app_info.approximate_guild_count)
+        user_count = format_number(app_info.approximate_user_install_count)
         commands_used = format_number(Data.get(f"{bot.name.lower()}/global", {}).get('commandsUsed', 0))
         if discord.IntegrationType.user_install in bot.default_command_integration_types:
             invite_url = f"https://discord.com/oauth2/authorize?client_id={bot.user.id}"
         else:
             invite_url = f"https://discord.com/oauth2/authorize?client_id={bot.user.id}&scope=applications.commands%20bot"
-        msg = [f"## {bot.name} Statistics"]
+        msg = [f"## {bot.name} Information"]
         msg.append(f":ping_pong: Ping: `{ping}ms`")
         msg.append(f":stopwatch: Bot started <t:{uptime}:R>")
-        msg.append(f":homes: {server_count} servers")
-        msg.append(f":busts_in_silhouette: {member_count} members")
-        msg.append(f":robot: {commands_used} commands used")
+        msg.append(f":homes: {server_count} server{'' if server_count == '1' else 's'}")
+        msg.append(f":busts_in_silhouette: {user_count} user install{'' if user_count == '1' else 's'}")
+        msg.append(f":robot: {commands_used} command{'' if commands_used == '1' else 's'} used")
         msg.append(f":incoming_envelope: [Add {bot.name} to My Apps or Server](<{invite_url}>)")
         await ctx.respond('\n'.join(msg), ephemeral=True)
     

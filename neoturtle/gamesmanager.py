@@ -34,7 +34,7 @@ class GamesManager():
         
     async def cancel_game(self, ctx:discord.ApplicationContext):
         if Data['neoturtle/channel'].get(ctx.channel_id, {}).get('playing'):
-            if (Data['neoturtle/channel'][ctx.channel_id]['playing']['permanent']
+            if (Data['neoturtle/channel'][ctx.channel_id]['playing'].get('permanent')
                 and not isinstance(ctx.channel, discord.DMChannel)
                 and not ctx.author.guild_permissions.manage_channels):
                 await self.permanent_cancel_noperm_prompt(ctx)
@@ -59,6 +59,16 @@ class GamesManager():
 
     async def permanent_start_noperm_prompt(self, ctx:discord.ApplicationContext):
         await ctx.respond("You can't do that!\nYou must have Manage Channels permission to start a permanent game.", ephemeral=True)
+    
+    async def require_server_install_prompt(self, ctx:discord.ApplicationContext):
+        await ctx.respond("Sorry, this game can only be played in servers the bot is in and in the bot's DMs!", ephemeral=True)
+    
+    async def no_permissions_prompt(self, ctx:discord.ApplicationContext, perms:discord.Permissions):
+        missing_perms = []
+        for perm in perms:
+            if perm[1] is True:
+                missing_perms.append(f"`{perm[0]}`")
+        await ctx.respond(f"Bot is missing the following permissions in this channel to start this game: {', '.join(missing_perms)}", ephemeral=True)
     
     async def permanent_cancel_noperm_prompt(self, ctx:discord.ApplicationContext):
         await ctx.respond("You can't do that!\nYou must have Manage Channels permission to cancel a permanent game.", ephemeral=True)

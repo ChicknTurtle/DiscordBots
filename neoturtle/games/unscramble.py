@@ -11,6 +11,7 @@ from data import Data
 from utils import Log, Config, get_holiday
 from neoturtle.gamesmanager import GamesManager
 from neoturtle.wordsmanager import WordsManager
+from utils.perms import get_missing_perms
 
 Log = Log()
 Data = Data()
@@ -81,7 +82,10 @@ def format_guess(guess:str) -> str:
     return guess
 
 # Listen unscramble
-async def listen_game(bot:discord.Bot, channel:discord.TextChannel, invoked_at:float):
+async def listen_game(bot:discord.Bot, invoked_at:float, channel:discord.TextChannel|int):
+    if isinstance(channel, int):
+        del Data['neoturtle/channel'][channel]['playing']
+        return
     def check(msg:discord.Message):
         game = Data['neoturtle/channel'].get(channel.id, {}).get('playing')
         # pass check if game isn't being played anymore so we can stop listening
@@ -107,10 +111,13 @@ async def listen_game(bot:discord.Bot, channel:discord.TextChannel, invoked_at:f
         actual_reward = math.ceil(reward*rewardmult)
         earn_tokens(guess_msg.author, actual_reward)
         xp = 10
-        change_xp(guess_msg.author, xp)
+        await change_xp(guess_msg.author, xp)
         real_word = f" ({words[0]})" if guess != words[0] else ''
-        await channel.send(f"Correct! The word was **{guess}**{real_word} +{bot.bot_emojis['token']}{actual_reward}, {xp}xᴘ")
         permanent = Data['neoturtle/channel'][channel.id]['playing']['permanent']
+        try:
+            await channel.send(f"Correct! The word was **{guess}**{real_word} +{bot.bot_emojis['token']}{actual_reward}, {xp}{bot.bot_emojis['xp']}")
+        except discord.HTTPException:
+            permanent = False
         Data['neoturtle/channel'][channel.id].pop('playing', None)
         if permanent:
             await start_game(bot, channel, True)
@@ -156,7 +163,7 @@ async def start_game(bot:discord.Bot, channel:discord.TextChannel, permanent:boo
     Data['neoturtle/channel'].setdefault(channel.id, {})
     Data['neoturtle/channel'][channel.id]['playing'] = {'game':'unscramble','start':invoked_at,'permanent':permanent,'words':words,'scrambled':scrambled,'hint1':hint1,'hint2':hint2,'reward':reward,'rewardmult':1,'bonus':bonus,'hints':0,'extratext':extratext}
     # Listen for correct guess
-    await listen_game(bot, channel, invoked_at)
+    await listen_game(bot, invoked_at, channel)
 
 # Use hint
 async def use_hint(bot:discord.Bot, ctx:discord.ApplicationContext=None):
@@ -193,6 +200,20 @@ def setup_game(play_group:discord.SlashCommandGroup, bot:discord.Bot):
             and not ctx.author.guild_permissions.manage_channels):
             await GamesManager.permanent_start_noperm_prompt(ctx)
             return
+        if isinstance(ctx.channel, discord.DMChannel):
+            if (ctx.channel.recipient.id != ctx.bot.user.id):
+                await GamesManager.require_server_install_prompt(ctx)
+                return
+        elif ctx.guild and not ctx.guild.me:
+            await GamesManager.require_server_install_prompt(ctx)
+            return
+        else:
+            # check missing perms
+            required_perms = discord.Permissions(send_messages=True, read_messages=True)
+            missing_perms = get_missing_perms(ctx.channel, ctx.guild.me, required_perms)
+            if missing_perms.value != 0:
+                await GamesManager.no_permissions_prompt(ctx, missing_perms)
+                return
         # Handle already playing a game in this channel
         if Data['neoturtle/channel'].get(ctx.channel_id, {}).get('playing'):
             if Data['neoturtle/channel'][ctx.channel_id]['playing']['game'] == 'unscramble':
