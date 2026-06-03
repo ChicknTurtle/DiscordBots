@@ -31,8 +31,12 @@ async def change_xp(user:discord.User, amount:int):
     old_lvl, _, _ = get_level(Data['neoturtle/user'][user.id]['xp'])
     Data['neoturtle/user'][user.id]['xp'] += amount
     new_lvl, _, _ = get_level(Data['neoturtle/user'][user.id]['xp'])
-    if new_lvl > old_lvl:
-        await user.send(f"You leveled up to **Level {new_lvl}**!")
+    # disable this since it doesn't matter yet
+    #if new_lvl > old_lvl:
+    #    try:
+    #        await user.send(f"You leveled up to **Level {new_lvl}**!")
+    #    except discord.HTTPException:
+    #        pass
 
 def earn_tokens(user:discord.User, amount:int):
     change_tokens(user,amount)
